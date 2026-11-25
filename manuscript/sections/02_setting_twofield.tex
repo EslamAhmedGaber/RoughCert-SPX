@@ -1,0 +1,177 @@
+\section{Correlated rough volatility and the two-field error ledger}
+\label{sec:setting}
+
+\subsection{Model class, martingale domain and Romano--Touzi conditioning}
+\label{sec:model}
+
+Fix a maturity $T>0$ and a filtered probability space $(\Omega,\F,(\F_t)_{t\in[0,T]},\mathbb{Q})$ supporting two independent standard Brownian motions $(W^{(1)},W^{(2)})$. Let $H\in(0,1/2]$ be the Hurst exponent and $K_H(u)=\sqrt{2H}\,u^{H-1/2}$, $u>0$, the normalised Riemann--Liouville kernel, so that the Gaussian Volterra driver
+\begin{equation}
+  Y_t = \int_0^t K_H(t-s)\dd W_s^{(1)}, \qquad t\in[0,T],
+  \label{eq:rl_driver}
+\end{equation}
+has covariance $R_H(s,u)=\Cov(Y_s,Y_u)=\int_0^{s\wedge u} K_H(s-r)K_H(u-r)\dd r$ and variance $R_H(t,t)=t^{2H}$. Let $\xi_0:[0,T]\to(0,\infty)$ be a deterministic, measurable and bounded initial forward variance curve. In forward units with $S_0=1$ and zero rates, the correlated rough Bergomi model \citep{BayerFrizGatheral2016} is
+\begin{equation}
+  \begin{gathered}
+  \frac{\dd S_t}{S_t} = \sqrt{v_t}\left(\rho\dd W_t^{(1)} + \bar{\rho}\dd W_t^{(2)}\right),
+  \TCsep
+  v_t = \xi_0(t)\,\cE(\eta Y_t) \coloneqq \xi_0(t)\exp\!\left(\eta Y_t - \tfrac12\eta^2 t^{2H}\right),
+  \end{gathered}
+  \label{eq:rbergomi}
+\end{equation}
+with vol-of-vol $\eta\ge 0$, spot--volatility correlation $\rho\in[-1,0]$ and $\bar{\rho}\coloneqq\sqrt{1-\rho^2}$. For joint SPX--VIX studies we also use the two-component mixed rough Bergomi model \citep{Romer2022,BourgeyDeMarcoGobet2023},
+\begin{equation}
+  \begin{gathered}
+  v_t = \xi_0(t)\left[\lambda\,\cE(\eta_1 Y_t) + (1-\lambda)\,\cE(\eta_2 Y_t)\right],
+  \TCsep \lambda\in[0,1],\; \eta_1,\eta_2\ge 0.
+  \end{gathered}
+  \label{eq:mixed_rbergomi}
+\end{equation}
+
+\begin{assumption}[True-martingale and rough-kernel domain]
+\label{assump:domain}
+Throughout, $H\in(0,1/2]$, $\eta\ge 0$ (and $\eta_1,\eta_2\ge 0$), $\xi_0(t)>0$ on $[0,T]$, and $\rho\in[-1,0]$.
+\end{assumption}
+
+For nonpositive correlation the unit-forward parity follows from Lemma~\ref{lem:surrogate_mart}. For the nondegenerate exponential model under the hypotheses of \citet[Theorem~1.1]{Gassiat2019}, positive correlation produces a strict local martingale. At $\eta=0$ volatility is deterministic and the spot is a martingale for every correlation. Lemma~\ref{lem:surrogate_mart} below recovers the sufficiency part for $\rho\le 0$ and extends it to the surrogates used in this paper. The software rejects $\rho>0$ and $H\notin(0,1/2]$ in every certification routine.
+
+Conditioning on $\F_T^{W^{(1)}}=\sigma(W_s^{(1)}:0\le s\le T)$, \citet{RomanoTouzi1997} showed that $\log S_T$ is conditionally Gaussian with mean $\rho J_T - \tfrac12 I_T$ and variance $\bar{\rho}^2 I_T$, where
+\begin{equation}
+  \begin{gathered}
+  I_T \coloneqq \int_0^T v_s\dd s,
+  \qquad
+  J_T \coloneqq \int_0^T \sqrt{v_s}\dd W_s^{(1)},
+  \TCsep
+  F_T \coloneqq \exp\!\left(\rho J_T - \tfrac12\rho^2 I_T\right).
+  \end{gathered}
+  \label{eq:two_fields}
+\end{equation}
+Write $C_\BS(F,K,V)$ and $P_\BS(F,K,V)$ for the undiscounted Black--Scholes Call and Put prices with forward $F>0$, strike $K>0$ and total variance $V\ge 0$. European SPX prices then take the conditional Black--Scholes form
+\begin{equation}
+  \begin{gathered}
+  C(K) = \E\!\left[C_\BS\!\left(F_T,K,\bar{\rho}^2 I_T\right)\right],
+  \TCsepq
+  P(K) = \E\!\left[P_\BS\!\left(F_T,K,\bar{\rho}^2 I_T\right)\right],
+  \TCsepq
+  C(K) - P(K) = 1 - K.
+  \end{gathered}
+  \label{eq:rt_pricing}
+\end{equation}
+Equation~\eqref{eq:two_fields} marks the step from VIX pricing in the companion working paper \RoughCert{} \citep{AhmedEtAl2026RoughCert} to SPX pricing. VIX futures and options at expiry $T$ depend only on conditional variance integrals over $[T,T+\Delta]$, whose kernel $K_H(s-u)$ is smooth across the separation $s>T\ge u$; a single-driver Karhunen--Lo\`eve truncation then yields 169-bit Arb brackets narrower than one Cboe tick. SPX prices \eqref{eq:rt_pricing} instead couple two path functionals on $[0,T]$: $I_T$, which sees the diagonal singularity of $K_H(s-u)$ as $u\uparrow s$, and the adapted It\^o integral $J_T$, which depends on the whole non-Markovian path of $W^{(1)}$ and carries the leverage skew.
+
+\subsection{Two-field It\^o--Mehler ledger and Put-Lipschitz gap}
+\label{sec:theorems}
+
+All stochastic integrands below are progressively measurable. Let $\hat{\sigma}=(\hat{\sigma}_s)_{s\in[0,T]}$ be a nonnegative, $(\F_s^{W^{(1)}})$-adapted volatility surrogate with $\E[\int_0^T \hat{\sigma}_s^2\dd s]<\infty$, and set $\hat{v}_s=\hat{\sigma}_s^2$, $\hat{I}_T=\int_0^T\hat{v}_s\dd s$, $\hat{J}_T=\int_0^T\hat{\sigma}_s\dd W_s^{(1)}$ and $\hat{F}_T=\exp(\rho\hat{J}_T - \tfrac12\rho^2\hat{I}_T)$. When $\E[\hat{F}_T]=1$, the surrogate price is $\hat{C}(K)=\E[C_\BS(\hat{F}_T,K,\bar{\rho}^2\hat{I}_T)]$. For deterministic or bounded surrogates $\E[\hat{F}_T]=1$ holds by Novikov's criterion; the following lemma covers the Gaussian-kernel surrogates used in the kernel audits.
+
+\begin{lemma}[Martingale property of Gaussian-kernel surrogates]
+\label{lem:surrogate_mart}
+Let $\rho\in[-1,0]$, let $\hat{K}\in L^2(0,T)$ be nonnegative, let $\hat{Y}_s=\int_0^s\hat{K}(s-u)\dd W_u^{(1)}$, and let $\hat{v}_s=\Phi_s(\hat{Y}_s)$ for jointly measurable maps $\Phi_s:\R\to[0,\infty)$ that are nondecreasing and satisfy $\int_0^T\E[\Phi_s(\hat{Y}_s)]\dd s<\infty$. Then $\E[\hat{F}_T]=1$ for $\hat{\sigma}=\sqrt{\hat{v}}$. In particular, this holds for rough Bergomi itself ($\hat{K}=K_H$), for mixed rough Bergomi \eqref{eq:mixed_rbergomi}, for every Markovian kernel $K_M(u)=\sum_{j=1}^M w_je^{-x_ju}$ with $w_j\ge0$, and for every hybrid kernel $K_{\kappa,n}$ of \citet{BennedsenLundePakkanen2017}.
+\end{lemma}
+
+Define the two channel residuals
+\begin{equation}
+  \begin{gathered}
+  E_J \coloneqq \left(\E\!\left[\int_0^T (\sqrt{v_s}-\hat{\sigma}_s)^2\dd s\right]\right)^{1/2},
+  \TCsep
+  E_I \coloneqq \E\!\left[\left|I_T-\hat{I}_T\right|\right].
+  \end{gathered}
+  \label{eq:channel_residuals}
+\end{equation}
+
+\begin{theorem}[Two-field It\^o--Mehler error ledger]
+\label{thm:ledger}
+Under Assumption~\ref{assump:domain}, let $\hat{\sigma}$ be any nonnegative $(\F_s^{W^{(1)}})$-adapted surrogate with $\E[\hat{I}_T]<\infty$. Then:
+\begin{enumerate}[(i)]
+  \item \emph{Leverage-channel isometry:} $\norm{J_T-\hat{J}_T}_{L^2(\mathbb{Q})} = E_J$.
+  \item \emph{Variance-channel coupling:}
+  \begin{equation}
+    \begin{gathered}
+    \norm{\sqrt{I_T}-\sqrt{\hat{I}_T}}_{L^2(\mathbb{Q})} \le E_J,
+    \TCsep
+    E_I \le E_J\left(\sqrt{\E[I_T]} + \sqrt{\E[\hat{I}_T]}\right).
+    \end{gathered}
+    \label{eq:minkowski_coupling}
+  \end{equation}
+  \item \emph{Mehler formula for Gaussian-kernel surrogates:} for the pure model \eqref{eq:rbergomi}, if $\hat{v}_s=\xi_0(s)\,\cE(\eta\hat{Y}_s)$ with $(Y_s,\hat{Y}_s)$ jointly centred Gaussian for each $s$, then
+  \begin{equation}
+    E_J^2 = 2\int_0^T \xi_0(s)\left[1 - \exp\!\left(-\tfrac{\eta^2}{8}\Var(Y_s-\hat{Y}_s)\right)\right]\dd s.
+    \label{eq:mehler_ej}
+  \end{equation}
+  If $\hat{Y}_s=\int_0^s \hat{K}(s-u)\dd W_u^{(1)}$ with $\hat{K}\in L^2(0,T)$, then $\Var(Y_s-\hat{Y}_s)=\int_0^s (K_H(u)-\hat{K}(u))^2\dd u\le\norm{K_H-\hat{K}}_{L^2(0,T)}^2$.
+\end{enumerate}
+\end{theorem}
+
+The factor $\eta^2/8$ in \eqref{eq:mehler_ej} comes from the square root in
+\[
+  \sqrt{v_s}=\sqrt{\xi_0(s)}\exp\!\left(\tfrac12\eta Y_s-\tfrac14\eta^2\Var(Y_s)\right):
+\]
+halving the log-volatility exponent quarters the exponent of the Gaussian cross moment. The proof is in \ref{app:proofs}.
+
+To turn $(E_J,E_I)$ into a price bound valid for all strikes, including deep out-of-the-money calls where the log-forward Call sensitivity can grow like $F_T$, we pass to the Black--Scholes Put through Put--Call parity; its log-forward and root-variance sensitivities are bounded by $K$.
+
+\begin{theorem}[Put-Lipschitz bound and three-way error splitting]
+\label{thm:put_lipschitz}
+Under Assumption~\ref{assump:domain}, let $\hat{\sigma}$ be any nonnegative $(\F_s^{W^{(1)}})$-adapted surrogate with $\E[\hat{I}_T]<\infty$ and $\E[\hat{F}_T]=1$. Then for every strike $K>0$,
+\begin{equation}
+  \begin{aligned}
+  \bigl|C(K)-\hat{C}(K)\bigr|
+  &\le K\left(|\rho| + \frac{\bar{\rho}}{\sqrt{2\pi}}\right) E_J \\
+  &\quad + \frac{K\rho^2}{2}\min\Bigl(E_I,\; \TCbr E_J\bigl(\sqrt{\E[I_T]}+\sqrt{\E[\hat{I}_T]}\bigr)\Bigr).
+  \end{aligned}
+  \label{eq:put_lipschitz}
+\end{equation}
+For an estimator $\hat{C}_{\hat{K},n,M}(K)$ built from an approximate kernel $\hat{K}$ (an $M$-factor exponential sum or a hybrid scheme), a time grid of $n$ steps and $M$ Monte Carlo or RQMC samples, the total error splits as
+\begin{equation}
+  \begin{aligned}
+    \bigl|C(K) - \hat{C}_{\hat{K},n,M}(K)\bigr|
+    &\le \underbrace{\bigl|C(K)-C_{\hat{K}}(K)\bigr|}_{\text{kernel gap}}
+      \TCbr + \underbrace{\bigl|C_{\hat{K}}(K)-C_{\hat{K},n}(K)\bigr|}_{\text{time-discretisation bias}} \\
+    &\quad + \underbrace{\bigl|C_{\hat{K},n}(K)-\hat{C}_{\hat{K},n,M}(K)\bigr|}_{\text{sampling error}},
+  \end{aligned}
+  \label{eq:three_way}
+\end{equation}
+and the kernel gap is bounded by \eqref{eq:mehler_ej}--\eqref{eq:put_lipschitz} whenever $\hat{K}\ge 0$ (Lemma~\ref{lem:surrogate_mart}).
+\end{theorem}
+
+Bound \eqref{eq:put_lipschitz} has two uses. First, the $L^2$-optimal deterministic surrogate $\hat{\sigma}_s=\E[\sqrt{v_s}]=\sqrt{\xi_0(s)}\exp(-\tfrac18\eta^2 s^{2H})$ minimises $E_J$, with $E_J^2=\int_0^T\xi_0(s)[1-\exp(-\tfrac14\eta^2 s^{2H})]\dd s$ and $\hat{I}_T=\E[I_T]-E_J^2$; it is tighter than the Wick surrogate $\hat{Y}_s\equiv 0$ of Theorem~\ref{thm:ledger}(iii) and gives a sampling-free \ArbBits-bit Arb bracket for flat forward variance and parameters $(H,T,\eta,\rho,K)$ under Assumption~\ref{assump:domain}. Second, inserting a Markovian kernel $K_M$ or the continuous-time hybrid kernel $K_{\kappa,n}$ into \eqref{eq:mehler_ej}--\eqref{eq:put_lipschitz} gives a deterministic, Arb-certified upper bound on the continuous-time kernel gap $|C(K)-C_{\hat{K}}(K)|$ before a single path is simulated.
+
+\subsection{Why leverage defeats first-order deterministic certification}
+\label{sec:homotopy}
+
+Before seeking tighter deterministic bounds, we explain why the uncorrelated and leveraged cases behave so differently in $\eta T^H$. For $\theta\in[0,1]$ let $I_\theta=(1-\theta)\hat{I}_T+\theta I_T$, $J_\theta=(1-\theta)\hat{J}_T+\theta J_T$ and $F_\theta=\exp(\rho J_\theta-\tfrac12\rho^2 I_\theta)$.
+
+\begin{theorem}[Romano--Touzi homotopy identity]
+\label{thm:homotopy}
+Let $\rho\in(-1,0]$ and let $\hat{\sigma}$ be a nonnegative adapted surrogate with $\hat{I}_T>0$ a.s., $\E[\hat{I}_T]<\infty$, $\E[\hat{F}_T]=1$ and
+\begin{equation}
+  \int_0^1\E\!\left[F_\theta\left(|J_T-\hat{J}_T|+|I_T-\hat{I}_T|\right)\right]\dd\theta<\infty.
+  \label{eq:homotopy_integrability}
+\end{equation}
+Then
+\begin{equation}
+  \begin{aligned}
+  &C(K) - \hat{C}(K) = \int_0^1 \E\Bigl[\rho\,\Delta_\BS(\theta)\,F_\theta\,(J_T-\hat{J}_T) \\
+  &\qquad + \bigl(\bar{\rho}^2\mathcal{V}_\BS(\theta) - \tfrac12\rho^2\Delta_\BS(\theta)F_\theta\bigr)(I_T-\hat{I}_T)\Bigr]\dd\theta,
+  \end{aligned}
+  \label{eq:homotopy}
+\end{equation}
+where $\Delta_\BS(\theta)$ and $\mathcal{V}_\BS(\theta)$ are the derivatives $\partial_F C_\BS$ and $\partial_V C_\BS$ at $(F_\theta,K,\bar{\rho}^2 I_\theta)$. Condition \eqref{eq:homotopy_integrability} holds for every deterministic surrogate with $\hat{I}_T>0$. Every deterministic surrogate with $\hat{I}_T=\E[I_T]=I_0\coloneqq\int_0^T\xi_0(s)\dd s$ has the same price $\hat{C}(K)=C_\BS(1,K,I_0)$, and for it:
+\begin{enumerate}[(a)]
+  \item if $\rho=0$ and $K\ne1$, then
+  \[
+    |C(K)-\hat{C}(K)|\le\tfrac12\sup_{V>0}\bigl|\partial_V^2C_\BS(1,K,V)\bigr|\,\Var(I_T),
+  \]
+  and for $K=1$ Proposition~\ref{prop:twomoment} gives $0\le\hat{C}(1)-C(1)=O(\Var(I_T))$; for flat $\xi_0$, $\Var(I_T)\le I_0^2(e^{\eta^2T^{2H}}-1)=O(\eta^2T^{2H})$ as $\eta T^H\to0$;
+  \item for the pure model at $\rho<0$, formal expansion in $\eta$ yields the following linear contribution $\mathcal{L}_K$
+  \begin{equation}
+      \begin{aligned}
+      &\mathcal{L}_K = \mathcal{V}_\BS(1,K,I_0)\,\frac{C^{x\xi}}{I_0}\Bigl(\log K + \frac{I_0}{2}\Bigr),\\
+      &C^{x\xi} \coloneqq \rho\eta\int_0^T\!\!\int_0^s \sqrt{\xi_0(u)}\,\xi_0(s)\,K_H(s-u)\dd u\dd s,
+      \end{aligned}
+    \label{eq:homotopy_leverage}
+  \end{equation}
+  which is linear in $\rho\eta T^H$ at fixed standardised moneyness and vanishes only at $\log K=-I_0/2$; in particular it is nonzero at the money.
+\end{enumerate}
+\end{theorem}
+
+The expansion in (b) is derived in \ref{app:proofs} by Malliavin integration by parts; we do not bound the $O(\eta^2)$ remainder uniformly, so (b) identifies the leading term rather than a certified bound. It has the form $C^{x\xi}\,\partial_x\partial_w C_\BS$ of the first-order term of the \citet{BergomiGuyon2012} expansion, and verification check~C4c (Supplementary Table~S5) confirms on Heston that the relative error of the first-order term halves when the vol-of-vol halves. Because every deterministic surrogate that matches $\E[I_T]$ has the same price, their formal linear coefficient is nonzero away from $\log K=-I_0/2$ when $\rho<0$. Experiment~E2 quantifies the consequence: at $\rho=0$ the two-moment Arb bound certifies $25\bps$ up to $\eta T^H\in[\ETwoRhoZeroMin,\ETwoRhoZeroMax]$, whereas at $\rho=-0.9$ the boundary falls by a factor of $\ETwoCollapseMin$--$\ETwoCollapseMax$.

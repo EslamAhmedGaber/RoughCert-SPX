@@ -1,0 +1,27 @@
+\begin{table}[t]
+\centering
+\caption{Joint SPX--VIX audit at $H=0.10$, $T=0.25$, $\xi_0=0.235^2$: Arb-certified VIX brackets from \RoughCert{} v5.0.0 beside statistical \RCBridge{} SPX envelopes.}
+\label{tab:e6_joint}
+\footnotesize
+\setlength{\tabcolsep}{3.0pt}
+\begin{tabular}{@{}lrrrrrrr@{}}
+\toprule
+Model & $\rho$ & VIX fut. & VIX slope & SPX ATM & SPX ATM & Wing & Diag. \\
+ & & (pts, Arb) & (pp, Arb) & IV (\%, stat.) & skew (stat.) & (pp) & (/8) \\
+\midrule
+Pure E14 ($\eta=1.9$) & $-0.70$ & $[20.832,\,20.836]$ & -- & $[20.50,\,20.74]$$^{\dagger}$ & $[-0.508,\,-0.414]$$^{\dagger}$ & 11.41 & 2 \\
+Pure E14 ($\eta=1.9$) & $-0.85$ & $[20.832,\,20.836]$ & -- & $[20.20,\,20.39]$ & $[-0.601,\,-0.520]$ & 14.00 & 0 \\
+Pure E14 ($\eta=1.9$) & $-0.90$ & $[20.832,\,20.836]$ & -- & $[20.09,\,20.29]$ & $[-0.644,\,-0.548]$ & 15.02 & 0 \\
+\midrule
+Pure BDG6 ($a=1.0$) & $-0.70$ & $[19.909,\,19.916]$ & $[+0.53,\,+1.20]$ & $[19.65,\,19.82]$ & $[-0.556,\,-0.468]$ & 12.06 & 2 \\
+Pure BDG6 ($a=1.0$) & $-0.85$ & $[19.909,\,19.916]$ & $[+0.53,\,+1.20]$ & $[19.23,\,19.47]$ & $[-0.718,\,-0.537]$$^{\dagger}$ & 14.80 & 3 \\
+Pure BDG6 ($a=1.0$) & $-0.95$ & $[19.909,\,19.916]$ & $[+0.53,\,+1.20]$ & $[18.97,\,19.20]$ & $[-0.761,\,-0.641]$ & 16.81 & 0 \\
+\midrule
+Mixed Scen.~1 & $-0.70$ & $[20.633,\,20.638]$ & $[+6.22,\,+6.78]$ & $[20.17,\,20.42]$ & $[-0.506,\,-0.397]$ & 11.50 & 1 \\
+Mixed Scen.~1 & $-0.85$ & $[20.633,\,20.638]$ & $[+6.22,\,+6.78]$ & $[19.73,\,20.15]$$^{\dagger}$ & $[-0.636,\,-0.462]$$^{\dagger}$ & 14.07 & 4 \\
+Mixed Scen.~1 & $-0.95$ & $[20.633,\,20.638]$ & $[+6.22,\,+6.78]$ & $[19.33,\,20.01]$$^{\dagger}$ & $[-0.751,\,-0.479]$$^{\dagger}$ & 16.06 & 4 \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\parbox{\linewidth}{\footnotesize\emph{Notes.} VIX futures and smile slopes ($k=+0.3$ minus $k=-0.3$) are the 169-bit Arb-certified results of the companion \RoughCert{} v5.0.0 release \citep{AhmedEtAl2026RoughCert}. SPX columns are $65{,}536$-path \RCBridge{} (\RCCE{}) asymptotic-envelope statistical(0.95) enclosures ($\delta k=0.02$), or diagnostic where marked $^{\dagger}$. Wing is the midpoint-IV difference between $K=0.85$ and $K=1.12$ (point estimate).}
+\end{table}

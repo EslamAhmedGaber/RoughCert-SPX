@@ -1,0 +1,181 @@
+\section{The \RoughCertSPX{} framework: deterministic Arb bounds and exact-bridge RQMC}
+\label{sec:framework}
+
+Theorem~\ref{thm:homotopy} predicts regimes in which sampling-free Arb bounds suffice and regimes in which leverage requires simulation. \RoughCertSPX{} therefore has three tiers, each with its own epistemic label:
+\begin{enumerate}[1.]
+  \item \RCDet{} (\emph{Arb-certified}): sampling-free \ArbBits-bit Arb price and implied-volatility brackets, and continuous-time kernel-gap certificates for Markovian and hybrid approximations.
+  \item \RCCE{} (\emph{simulated-RQMC(0.95)}): a single-grid estimator that applies exact conditional expectation to the variance channel, keeps an energy-conserving adapted leverage integral, and uses pilot-fitted control variates.
+  \item \RCBridge{}, labelled \emph{asymptotic-envelope statistical(0.95)} or \emph{diagnostic}: a nested, path-coupled multilevel RQMC pricer that separates sampling error from continuum bias through exact Schur-complement coarsening and contraction gates.
+\end{enumerate}
+
+\subsection{\RCDet{}: sharp two-moment bounds and Arb kernel audits}
+\label{sec:det}
+
+At $\rho=0$ and $K=1$, the conditional Black--Scholes function $\varphi_1(V)\coloneqq C_\BS(1,1,V)=2\Phi(\tfrac12\sqrt{V})-1$ has a positive third derivative, which upgrades the first-order bracket of Theorem~\ref{thm:put_lipschitz} to a second-order two-moment bound that needs no integration over Gaussian paths.
+
+\begin{proposition}[Sharp two-moment ATM bound for $\rho=0$]
+\label{prop:twomoment}
+For all $V>0$, $\varphi_1'(V)>0$, $\varphi_1''(V)<0$ and $\varphi_1'''(V)>0$, with $\varphi_1(0)=0$. Consequently, for any random variable $I_T\ge 0$ with mean $m=\E[I_T]>0$ and variance $v=\Var(I_T)$,
+\begin{equation}
+  \frac{m^2}{m^2+v}\,\varphi_1\!\left(m + \frac{v}{m}\right)
+  \;\le\; \E\!\left[\varphi_1(I_T)\right]
+  \;\le\; \varphi_1(m),
+  \label{eq:twomoment}
+\end{equation}
+with equality on the left for the two-point law $\mathbb{P}(I_T=0)=\frac{v}{m^2+v}$, $\mathbb{P}(I_T=m+v/m)=\frac{m^2}{m^2+v}$. The lower bound $L(v)=\frac{m^2}{m^2+v}\varphi_1(m+v/m)$ is strictly decreasing in $v\ge 0$, so replacing $v$ by any Arb-certified upper bound $\bar{v}\ge\Var(I_T)$ keeps the bracket valid.
+\end{proposition}
+
+Under rough Bergomi with flat $\xi_0$, $m=\xi_0 T$ and
+\begin{equation}
+  \Var(I_T) = \xi_0^2\int_0^T\!\!\int_0^T \left(\exp\!\left(\eta^2 R_H(s,u)\right) - 1\right)\dd s\dd u.
+  \label{eq:var_IT}
+\end{equation}
+For $H\in(0,1/2]$ and $0<s\le u$, $R_H(s,u)$ is nondecreasing in $s$ and nonincreasing in $u$. Partitioning $[0,T]^2$ into sub-boxes and evaluating the integrand at the appropriate corners therefore encloses \eqref{eq:var_IT} in Arb without a quadrature remainder; diagonal boxes are split into two triangles on which the same monotonicity applies.
+
+For kernel audits (Theorem~\ref{thm:put_lipschitz}) we evaluate $L^2$ and $L^1$ kernel discrepancies in Arb:
+\begin{itemize}
+  \item \emph{Markovian sums $K_M(u)=\sum_{j=1}^M w_j e^{-x_j u}$ ($w_j\ge0$, $x_j>0$).} The squared $L^2$ error $\int_0^s (K_H(u)-K_M(u))^2\dd u$ has a closed form in lower incomplete gamma functions $\gamma(H+\tfrac12,x_j s)$ and exponentials, evaluated in Arb with \texttt{flint.arb.gamma\_lower}. The $L^1$ error is harder because $K_H-K_M$ changes sign finitely often and uncertified Gauss--Legendre quadrature can miss the cusps of $|K_H-K_M|$. Both kernels decrease on $(0,T]$, so on $[0,u_0]$ with $K_H(u_0)\ge\sum_j w_j$ the difference is positive and the closed-form antiderivative applies; on $[u_0,T]$ monotone interval bisection isolates the roots, every sign-definite panel uses the antiderivative, and every root bracket uses a monotone box bound.
+  \item \emph{Hybrid kernel $K_{\kappa,n}$ ($\kappa\ge 1$).} The error vanishes on $[0,\kappa\Delta t]$, and on each far cell $[(k-1)\Delta t,k\Delta t]$, $k>\kappa$, the $L^2$-optimal constant $c_k^*$ gives a closed-form Arb expression for $\int_0^{s_i}(K_H(u)-K_{\kappa,n}(u))^2\dd u$, which certifies the continuous-time kernel gap through \eqref{eq:mehler_ej}--\eqref{eq:put_lipschitz}.
+\end{itemize}
+When a certified price upper bound reaches the no-arbitrage Call ceiling $1$, the Arb Black--Scholes inverter returns $\IV_{\mathrm{hi}}=+\infty$ instead of clipping, and exact zero lower bounds return $0$.
+
+\subsection{A pitfall of conditional-Jensen smoothing in the leverage channel}
+\label{sec:jensen_pitfall}
+
+On the grid $t_i=i\Delta t$, $\Delta t=T/n$, the discrete Gaussian information is
+\[
+  \G_n=\sigma\bigl(\Delta W_0^{(1)},\dots,\Delta W_{n-1}^{(1)},Y_{t_1},\dots,Y_{t_n}\bigr).
+\]
+It is tempting to replace both $I_T$ and $\sqrt{v_s}$ inside $J_T$ by conditional expectations:
+\begin{equation}
+  \begin{gathered}
+  I_{\mathrm{CE}} \coloneqq \E[I_T\mid\G_n] = \int_0^T \xi_0(s)\,\cE\!\left(\eta\hat{Y}_s^{(n)}\right)\dd s,
+  \TCsep
+  \sigma_i^{\mathrm{Jen}} \coloneqq \frac{1}{\Delta t}\int_{t_i}^{t_{i+1}} \E\!\left[\sqrt{v_s}\mid\G_i\right]\dd s,
+  \end{gathered}
+  \label{eq:ce_defs}
+\end{equation}
+where $\hat{Y}_s^{(n)}=\E[Y_s\mid\G_n]$ is a Gaussian linear projection, $\cE(\eta\hat{Y}_s^{(n)})=\exp(\eta\hat{Y}_s^{(n)}-\tfrac12\eta^2\Var(\hat{Y}_s^{(n)}))$, and $\G_i=\sigma(\Delta W_0^{(1)},\dots,\Delta W_{i-1}^{(1)},Y_{t_1},\dots,Y_{t_i})\subset\F_{t_i}^{W^{(1)}}$, so $\sigma_i^{\mathrm{Jen}}$ is adapted and $\E[F_T^{\mathrm{Jen}}]=1$. Among $\G_i$-measurable values constant on $[t_i,t_{i+1})$, $\sigma_i^{\mathrm{Jen}}$ minimises the strong residual $E_J$, so it improves on the left-point value $\sqrt{v_{t_i}}$ in $L^2$. Inserted into $J_T$, however, it removes correlated quadratic variation.
+
+\begin{proposition}[Correlation attenuation by conditional-Jensen smoothing in $J_T$]
+\label{prop:jensen_pitfall}
+Let $H\in(0,1/2)$, $\eta>0$, $\rho\in[-1,0)$ and flat $\xi_0>0$. Let $I_{\mathrm{ad}}=\Delta t\sum_{i=0}^{n-1}(\sigma_i^{\mathrm{Jen}})^2$ and let the Jensen-$J$ estimator use the conditional variance $V_{\mathrm{cond}}^{\mathrm{Jen}}=I_{\mathrm{CE}}-\rho^2\min(I_{\mathrm{CE}},I_{\mathrm{ad}})$. Then:
+\begin{enumerate}[(i)]
+  \item \emph{Quadratic-variation deficit of order $n^{-2H}$:}
+  \begin{equation}
+    \begin{aligned}
+      \E[I_T - I_{\mathrm{ad}}]
+      &\ge n\,\xi_0 \int_0^{\Delta t}\Bigl(1 - e^{-\eta^2u^{2H}/4}\Bigr)\dd u \\
+      &= \frac{\xi_0\eta^2 T}{4(2H+1)}\,\Delta t^{2H} + O(\Delta t^{4H}),
+    \end{aligned}
+    \label{eq:jensen_deficit}
+  \end{equation}
+  and $\E[I_T-I_{\mathrm{ad}}]\le c\,\Delta t^{2H}$ with $c$ depending only on $(H,T,\eta,\xi_0)$, so $\delta_n\coloneqq\E[I_T-I_{\mathrm{ad}}]/\E[I_T]=\Theta(n^{-2H})$.
+  \item \emph{Correlation attenuation:} the adapted leverage sum has quadratic variation in discrete predictable form $\rho^2 I_{\mathrm{ad}}$. Define its effective correlation by the expected-energy ratio. Then $\rho_{\mathrm{eff}}^2\coloneqq\rho^2\,\E[I_{\mathrm{ad}}]/\E[I_{\mathrm{CE}}]$ satisfies $\rho_{\mathrm{eff}}^2=\rho^2(1-\delta_n)$, so $|\rho_{\mathrm{eff}}|=|\rho|(1-\Theta(n^{-2H}))$.
+\end{enumerate}
+\end{proposition}
+
+Since leverage enters SPX prices at first order (Theorem~\ref{thm:homotopy}(b)), a first-order heuristic suggests that this attenuation biases prices at order $n^{-2H}$, which is slower than $\beta_{\mathrm{FSW}}(H)$ for every $H<1/2$. We do not prove a weak-error rate for the ablation. Experiment~E5 measures ablation rates at $K=1.06$ below those of \RCCE{} at every tested $H$, and every resolved ablation rate exceeds $2H$ (Section~\ref{sec:e5}), so the heuristic order is not observed on the tested grids. For Regime~A ($H=0.10$, $T=0.25$, $\eta=1.9$, $\rho=-0.9$), the exact deficit $\delta_n$ exceeds $\JenDefThirtyTwo\%$ at $n=32$ and $\JenDefFiveTwelve\%$ at $n=512$ (closed-form lower bounds $\JenLBThirtyTwo\%$ and $\JenLBFiveTwelve\%$), so $\rho_{\mathrm{eff}}=\RhoEffThirtyTwo$ at $n=32$ and $\RhoEffFiveTwelve$ at $n=512$ instead of $-0.9$ (Supplementary Table~S4). The design rule is: \emph{apply exact conditional expectation to the integrated-variance channel, which preserves $\E[I_{\mathrm{CE}}]=\E[I_T]$, and keep a leverage integral with exact local quadratic variation $\E[\sigma_i^2]=\xi_0(t_i)$.}
+
+\subsection{\RCCE{} and \RCBridge{}: nested exact paths, pilot controls and envelope gates}
+\label{sec:bridge}
+
+Following this rule, the primary estimator \RCCE{} pairs exact conditional expectation in the variance channel with the energy-conserving left-point leverage martingale:
+\begin{equation}
+  \begin{aligned}
+    F_T^{(n)} &= \exp\!\left(\rho\sum_{i=0}^{n-1}\sqrt{v_{t_i}}\,\Delta W_i^{(1)} - \tfrac12\rho^2\Delta t\sum_{i=0}^{n-1} v_{t_i}\right), \\
+    V_{\mathrm{cond}}^{(n)} &= \bar{\rho}^2 I_{\mathrm{CE}}^{(n)},
+    \qquad
+    \hat{C}_{\mathrm{CE}}^{(n)}(K) = \E\!\left[C_\BS\!\left(F_T^{(n)},K,V_{\mathrm{cond}}^{(n)}\right)\right].
+  \end{aligned}
+  \label{eq:rc_ce}
+\end{equation}
+Here $I_{\mathrm{CE}}^{(n)}=\sum_{q=1}^{2n} w_q \xi_0(s_q)\,\cE(\eta\hat{Y}_{s_q}^{(n)})$ uses two-point Gauss--Legendre quadrature per step, so $\E[I_{\mathrm{CE}}^{(n)}]$ equals the quadrature of $\int_0^T\xi_0(s)\dd s$ (exact for flat $\xi_0$), and $\E[F_T^{(n)}]=1$ for all $\rho\le0$. No correlation is attenuated because the leverage integral keeps $\E[v_{t_i}]=\xi_0(t_i)$. We do not assume a weak rate for \RCCE{}: Experiment~E5 measures it. For mixed rough Bergomi \eqref{eq:mixed_rbergomi}, $\E[v_s\mid\G_n]$ is the corresponding convex combination of the two Wick exponentials of $\hat{Y}_s^{(n)}$.
+
+\paragraph{Exact Schur-complement nested paths.}
+Following the multilevel coupling idea \citep{Giles2015MLMC}, for dyadic grids $n_0 < \dots < n_L$ ($n_\ell = 2^\ell n_0$, $L\ge 2$) we sample the exact Gaussian vector $(\Delta W^{(1)}, Y)\in\R^{2n_L}$ on the finest grid by block Schur-complement factorisation:
+\begin{enumerate}[1.]
+  \item generate $\Delta W^{(1)}=B_{\mathrm{BB}}\,Z_1$ with a Brownian-bridge matrix $B_{\mathrm{BB}}$, so that the leading Sobol coordinates drive the coarse path modes \citep{BayerBenHammoudaTempone2020};
+  \item set $Y = \Sigma_{YW}\Sigma_{WW}^{-1}\Delta W^{(1)} + U_{\mathrm{PCA}}\,Z_2$, where $\Sigma_{WW}=\Delta t\,I_{n_L}$, $(\Sigma_{YW})_{j,i}=\int_{t_{i-1}}^{t_i\wedge t_j} K_H(t_j-r)\dd r$ in closed form, and $U_{\mathrm{PCA}}$ is the descending-eigenvalue square root of $\Sigma_{Y\mid W}=\Sigma_{YY}-\Sigma_{YW}\Sigma_{WW}^{-1}\Sigma_{WY}$;
+  \item restrict the same finest-grid path to every coarser grid $n_\ell$ by summing blocks of $2^{L-\ell}$ increments $\Delta W^{(1)}$ and subsampling $Y$. These are exact linear restrictions of the continuous path $(W^{(1)},Y)$, so every coarse marginal law is exact and consecutive levels are strongly coupled.
+\end{enumerate}
+
+\paragraph{Pilot-fitted exact zero-mean control bank.}
+For scrambled Sobol RQMC \citep{Owen1995} (linear matrix scrambling with a random digital shift) with $R$ independent randomisations and antithetic pairing ($M=2n_{\mathrm{half}}$ paths per shift), we pair the Romano--Touzi payoff with a six-dimensional zero-mean control bank $X_{\mathrm{CV}}^{(n)}(K)\in\R^6$, which reduces to $I^{(n)}-\E[I^{(n)}]$ when $\rho=0$:
+\begin{enumerate}[(a)]
+  \item \emph{three stopped-timer option controls.} For deterministic budgets $Q_m\in\{0.6,1.5,4.0\}\,\E[I_{\mathrm{left}}^{(n)}]$, $m=1,2,3$, step $i$ is included through the $\F_{t_i}^{W^{(1)}}$-measurable indicator $\alpha_i^{(m)} = \mathbf{1}_{\{\rho^2\Delta t\sum_{j=0}^{i} v_{t_j} \le Q_m\}}$. With $I_{\tau_m}^{(n)}=\Delta t\sum_{i=0}^{n-1}\alpha_i^{(m)} v_{t_i}$ (so $\rho^2 I_{\tau_m}^{(n)}\le Q_m$ a.s.) and $F_{\tau_m}^{(n)}=\exp(\rho\sum_{i=0}^{n-1}\alpha_i^{(m)}\sqrt{v_{t_i}}\,\Delta W_i^{(1)}\allowbreak-\tfrac12\rho^2 I_{\tau_m}^{(n)})$, the payoff
+  \begin{equation}
+    Y_{\mathrm{CV}}^{(n)}(K;Q_m) \coloneqq C_\BS\!\left(F_{\tau_m}^{(n)},\,K,\,Q_m-\rho^2 I_{\tau_m}^{(n)}\right)
+    \label{eq:stopped_timer}
+  \end{equation}
+  has mean $C_\BS(1,K,Q_m)$ on every grid;
+  \item \emph{three martingale and variance controls:} $F_T^{(n)} - 1$, $I_{\mathrm{left}}^{(n)}-\Delta t\sum_{i=0}^{n-1}\xi_0(t_i)$ and the adapted martingale $J_{\mathrm{left}}^{(n)}=\sum_{i=0}^{n-1}\sqrt{v_{t_i}}\Delta W_i^{(1)}$, each with zero mean on every grid.
+\end{enumerate}
+The unbiasedness of \eqref{eq:stopped_timer} holds for any grid and any $Q_m>0$ by backward induction on the Black--Scholes Gaussian semigroup (Lemma~\ref{lem:stopped_cv} in \ref{app:proofs}). We estimate separate least-squares control weights $W_\ell$ for each level $C_\ell$ and weights $W_{\Delta,\ell}$ for each coupled difference $\Delta_\ell=C_\ell-C_{\ell-1}$ against $X_{\mathrm{CV}}^{(\ell)}-X_{\mathrm{CV}}^{(\ell-1)}$, using only $R_{\mathrm{pilot}}=2$ independent pilot shifts, and hold all weights fixed across the $R$ main shifts. Conditional on the pilot, the $R$ independent shift means are unbiased. Student calibration requires Gaussian shift means or a valid studentized limit. On Regime~A the bank reduces the variance of the coupled $64\to128$ increment by a factor of $\CVIncrVRFMin$--$\CVIncrVRFMax$ across the smile ($\CVIncrVRFATM$ at the money; archive \texttt{cv\_ablation.json}).
+
+\paragraph{Contraction gates and Arb IV/skew propagation.}
+Let $\bar{C}_L(K)$ and $s_L(K)$ be the finest-level mean and standard error over the $R$ shifts, and $\bar{\Delta}_\ell(K)$ and $s_{\Delta,\ell}(K)$ those of the coupled increments $\Delta_\ell(K)$. Let $t\coloneqq t_{\alpha/4,R-1}$ be the Student-$t$ critical value that allocates $\alpha/2$ to the finest-level mean and $\alpha/2$ to the finest increment. Call $\Delta_\ell$ \emph{resolved} if $|\bar{\Delta}_\ell|>3s_{\Delta,\ell}$; for two independent increments each at signal-to-noise ratio three, the delta-method standard error of their log-ratio in base two is approximately $0.68$ (check~C7a). Write $r_{\mathrm{emp}}=|\bar{\Delta}_{L-1}|/|\bar{\Delta}_L|$, $\hat{\beta}_{\mathrm{pair}}=\log_2 r_{\mathrm{emp}}$ and $d_L^{\mathrm{hi}}=|\bar{\Delta}_L|+t\,s_{\Delta,L}$.
+
+\begin{assumption}[Shift calibration and refinement]\label{assump:shift} Conditional on independently fitted controls, both marginal Student intervals have their stated coverage, exactly for Gaussian shift means or asymptotically under a studentized central limit theorem. For rate consistency, the fitted levels tend to infinity and their increment estimates have vanishing relative errors.\end{assumption}
+\begin{theorem}[Nested-bridge asymptotic continuum envelope]
+\label{thm:bridge_envelope}
+Suppose $C(K)-C^{(n)}(K) = c_K n^{-\beta} + o(n^{-\beta})$ with $c_K\neq 0$ and $\beta\in(0,\beta_{\mathrm{FSW}}(H)]$. Classify each strike as follows.
+\begin{enumerate}[(i)]
+  \item \emph{Resolved contraction:} $\Delta_L$ and $\Delta_{L-1}$ are resolved, $\bar{\Delta}_L\bar{\Delta}_{L-1}>0$, $r_{\mathrm{emp}}>1.15$, and both $\hat{\beta}_{\mathrm{pair}}$ and $\hat{\beta}_{\mathrm{emp}}$ are at least $\tfrac12\beta_{\mathrm{FSW}}(H)$, where $\hat{\beta}_{\mathrm{emp}}$ is the signal-to-noise-weighted log--log slope when at least three resolved monotone same-sign increments exist and $\hat{\beta}_{\mathrm{pair}}$ otherwise. Set $\beta_{\mathrm{used}}=\min(\beta_{\mathrm{FSW}}(H),0.85\hat{\beta}_{\mathrm{emp}})$ and $d_{\mathrm{eff}}^{\mathrm{hi}}=d_L^{\mathrm{hi}}$.
+  \item \emph{Submerged finest increment:} $\Delta_L$ is not resolved and
+  \[
+    |\bar{\Delta}_L|\le |\bar{\Delta}_{L-1}|+2(s_{\Delta,L}+s_{\Delta,L-1}).
+  \]
+  Set $\beta_{\mathrm{used}}=\beta_{\mathrm{FSW}}(H)$; if $\Delta_{L-1}$ is resolved, set
+  \[
+    d_{\mathrm{eff}}^{\mathrm{hi}}=\max\bigl(d_L^{\mathrm{hi}},\,(|\bar{\Delta}_{L-1}|+t\,s_{\Delta,L-1})/2^{\beta_{\mathrm{FSW}}}\bigr),
+  \]
+  and otherwise $d_{\mathrm{eff}}^{\mathrm{hi}}=d_L^{\mathrm{hi}}$. This guards against artificial collapse at bias zero crossings.
+  \item \emph{Diagnostic:} all other strikes, namely (a) a sign flip with a resolved finest increment and $|\bar{\Delta}_{L-1}|>2s_{\Delta,L-1}$, (b) slow contraction ($r_{\mathrm{emp}}\le1.15$ or a rate below $\tfrac12\beta_{\mathrm{FSW}}$), (c) an emerging increment ($\Delta_L$ resolved, $\Delta_{L-1}$ not), and (d) a submerged increment that grows beyond the bound in (ii). Their widths carry no guarantee and use the display rates
+  \[
+    \begin{aligned}
+    \text{(a)}\;\;&\beta_{\mathrm{used}}=\min\bigl(\beta_{\mathrm{FSW}},\max(0.20,0.85\hat{\beta}_{\mathrm{emp}})\bigr) \TCbr \text{ or }\tfrac12\beta_{\mathrm{FSW}},\\
+    \text{(b)}\;\;&\beta_{\mathrm{used}}=\min\bigl(\beta_{\mathrm{FSW}}, \TCbr \max(0.15,0.85\max(\hat{\beta}_{\mathrm{pair}},0))\bigr),\\
+    \text{(c)}\;\;&\beta_{\mathrm{used}}=\tfrac12\beta_{\mathrm{FSW}},\qquad \text{(d)}\;\;\beta_{\mathrm{used}}=\beta_{\mathrm{FSW}}.
+    \end{aligned}
+  \]
+\end{enumerate}
+Let $B_L(K)=\gamma_{\mathrm{sf}}\,d_{\mathrm{eff}}^{\mathrm{hi}}/(2^{\beta_{\mathrm{used}}}-1)$ with safety factor $\gamma_{\mathrm{sf}}=\BridgeSafety$, and
+\[
+  \begin{aligned}
+  &[C_{\mathrm{lo}},C_{\mathrm{hi}}]=\bigl[\max(\bar{C}_L-t\,s_L-B_L,(1-K)_+),\; \TCbr \min(\bar{C}_L+t\,s_L+B_L,1)\bigr].
+  \end{aligned}
+\]
+If the tail satisfies $|C(K)-C^{(n_L)}(K)|\le\gamma_{\mathrm{sf}}|\Delta_L(K)|/(2^{\beta}-1)$ with $\beta\ge\beta_{\mathrm{used}}$, then under Assumption~\ref{assump:shift} the probability of issuing a non-diagnostic interval that misses $C(K)$ while the tail condition holds is at most $\alpha$ (asymptotically for limiting calibration). This joint-event guarantee does not give conditional coverage after a gate passes. In Case~(i), $\beta\ge\beta_{\mathrm{used}}$ holds with probability tending to one as $n_L\to\infty$ under the refinement conditions above. In Case~(ii), if the increments decay geometrically, $|C(K)-C^{(n_L)}(K)|\le|\Delta_L(K)|/(2^{\beta}-1)$, coverage holds for every true rate $\beta\ge\beta_{\min}(H)\coloneqq\log_2(1+(2^{\beta_{\mathrm{FSW}}(H)}-1)/\gamma_{\mathrm{sf}})$. Arb inversion maps $[C_{\mathrm{lo}},C_{\mathrm{hi}}]$ to an implied-volatility interval $[\IV_{\mathrm{lo}}(K),\IV_{\mathrm{hi}}(K)]$ with the same coverage, and the finite-difference ATM skew interval
+\begin{equation}
+  \left[\frac{\IV_{\mathrm{lo}}(e^{\delta k})-\IV_{\mathrm{hi}}(e^{-\delta k})}{2\delta k},\;\;
+        \frac{\IV_{\mathrm{hi}}(e^{\delta k})-\IV_{\mathrm{lo}}(e^{-\delta k})}{2\delta k}\right]
+  \label{eq:skew_interval}
+\end{equation}
+has joint-event error probability at most $2\alpha$ when both stencil strikes qualify and satisfy their tail conditions. For prespecified valid strikes this gives coverage of at least $1-2\alpha$.
+\end{theorem}
+
+For $H\ge 1/6$, $\beta_{\min}=\BetaMinSixth$, and $\beta_{\min}=\BetaMinTen$ at $H=0.10$, $\BetaMinSeven$ at $H=0.07$ and $\BetaMinZeroFive$ at $H=0.05$ (values rounded up). Experiment~E5 shows whether measured rates clear this floor.
+
+\begin{widealgorithm}[t]
+\caption{\RoughCertSPX{} tiered pricing and audit pipeline.}
+\label{alg:roughcert_spx}
+\begin{algorithmic}[1]
+\Require Parameters $(H,T,\eta,\rho,\xi_0)$ satisfying Assumption~\ref{assump:domain}; strikes $\mathcal{K}$; IV tolerance $\varepsilon_{\mathrm{tol}}$; dyadic levels $(n_0,\dots,n_L)$; RQMC shifts $R$; paths per shift $M$; confidence $1-\alpha$.
+\Ensure Price, IV and ATM skew enclosures with epistemic status labels.
+\State \textbf{Tier 1 (\RCDet{}, \emph{Arb-certified}):} evaluate the \ArbBits-bit Arb bracket of Theorem~\ref{thm:put_lipschitz} (and Proposition~\ref{prop:twomoment} if $\rho=0$, $K=1$). For an approximate kernel $\hat{K}\in\{K_M,K_{\kappa,n}\}$, certify $\norm{K_H-\hat{K}}_{L^2}$, the root-splitting $\norm{K_H-K_M}_{L^1}$, $E_J(\hat{K})$ and the continuous-time gap of Theorem~\ref{thm:put_lipschitz}.
+\If{the deterministic IV width is at most $\varepsilon_{\mathrm{tol}}$ for all $K\in\mathcal{K}$}
+  \State \Return \emph{Arb-certified} price and IV enclosures (no simulation).
+\EndIf
+\State \textbf{Tier 2 (\RCCE{}, \emph{simulated-RQMC($1-\alpha$)}):} for one grid $n$, precompute the Schur-complement and variance-channel projection caches, fit the control bank $X_{\mathrm{CV}}^{(n)}$ on $R_{\mathrm{pilot}}=2$ pilot shifts, and evaluate \eqref{eq:rc_ce} over $R$ scrambled antithetic Sobol shifts.
+\State \textbf{Tier 3 (\RCBridge{}, \emph{asymptotic-envelope} or \emph{diagnostic}):} precompute caches on $(n_0,\dots,n_L)$ and fit $(W_\ell,W_{\Delta,\ell})$ on $R_{\mathrm{pilot}}=2$ pilot shifts.
+\For{$r=1,\dots,R$}
+  \State Sample scrambled antithetic Sobol normals $Z^{(r)}\in\R^{M\times 2n_L}$ and generate exact $(\Delta W^{(1)},Y)$ on $n_L$.
+  \For{$\ell=0,\dots,L$}
+    \State Restrict $(\Delta W^{(1)},Y)$ to $n_\ell$ by block summation and subsampling.
+    \State Evaluate the Tier~2 payoffs \eqref{eq:rc_ce} and $X_{\mathrm{CV}}^{(n_\ell)}$ with the fixed weights $(W_\ell,W_{\Delta,\ell})$.
+  \EndFor
+\EndFor
+\State Apply the gates of Theorem~\ref{thm:bridge_envelope} and map price bounds to IV and ATM skew \eqref{eq:skew_interval} by Arb inversion.
+\end{algorithmic}
+\end{widealgorithm}

@@ -1,0 +1,11 @@
+\section{Computational protocol and traceability}
+\label{app:repro}
+
+\paragraph{Environment and timing.}
+Each run used a single thread. E1--E6 used Python 3.12.4, NumPy 2.2.6, SciPy 1.14.1, python-flint 0.9.0 and mpmath 1.3.0. The refinement and decomposition studies used Python 3.12.14, NumPy 2.5.3, SciPy 1.18.1, python-flint 0.8.0, mpmath 1.4.1 and SymPy 1.14.0. In both environments, 52 decimal digits give \ArbBits{} Arb bits. Cold setup includes factorisation, node fitting or hybrid covariance assembly. Solve time includes path generation, payoff evaluation, controls and implied-volatility inversion.
+
+\paragraph{Rounding and randomisation.}
+Certified endpoints round outwards. A call upper bound of one gives an infinite upper implied volatility. Arb model inputs use their stated decimal values. Scrambled Sobol points use SciPy's linear matrix scramble and digital shift, antithetic pairing and archived seeds. Two pilot shifts fit the controls independently of the main shifts. E4 competitors share random numbers within regimes. Some E6 shifts overlap within model families. Refinement seeds start at $20262000$ and are disjoint from the reference seeds.
+
+\paragraph{Traceability.}
+The \href{\ReleaseURL}{version \ReleaseTag{} archive} includes the inputs and results. The table generator records the raw value, rounding rule and printed value for each numerical macro. It rounds lower endpoints and lower bounds on improvement factors downwards, and upper endpoints and error bounds upwards. Point estimates use nearest rounding. Supplementary Table~S6 identifies the scripts that generate the tables and figures. The independent programs behind Supplementary Table~S5 use separate implementations.

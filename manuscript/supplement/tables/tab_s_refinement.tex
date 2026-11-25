@@ -1,0 +1,20 @@
+\begin{table}[!htb]
+\centering
+\caption{Diagnostic-flag refinement study: the four reference envelopes with the most diagnostic flags, recomputed with finest level $n_L=\RefFinestLevel$ and fresh seeds.}
+\label{tab:s_refinement}
+\footnotesize
+\setlength{\tabcolsep}{3.0pt}
+\begin{tabular}{@{}lrrrrrr>{\raggedright\arraybackslash}p{0.17\linewidth}@{}}
+\toprule
+Case & Paths & Diag. & Upgr. & New & ATM width (bps) & ATM skew & Remaining flags \\
+ & & ref.\,$\to$\,refined & & & ref.\,$\to$\,refined & refined & $K$ (rate) \\
+\midrule
+E4 Regime~A & 131{,}072 & 1 $\to$ 0 & 1 & 0 & 13.5 $\to$ 9.7 & $[-0.623,\,-0.572]$ & -- \\
+E4 Regime~B & 131{,}072 & 2 $\to$ 0 & 2 & 0 & 14.0 $\to$ 13.6 & $[-0.935,\,-0.840]$ & -- \\
+E6 Pure BDG6 & 65{,}536 & 3 $\to$ 3 & 1 & 1 & 23.0 $\to$ 41.9$^{\dagger}$ & $[-0.716,\,-0.543]$ & 1.0 (e), 1.0202 (e), 1.06 (0.27) \\
+E6 Mixed Scen.~1 & 65{,}536 & 4 $\to$ 1 & 3 & 0 & 40.4$^{\dagger}$ $\to$ 14.2 & $[-0.589,\,-0.515]$ & 1.06 (0.37) \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\parbox{\linewidth}{\footnotesize\emph{Notes.} Reference levels $(64,128,256,512)$; the refined runs add $n=1024$ at the same budget, with seeds from $20262000$. $^{\dagger}$Diagnostic display width. Remaining flags: a number is a fitted rate below $\beta_{\mathrm{FSW}}/2=\RefHalfBetaFSW$; (e) marks an emerging increment (Theorem~\mref{thm:bridge_envelope}(iii)).}
+\end{table}

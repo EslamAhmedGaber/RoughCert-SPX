@@ -1,0 +1,604 @@
+{
+  "script": "scripts/v2_proof_checks.py",
+  "code_disjoint": "imports nothing from src/",
+  "mpmath_dps": 40,
+  "seed": 20261124,
+  "environment": {
+    "python": "3.12.4",
+    "mpmath": "1.3.0",
+    "numpy": "2.2.6",
+    "sympy": "1.13.1"
+  },
+  "n_checks": 19,
+  "n_fail": 0,
+  "jensen_deficit_exact": {
+    "32": {
+      "deficit_gl2": 0.25279128057179756,
+      "deficit_gl8": 0.2515531113197279,
+      "deficit_gl16": 0.2515226063517362,
+      "lower_bound_eq": 0.2470855990234975,
+      "rho_eff_gl2": -0.777971119474781,
+      "rho_eff_gl8": -0.7786154248607078
+    },
+    "64": {
+      "deficit_gl2": 0.22414203782798503,
+      "deficit_gl8": 0.2230517227652158,
+      "deficit_gl16": null,
+      "lower_bound_eq": 0.21901628278036278,
+      "rho_eff_gl2": -0.7927451982568751,
+      "rho_eff_gl8": -0.7933020260658454
+    },
+    "128": {
+      "deficit_gl2": 0.19827412987506643,
+      "deficit_gl8": 0.19730928851081042,
+      "deficit_gl16": null,
+      "lower_bound_eq": 0.1937030277237644,
+      "rho_eff_gl2": -0.805852315750967,
+      "rho_eff_gl8": -0.8063370736275516
+    },
+    "256": {
+      "deficit_gl2": 0.1750356087174787,
+      "deficit_gl8": 0.17418082229216425,
+      "deficit_gl16": null,
+      "lower_bound_eq": 0.17097869615354516,
+      "rho_eff_gl2": -0.8174479536575049,
+      "rho_eff_gl8": -0.8178713431483873
+    },
+    "512": {
+      "deficit_gl2": 0.15424758692513163,
+      "deficit_gl8": 0.15349076953635998,
+      "deficit_gl16": 0.15347314961643155,
+      "lower_bound_eq": 0.15065914784889844,
+      "rho_eff_gl2": -0.8276831849147616,
+      "rho_eff_gl8": -0.8280534262205238
+    }
+  },
+  "case_ii_rate_floor": {
+    "0.05": 0.46408842111987775,
+    "0.07": 0.5098168372103429,
+    "0.10": 0.5792452492165912,
+    "0.15": 0.6971051850098914,
+    "0.25": 0.736965594166206,
+    "0.40": 0.736965594166206
+  },
+  "checks": [
+    {
+      "id": "C1",
+      "ref": "Theorem 1(iii)",
+      "statement": "E[(sqrt(v)-sqrt(vhat))^2] = 2 xi0 (1 - exp(-eta^2 Var(Y-Yhat)/8))",
+      "metric": "max relative deviation (80x80 Gauss-Hermite, 20 random cases)",
+      "value": 2.565425495851108e-16,
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "id": "C2a",
+      "ref": "Theorem 1(ii)",
+      "statement": "||sqrt(I)-sqrt(Ihat)||_2 <= E_J and E_I <= E_J (sqrt(E I) + sqrt(E Ihat))",
+      "metric": "max violation over 200 random discrete laws (must be <= 0)",
+      "value": -0.007267565467616131,
+      "tolerance": 0.0,
+      "pass": true
+    },
+    {
+      "id": "C2b",
+      "ref": "Theorem 2",
+      "statement": "|P(e^u,K,S^2)-P(e^u',K,S'^2)| <= K|u-u'| + K|S-S'|/sqrt(2 pi); |dP/du|<=K; dP/dS<=K/sqrt(2pi)",
+      "metric": "max violation over 2000 random pairs (must be <= 0)",
+      "value": -3.722092251839967e-07,
+      "tolerance": 0.0,
+      "pass": true
+    },
+    {
+      "id": "C3a",
+      "ref": "Proposition 1 proof",
+      "statement": "phi_1', phi_1'', phi_1''' equal the stated closed forms (SymPy)",
+      "metric": "symbolic residual is zero (1 = yes)",
+      "value": 1.0,
+      "tolerance": 0.5,
+      "pass": true
+    },
+    {
+      "id": "C3b",
+      "ref": "Proposition 1",
+      "statement": "third derivative of phi_1 positive on V in [1e-6, 1e3] (closed form, 37-point log grid); numerical third derivative agrees for V <= 50",
+      "metric": "min third derivative (closed form, must be > 0)",
+      "value": 5.132997710776013e-59,
+      "tolerance": 0.0,
+      "pass": true,
+      "max_rel_numeric_vs_closed": 6.621958718908897e-41
+    },
+    {
+      "id": "C3c",
+      "ref": "Proposition 1",
+      "statement": "m^2/(m^2+v) phi_1(m+v/m) <= E phi_1(I) <= phi_1(m), equality for the two-point law",
+      "metric": "max violation over 300 random discrete laws (must be <= 0)",
+      "value": 2.8698592549372254e-42,
+      "tolerance": 1e-35,
+      "pass": true,
+      "extremal_equality_error": 2.8698592549372254e-42
+    },
+    {
+      "id": "C3d",
+      "ref": "Proposition 1",
+      "statement": "L(v) strictly decreasing in v >= 0",
+      "metric": "monotone on 200-point grid (1 = yes)",
+      "value": 1.0,
+      "tolerance": 0.5,
+      "pass": true
+    },
+    {
+      "id": "C3e",
+      "ref": "Theorem 3(a), K = 1",
+      "statement": "two-moment gap is first order in Var(I_T): ratio to (v/m)(phi1(m)/m - phi1'(m)) -> 1",
+      "metric": "|ratio - 1| at v = 1e-8",
+      "value": 1.873924839656499e-05,
+      "tolerance": 0.0001,
+      "pass": true,
+      "ratios": [
+        0.9981299312607644,
+        0.999812642640485,
+        0.9999812607516034
+      ]
+    },
+    {
+      "id": "C4a",
+      "ref": "Theorem 3(b) proof",
+      "statement": "flat xi0: C^{x xi}/I0 = rho eta sqrt(xi0) sqrt(2H) T^{H+1/2}/((H+1/2)(H+3/2))",
+      "metric": "max relative deviation (6 random cases)",
+      "value": 1.0825216308920184e-30,
+      "tolerance": 1e-15,
+      "pass": true
+    },
+    {
+      "id": "C4b",
+      "ref": "Theorem 3(b) proof",
+      "statement": "d/dx[e^{2x} Gamma_BS(e^x,K,I0)]|_0 = 2 V_BS(1,K,I0)(log K + I0/2)/I0",
+      "metric": "max relative deviation (8 random cases)",
+      "value": 3.690759695605088e-41,
+      "tolerance": 1e-25,
+      "pass": true
+    },
+    {
+      "id": "C4c",
+      "ref": "Theorem 3(b)",
+      "statement": "first-order leverage term V_BS (C^{x xi}/I0)(log K + I0/2) is exact at first order on Heston: |exact/first-order - 1| = O(sigma_v)",
+      "metric": "max |err(0.005)/err(0.01) - 1/2| over K = 0.9, 1, 1.1",
+      "value": 0.00027555066673468076,
+      "tolerance": 0.02,
+      "pass": true,
+      "table": [
+        {
+          "K": 0.9,
+          "sigma_v": 0.02,
+          "ratio": 0.982591413119084
+        },
+        {
+          "K": 0.9,
+          "sigma_v": 0.01,
+          "ratio": 0.9913015301385415
+        },
+        {
+          "K": 0.9,
+          "sigma_v": 0.005,
+          "ratio": 0.9956523234887347
+        },
+        {
+          "K": 1.0,
+          "sigma_v": 0.02,
+          "ratio": 1.166973832827588
+        },
+        {
+          "K": 1.0,
+          "sigma_v": 0.01,
+          "ratio": 1.0835129343987628
+        },
+        {
+          "K": 1.0,
+          "sigma_v": 0.005,
+          "ratio": 1.0417634512647642
+        },
+        {
+          "K": 1.1,
+          "sigma_v": 0.02,
+          "ratio": 1.0153880203803807
+        },
+        {
+          "K": 1.1,
+          "sigma_v": 0.01,
+          "ratio": 1.0077029022781634
+        },
+        {
+          "K": 1.1,
+          "sigma_v": 0.005,
+          "ratio": 1.0038535736789402
+        }
+      ],
+      "halving_ratios": [
+        0.49982083981565245,
+        0.5000836285472793,
+        0.5002755506667347
+      ]
+    },
+    {
+      "id": "C5a",
+      "ref": "Proposition 2(i)",
+      "statement": "xi0-free lower bound / [eta^2 T dt^{2H}/(4(2H+1))] -> 1 with O(dt^{2H}) error",
+      "metric": "|ratio - 1| at n = 65,536 (monotone decrease required)",
+      "value": 0.03121677670791445,
+      "tolerance": 0.1,
+      "pass": true,
+      "table": [
+        {
+          "n": 16,
+          "ratio": 0.8493601261552272
+        },
+        {
+          "n": 64,
+          "ratio": 0.8827920881437481
+        },
+        {
+          "n": 256,
+          "ratio": 0.9093603784343678
+        },
+        {
+          "n": 1024,
+          "ratio": 0.9302378753835094
+        },
+        {
+          "n": 4096,
+          "ratio": 0.9465025359393864
+        },
+        {
+          "n": 16384,
+          "ratio": 0.9590902068816449
+        },
+        {
+          "n": 65536,
+          "ratio": 0.9687832232920855
+        }
+      ]
+    },
+    {
+      "id": "C5b",
+      "ref": "Proposition 2(i)",
+      "statement": "exact deficit (Gaussian conditioning on G_i) >= closed-form lower bound (eq:jensen_deficit)",
+      "metric": "min (exact GL8 deficit - lower bound) over n = 32..512",
+      "value": 0.0028316216874615385,
+      "tolerance": 0.0,
+      "pass": true,
+      "table": {
+        "32": {
+          "deficit_gl2": 0.25279128057179756,
+          "deficit_gl8": 0.2515531113197279,
+          "deficit_gl16": 0.2515226063517362,
+          "lower_bound_eq": 0.2470855990234975,
+          "rho_eff_gl2": -0.777971119474781,
+          "rho_eff_gl8": -0.7786154248607078
+        },
+        "64": {
+          "deficit_gl2": 0.22414203782798503,
+          "deficit_gl8": 0.2230517227652158,
+          "deficit_gl16": null,
+          "lower_bound_eq": 0.21901628278036278,
+          "rho_eff_gl2": -0.7927451982568751,
+          "rho_eff_gl8": -0.7933020260658454
+        },
+        "128": {
+          "deficit_gl2": 0.19827412987506643,
+          "deficit_gl8": 0.19730928851081042,
+          "deficit_gl16": null,
+          "lower_bound_eq": 0.1937030277237644,
+          "rho_eff_gl2": -0.805852315750967,
+          "rho_eff_gl8": -0.8063370736275516
+        },
+        "256": {
+          "deficit_gl2": 0.1750356087174787,
+          "deficit_gl8": 0.17418082229216425,
+          "deficit_gl16": null,
+          "lower_bound_eq": 0.17097869615354516,
+          "rho_eff_gl2": -0.8174479536575049,
+          "rho_eff_gl8": -0.8178713431483873
+        },
+        "512": {
+          "deficit_gl2": 0.15424758692513163,
+          "deficit_gl8": 0.15349076953635998,
+          "deficit_gl16": 0.15347314961643155,
+          "lower_bound_eq": 0.15065914784889844,
+          "rho_eff_gl2": -0.8276831849147616,
+          "rho_eff_gl8": -0.8280534262205238
+        }
+      }
+    },
+    {
+      "id": "C6",
+      "ref": "Lemma (stopped-timer CV)",
+      "statement": "E[C_BS(F e^{sqrt(dq) Z - dq/2}, K, V - dq)] = C_BS(F, K, V) for 0 <= dq <= V",
+      "metric": "max absolute deviation (25 random cases)",
+      "value": 1.1479437019748901e-41,
+      "tolerance": 1e-30,
+      "pass": true
+    },
+    {
+      "id": "C7a",
+      "ref": "Theorem 4(i)",
+      "statement": "delta-method SE of log2(|D_{L-1}|/|D_L|) at SNR = 3 for both increments",
+      "metric": "SE (paper: 'exceeding 0.68' below SNR 3)",
+      "value": 0.6800929643978596,
+      "tolerance": 0.68,
+      "pass": true
+    },
+    {
+      "id": "C7b",
+      "ref": "Theorem 4(ii) hypothesis support",
+      "statement": "at every E5 Hurst index H >= 0.10 all measured rates (left-point and RC-CE; K = 1.06, ATM, strip mean) exceed beta_min(H) = log2(1 + (2^beta_FSW - 1)/1.5)",
+      "metric": "min (beta_hat - beta_min) over E5 rows with H >= 0.10",
+      "value": 0.07356956437576401,
+      "tolerance": 0.0,
+      "pass": true,
+      "beta_min": {
+        "0.05": 0.46408842111987775,
+        "0.07": 0.5098168372103429,
+        "0.10": 0.5792452492165912,
+        "0.15": 0.6971051850098914,
+        "0.25": 0.736965594166206,
+        "0.40": 0.736965594166206
+      },
+      "rows": [
+        {
+          "H": 0.05,
+          "method": "leftpoint",
+          "slope": "call106_slope",
+          "beta_hat": 0.6219355244121809,
+          "beta_min": 0.46408842111987775
+        },
+        {
+          "H": 0.05,
+          "method": "leftpoint",
+          "slope": "atm_slope",
+          "beta_hat": 0.47521833239261424,
+          "beta_min": 0.46408842111987775
+        },
+        {
+          "H": 0.05,
+          "method": "leftpoint",
+          "slope": "strip_mean_slope",
+          "beta_hat": 0.10892336778854478,
+          "beta_min": 0.46408842111987775
+        },
+        {
+          "H": 0.05,
+          "method": "ce_i_only",
+          "slope": "call106_slope",
+          "beta_hat": 0.5427026078996358,
+          "beta_min": 0.46408842111987775
+        },
+        {
+          "H": 0.05,
+          "method": "ce_i_only",
+          "slope": "atm_slope",
+          "beta_hat": 0.361822281443667,
+          "beta_min": 0.46408842111987775
+        },
+        {
+          "H": 0.05,
+          "method": "ce_i_only",
+          "slope": "strip_mean_slope",
+          "beta_hat": -0.25780694265758064,
+          "beta_min": 0.46408842111987775
+        },
+        {
+          "H": 0.1,
+          "method": "leftpoint",
+          "slope": "call106_slope",
+          "beta_hat": 0.70748631534246,
+          "beta_min": 0.5792452492165912
+        },
+        {
+          "H": 0.1,
+          "method": "leftpoint",
+          "slope": "strip_mean_slope",
+          "beta_hat": 0.8133027975738671,
+          "beta_min": 0.5792452492165912
+        },
+        {
+          "H": 0.1,
+          "method": "ce_i_only",
+          "slope": "call106_slope",
+          "beta_hat": 0.6528148135923552,
+          "beta_min": 0.5792452492165912
+        },
+        {
+          "H": 0.1,
+          "method": "ce_i_only",
+          "slope": "strip_mean_slope",
+          "beta_hat": 0.8181672628445974,
+          "beta_min": 0.5792452492165912
+        },
+        {
+          "H": 0.15,
+          "method": "leftpoint",
+          "slope": "call106_slope",
+          "beta_hat": 0.8024405423446157,
+          "beta_min": 0.6971051850098914
+        },
+        {
+          "H": 0.15,
+          "method": "leftpoint",
+          "slope": "atm_slope",
+          "beta_hat": 0.895663978877135,
+          "beta_min": 0.6971051850098914
+        },
+        {
+          "H": 0.15,
+          "method": "leftpoint",
+          "slope": "strip_mean_slope",
+          "beta_hat": 0.851219551145068,
+          "beta_min": 0.6971051850098914
+        },
+        {
+          "H": 0.15,
+          "method": "ce_i_only",
+          "slope": "call106_slope",
+          "beta_hat": 0.7821322167240585,
+          "beta_min": 0.6971051850098914
+        },
+        {
+          "H": 0.15,
+          "method": "ce_i_only",
+          "slope": "atm_slope",
+          "beta_hat": 0.9322435964677086,
+          "beta_min": 0.6971051850098914
+        },
+        {
+          "H": 0.15,
+          "method": "ce_i_only",
+          "slope": "strip_mean_slope",
+          "beta_hat": 0.8632766273361329,
+          "beta_min": 0.6971051850098914
+        },
+        {
+          "H": 0.25,
+          "method": "leftpoint",
+          "slope": "call106_slope",
+          "beta_hat": 0.9597186396676015,
+          "beta_min": 0.736965594166206
+        },
+        {
+          "H": 0.25,
+          "method": "leftpoint",
+          "slope": "atm_slope",
+          "beta_hat": 0.932929893392482,
+          "beta_min": 0.736965594166206
+        },
+        {
+          "H": 0.25,
+          "method": "leftpoint",
+          "slope": "strip_mean_slope",
+          "beta_hat": 0.9510776645301384,
+          "beta_min": 0.736965594166206
+        },
+        {
+          "H": 0.25,
+          "method": "ce_i_only",
+          "slope": "call106_slope",
+          "beta_hat": 0.9563443958545861,
+          "beta_min": 0.736965594166206
+        },
+        {
+          "H": 0.25,
+          "method": "ce_i_only",
+          "slope": "atm_slope",
+          "beta_hat": 0.9345962918037064,
+          "beta_min": 0.736965594166206
+        },
+        {
+          "H": 0.25,
+          "method": "ce_i_only",
+          "slope": "strip_mean_slope",
+          "beta_hat": 0.9535493333605221,
+          "beta_min": 0.736965594166206
+        },
+        {
+          "H": 0.4,
+          "method": "leftpoint",
+          "slope": "call106_slope",
+          "beta_hat": 0.9986610682027197,
+          "beta_min": 0.736965594166206
+        },
+        {
+          "H": 0.4,
+          "method": "leftpoint",
+          "slope": "atm_slope",
+          "beta_hat": 1.0053984004105534,
+          "beta_min": 0.736965594166206
+        },
+        {
+          "H": 0.4,
+          "method": "leftpoint",
+          "slope": "strip_mean_slope",
+          "beta_hat": 0.9956839658887141,
+          "beta_min": 0.736965594166206
+        },
+        {
+          "H": 0.4,
+          "method": "ce_i_only",
+          "slope": "call106_slope",
+          "beta_hat": 1.0031629606661376,
+          "beta_min": 0.736965594166206
+        },
+        {
+          "H": 0.4,
+          "method": "ce_i_only",
+          "slope": "atm_slope",
+          "beta_hat": 1.0074865578496928,
+          "beta_min": 0.736965594166206
+        },
+        {
+          "H": 0.4,
+          "method": "ce_i_only",
+          "slope": "strip_mean_slope",
+          "beta_hat": 0.9986790272165047,
+          "beta_min": 0.736965594166206
+        }
+      ],
+      "below_floor_rows": [
+        {
+          "H": 0.05,
+          "method": "leftpoint",
+          "slope": "strip_mean_slope",
+          "beta_hat": 0.10892336778854478,
+          "beta_min": 0.46408842111987775
+        },
+        {
+          "H": 0.05,
+          "method": "ce_i_only",
+          "slope": "atm_slope",
+          "beta_hat": 0.361822281443667,
+          "beta_min": 0.46408842111987775
+        },
+        {
+          "H": 0.05,
+          "method": "ce_i_only",
+          "slope": "strip_mean_slope",
+          "beta_hat": -0.25780694265758064,
+          "beta_min": 0.46408842111987775
+        }
+      ],
+      "t_quantiles": {
+        "R=16": 2.489879703472758,
+        "R=32": 2.3555682821599073
+      }
+    },
+    {
+      "id": "C8",
+      "ref": "Section 3.1 (BLP hybrid)",
+      "statement": "K(b_k* dt) equals the cell mean; cell L2 error closed form",
+      "metric": "max relative deviation (10 random cases)",
+      "value": 2.997758103823405e-34,
+      "tolerance": 1e-20,
+      "pass": true
+    },
+    {
+      "id": "C9",
+      "ref": "Section 3.1 (Var(I_T) boxes)",
+      "statement": "R_H closed form = direct integral; dR/ds > 0 and dR/du < 0 for s < u",
+      "metric": "max relative deviation of closed form",
+      "value": 1.8765080363170735e-24,
+      "tolerance": 1e-15,
+      "pass": true,
+      "max_monotonicity_violation": -0.03653744072684135
+    },
+    {
+      "id": "C10",
+      "ref": "Section 2.2",
+      "statement": "E[sqrt(v_s)] = sqrt(xi0) exp(-eta^2 s^{2H}/8); optimal residual <= Wick-surrogate residual",
+      "metric": "max |E sqrt(v) - closed form|",
+      "value": 4.591774807899561e-41,
+      "tolerance": 1e-30,
+      "pass": true,
+      "max_comparison_violation": -1.1283457938940726e-08
+    }
+  ],
+  "elapsed_s": 131.8360321999935
+}

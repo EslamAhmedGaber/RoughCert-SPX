@@ -1,0 +1,20 @@
+\begin{table}[t]
+\centering
+\caption{Exact-law validation on correlated rough Stein--Stein ($H=0.10$, $T=0.5$, $\rho=-0.7$, $7$ strikes in $[0.85,1.15]$).}
+\label{tab:e1_rss}
+\footnotesize
+\setlength{\tabcolsep}{3.4pt}
+\begin{tabular}{@{}lrrrrrrrr@{}}
+\toprule
+Estimator & \multicolumn{4}{c}{Max $|\text{IV bias}|$ (bps)} & ATM$_{256}$ & ATM width & Cont. & Diag. \\
+\cmidrule(lr){2-5}
+(coupled RQMC, $32{,}768$ paths) & $n{=}32$ & $n{=}64$ & $n{=}128$ & $n{=}256$ & (bps) & (bps) & (of $7$) & strikes \\
+\midrule
+\RCCE{} (primary) & 15.99 & 8.43 & 7.19 & 6.90 & $+2.65$ & 68.7 & 7/7 & 0 \\
+Left-point (FSW baseline) & 28.60 & 14.83 & 5.84 & 6.30 & $+1.06$ & 74.8 & 7/7 & 0 \\
+Jensen-$J$ ablation (\texttt{ce\_adapted}) & 32.00 & 23.20 & 16.36 & 11.13 & $+2.01$ & 16.3 & 7/7 & 2 \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\parbox{\linewidth}{\footnotesize\emph{Notes.} Reference: Carleman--Fredholm $\det_3$ Fourier prices with $M=\EOneRSSMop$ (exact identity plus quadrature; refinement error at most $\EOneRSSRefDiffIV\bps$ in IV). Bias columns are point estimates. ATM width: \RCBridge{} asymptotic-envelope statistical(0.95) width at $K=1$. Cont.: reference prices enclosed; Diag.: Theorem~\ref{thm:bridge_envelope}(iii) flags.}
+\end{table}

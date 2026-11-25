@@ -1,0 +1,27 @@
+\begin{table}[t]
+\centering
+\caption{\ArbBits-bit Arb continuous-time kernel audit at $H=0.10$, $T=0.25$, $\eta=1.9$, $\rho=-0.9$, $\xi_0=0.04$.}
+\label{tab:e3_kernel}
+\footnotesize
+\setlength{\tabcolsep}{4.0pt}
+\begin{tabular}{@{}lrrrrrrr@{}}
+\toprule
+Kernel approximation & $\|K{-}\hat{K}\|_{L^2}$ & $\|K{-}\hat{K}\|_{L^1}$ & $E_J$ upper & Price gap & Fit & ATM IV err & Emp.\ ATM \\
+ & (Arb) & (Arb) & (Arb) & (Arb) & (s) & (bps, stat.) & skew \\
+\midrule
+BB2023 ($M=2$) & 0.3254 & 0.05556 & 0.02989 & 0.03452 & 0.13 & $[12.6,\,21.5]$ & $-0.6117$ \\
+BB2023 ($M=4$) & 0.1747 & 0.02805 & 0.01622 & 0.01873 & 0.19 & $[0.0,\,5.8]$ & $-0.5985$ \\
+BB2023 ($M=6$) & 0.1044 & 0.01584 & 0.00973 & 0.01124 & 0.35 & $[0.0,\,7.2]$ & $-0.5932$ \\
+BB2023 ($M=8$) & 0.0665 & 0.00957 & 0.00621 & 0.00717 & 0.51 & $[0.0,\,8.6]$ & $-0.5919$ \\
+BB2023 ($M=12$) & 0.0304 & 0.00402 & 0.00285 & 0.00329 & 1.03 & $[0.0,\,5.1]$ & $-0.5944$ \\
+BB2023 ($M=16$) & 0.0155 & 0.00192 & 0.00145 & 0.00168 & 2.80 & $[0.0,\,4.6]$ & $-0.5948$ \\
+\midrule
+BLP hybrid ($\kappa=1$, $n=256$) & -- & -- & 0.00175 & 0.00202 & -- & $\le 101.0^{\ddagger}$ & -- \\
+BLP hybrid ($\kappa=2$, $n=256$) & -- & -- & 0.00096 & 0.00111 & -- & $\le 55.6^{\ddagger}$ & -- \\
+BLP hybrid ($\kappa=4$, $n=256$) & -- & -- & 0.00052 & 0.00060 & -- & $\le 29.9^{\ddagger}$ & -- \\
+BLP hybrid ($\kappa=8$, $n=256$) & -- & -- & 0.00028 & 0.00032 & -- & $\le 15.8^{\ddagger}$ & -- \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\parbox{\linewidth}{\footnotesize\emph{Notes.} Upper panel: unclipped L-BFGS-B factors of \citet{BayerBreneis2023}; columns 2--5 are Arb-certified upper bounds; the ATM error interval ($n=256$) is statistical, against the \RCBridge{} reference ATM IV $[\EThreeRefATMLo,\EThreeRefATMHi]\%$. Lower panel: continuous-time hybrid kernel. $^{\ddagger}$Certified gap mapped to IV across the statistical reference bracket (conditional; time stepping excluded).}
+\end{table}

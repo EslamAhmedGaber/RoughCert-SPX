@@ -1,0 +1,594 @@
+{
+  "script": "scripts/v2_independent_check.py",
+  "code_disjoint": "imports nothing from src/",
+  "environment": {
+    "python": "3.12.4",
+    "numpy": "2.2.6",
+    "mpmath": "1.3.0"
+  },
+  "n_checks": 10,
+  "n_fail": 0,
+  "checks": [
+    {
+      "id": "I1",
+      "what": "E2 spotlights: stored 176-bit Arb brackets contain the exact-formula brackets (mpmath)",
+      "metric": "max containment violation in price (must be <= 0)",
+      "value": 0.0,
+      "tolerance": 0.0,
+      "pass": true,
+      "max_relative_width_overhead": 0.27817796512393916,
+      "rows": [
+        {
+          "id": "S1_mild_uncorr",
+          "exact_width_bps": 8.152772982698842,
+          "arb_width_bps": 8.713891382979844,
+          "relative_overhead": 0.06882546606801906
+        },
+        {
+          "id": "S2_rough_uncorr_mod",
+          "exact_width_bps": 7.662862148121845,
+          "arb_width_bps": 9.208231187469718,
+          "relative_overhead": 0.2016699517068358
+        },
+        {
+          "id": "S3_short_1d_corr",
+          "exact_width_bps": 22.432393102709742,
+          "arb_width_bps": 22.531759753291748,
+          "relative_overhead": 0.004429605442764945
+        },
+        {
+          "id": "S4_mild_rough_corr",
+          "exact_width_bps": 412.2513769485109,
+          "arb_width_bps": 412.9364440235797,
+          "relative_overhead": 0.0016617702532365508
+        },
+        {
+          "id": "S5_moderate_rough",
+          "exact_width_bps": 2040.5574814953213,
+          "arb_width_bps": 2044.2969180979237,
+          "relative_overhead": 0.001832556365852591
+        },
+        {
+          "id": "S6_cal_spx_uncorr",
+          "exact_width_bps": 644.0687905474513,
+          "arb_width_bps": 823.2345361017778,
+          "relative_overhead": 0.27817796512393916
+        },
+        {
+          "id": "S7_cal_spx_full",
+          "exact_width_bps": 5294.125182556306,
+          "arb_width_bps": 5301.759505235735,
+          "relative_overhead": 0.0014420366757822902
+        }
+      ]
+    },
+    {
+      "id": "I2",
+      "what": "E2 boundaries: exact-formula ATM width at every stored certified point is <= 25 bps",
+      "metric": "max exact width (bps)",
+      "value": 24.954620289070082,
+      "tolerance": 25.0,
+      "pass": true,
+      "rows": [
+        {
+          "H": 0.1,
+          "boundary": "eta_eff_star_rho0_2m_25bps",
+          "eta_eff": 0.27327861709594725,
+          "exact_width_bps": 18.859683642703146
+        },
+        {
+          "H": 0.1,
+          "boundary": "eta_eff_star_rho_m09_k0_25bps",
+          "eta_eff": 0.004715599060058594,
+          "exact_width_bps": 24.954620289070082
+        },
+        {
+          "H": 0.3,
+          "boundary": "eta_eff_star_rho0_2m_25bps",
+          "eta_eff": 0.24988592185974118,
+          "exact_width_bps": 22.52044578941369
+        },
+        {
+          "H": 0.3,
+          "boundary": "eta_eff_star_rho_m09_k0_25bps",
+          "eta_eff": 0.005430826187133788,
+          "exact_width_bps": 24.889178592894034
+        }
+      ]
+    },
+    {
+      "id": "I3",
+      "what": "E3 BLP hybrid (H = 0.10, n = 256): exact E_J inside the Arb ball, Arb price gap >= exact gap, IV mapping reproduced",
+      "metric": "failures (0 = none); max |IV-mapping difference| (bps, tol 0.005) reported separately",
+      "value": 0.0,
+      "tolerance": 0.0,
+      "pass": true,
+      "max_iv_gap_abs_diff_bps": 2.727096415355845e-07,
+      "rows": [
+        {
+          "kappa": 1,
+          "E_J_exact": 0.0017403701257590967,
+          "E_J_arb": [
+            0.0017384705188305811,
+            0.001741901820423664
+          ],
+          "gap_exact": 0.002009944597070809,
+          "gap_arb": 0.0020117135434544677,
+          "iv_gap_exact_bps": 100.86315450308942,
+          "iv_gap_from_arb_gap_bps": 100.951928894418,
+          "iv_gap_stored_bps": 100.95192916712764
+        },
+        {
+          "kappa": 2,
+          "E_J_exact": 0.0009582775786913829,
+          "E_J_arb": [
+            0.0009572694607413721,
+            0.0009591746529622471
+          ],
+          "gap_exact": 0.0011067098965197085,
+          "gap_arb": 0.0011077459230378062,
+          "iv_gap_exact_bps": 55.5355802102564,
+          "iv_gap_from_arb_gap_bps": 55.587570434975085,
+          "iv_gap_stored_bps": 55.587570606400185
+        },
+        {
+          "kappa": 4,
+          "E_J_exact": 0.0005140537804596961,
+          "E_J_arb": [
+            0.0005135183391757889,
+            0.0005145578170413503
+          ],
+          "gap_exact": 0.0005936780937262589,
+          "gap_arb": 0.0005942602030137363,
+          "iv_gap_exact_bps": 29.790816957580013,
+          "iv_gap_from_arb_gap_bps": 29.820027726179532,
+          "iv_gap_stored_bps": 29.820027800086525
+        },
+        {
+          "kappa": 8,
+          "E_J_exact": 0.00027138754145351293,
+          "E_J_arb": [
+            0.00027109933898827865,
+            0.0002716669396249928
+          ],
+          "gap_exact": 0.0003134240898434747,
+          "gap_arb": 0.0003137467653717422,
+          "iv_gap_exact_bps": 15.727526968492834,
+          "iv_gap_from_arb_gap_bps": 15.74371886823217,
+          "iv_gap_stored_bps": 15.743718893523607
+        }
+      ]
+    },
+    {
+      "id": "I3b",
+      "what": "E3 Markov (H = 0.10): E_J <= sqrt(2 xi0 T (1 - exp(-eta^2 ||K-K_M||^2/8))) and gap = Theorem 2(E_J)",
+      "metric": "max violation / relative gap mismatch",
+      "value": 4.876308055626649e-12,
+      "tolerance": 1e-09,
+      "pass": true
+    },
+    {
+      "id": "I4a",
+      "what": "E1 Heston (v0 = theta = 0.04, kappa = 2, sigma_v = 0.4, rho = -0.7, T = 0.5): independent CF + Lewis",
+      "metric": "max |price difference|",
+      "value": 1.3617100780294322e-09,
+      "tolerance": 5e-08,
+      "pass": true
+    },
+    {
+      "id": "I4b",
+      "what": "E1 classical Stein-Stein (sigma_t = 0.2 + 0.25 W_t, rho = -0.7, T = 0.5): own Riccati RK4 + Lewis",
+      "metric": "max |price difference|",
+      "value": 1.3308021351576826e-09,
+      "tolerance": 5e-07,
+      "pass": true
+    },
+    {
+      "id": "I5a",
+      "what": "RC-CE Regime A, n = 128: independent implementation (65,536 scrambled-Sobol paths, no CV) vs stored level mean (131,072 paths, 6-CV)",
+      "metric": "max |z| over 8 strikes",
+      "value": 0.8360403159576334,
+      "tolerance": 3.5,
+      "pass": true,
+      "z": [
+        0.016097908797384774,
+        0.14015146740350906,
+        0.25945290925467007,
+        0.24676174160270817,
+        0.21304751985409345,
+        0.13329267490615193,
+        0.36521065476246917,
+        0.8360403159576334
+      ]
+    },
+    {
+      "id": "I5b",
+      "what": "RC-CE E6 Pure BDG6 rho = -0.70, n = 256: independent implementation vs stored level mean",
+      "metric": "max |z| over 8 strikes",
+      "value": 0.31243592685720945,
+      "tolerance": 3.5,
+      "pass": true,
+      "z": [
+        0.06980014890146288,
+        0.059544799368900274,
+        0.15595922568546636,
+        0.25177690904611844,
+        0.27716552266431516,
+        0.20780680239306643,
+        0.049039364455648264,
+        0.31243592685720945
+      ]
+    },
+    {
+      "id": "I6",
+      "what": "E6 futures, complete smile records and derived spreads match RoughCert v5.0.0",
+      "metric": "maximum endpoint difference",
+      "value": 0.0,
+      "tolerance": 0.0,
+      "pass": true,
+      "n_smile_points_compared": 16,
+      "sha256": {
+        "vix_futures_full_suite.json": "bced05332246d85e6b3cf0d1f25047da4ad02e5a787a697a2b45b464d7065699",
+        "vix_options_smile_suite.json": "73a7cf9458b360d20f4e153710d21441a02640ea8cfb9ecd2b76d1d19ba9ab0a"
+      }
+    },
+    {
+      "id": "I7",
+      "what": "E4 conclusions re-evaluated against the refined (n_L = 1024) Regime A/B references",
+      "metric": "min BG2012 max-smile lower error vs refined reference (bps; > 250 keeps the diagnostic conclusion)",
+      "value": 273.2782179224119,
+      "tolerance": 250.0,
+      "pass": true,
+      "rows": [
+        {
+          "regime": "regime_A",
+          "method": "BergomiGuyon2012-O2",
+          "max_smile_err_lo_bps_v1": 295.48284078462507,
+          "max_smile_err_lo_bps_refined": 299.19054987116084,
+          "max_smile_err_hi_bps_refined": 363.42513717847856
+        },
+        {
+          "regime": "regime_A",
+          "method": "RoughCert-SPX-CE(n=32)",
+          "max_smile_err_lo_bps_v1": 72.29551796413631,
+          "max_smile_err_lo_bps_refined": 85.71037363946057,
+          "max_smile_err_hi_bps_refined": 149.9449609467783
+        },
+        {
+          "regime": "regime_A",
+          "method": "RoughCert-SPX-CE-Jensen(n=32)",
+          "max_smile_err_lo_bps_v1": 22.204897807140135,
+          "max_smile_err_lo_bps_refined": 34.89827449720109,
+          "max_smile_err_hi_bps_refined": 99.13286180451883
+        },
+        {
+          "regime": "regime_A",
+          "method": "BHT2020-BridgeRQMC(n=32)",
+          "max_smile_err_lo_bps_v1": 94.68259550256542,
+          "max_smile_err_lo_bps_refined": 108.09745117788968,
+          "max_smile_err_hi_bps_refined": 172.33203848520742
+        },
+        {
+          "regime": "regime_A",
+          "method": "MP2018-Hybrid(k=1,n=32)",
+          "max_smile_err_lo_bps_v1": 107.38528335764941,
+          "max_smile_err_lo_bps_refined": 120.80013903297368,
+          "max_smile_err_hi_bps_refined": 185.03472634029143
+        },
+        {
+          "regime": "regime_A",
+          "method": "MP2018-Hybrid(k=2,n=32)",
+          "max_smile_err_lo_bps_v1": 88.6107369151723,
+          "max_smile_err_lo_bps_refined": 102.02559259049657,
+          "max_smile_err_hi_bps_refined": 166.2601798978143
+        },
+        {
+          "regime": "regime_A",
+          "method": "HJM2024-rDonsker(vm,n=32)",
+          "max_smile_err_lo_bps_v1": 23.052314957539842,
+          "max_smile_err_lo_bps_refined": 34.74619044922689,
+          "max_smile_err_hi_bps_refined": 98.98077775654463
+        },
+        {
+          "regime": "regime_A",
+          "method": "HJM2024-rDonsker(b*,n=32)",
+          "max_smile_err_lo_bps_v1": 0.0,
+          "max_smile_err_lo_bps_refined": 0.0,
+          "max_smile_err_hi_bps_refined": 47.819516857616904
+        },
+        {
+          "regime": "regime_A",
+          "method": "RoughCert-SPX-CE(n=64)",
+          "max_smile_err_lo_bps_v1": 25.785737667697873,
+          "max_smile_err_lo_bps_refined": 39.20059334302214,
+          "max_smile_err_hi_bps_refined": 103.43518065033989
+        },
+        {
+          "regime": "regime_A",
+          "method": "RoughCert-SPX-CE-Jensen(n=64)",
+          "max_smile_err_lo_bps_v1": 13.175748666066633,
+          "max_smile_err_lo_bps_refined": 17.233531456986583,
+          "max_smile_err_hi_bps_refined": 79.64840609580637
+        },
+        {
+          "regime": "regime_A",
+          "method": "BHT2020-BridgeRQMC(n=64)",
+          "max_smile_err_lo_bps_v1": 39.71926626602576,
+          "max_smile_err_lo_bps_refined": 53.13412194135003,
+          "max_smile_err_hi_bps_refined": 117.36870924866777
+        },
+        {
+          "regime": "regime_A",
+          "method": "MP2018-Hybrid(k=1,n=64)",
+          "max_smile_err_lo_bps_v1": 41.88482099885607,
+          "max_smile_err_lo_bps_refined": 55.29967667418034,
+          "max_smile_err_hi_bps_refined": 119.53426398149809
+        },
+        {
+          "regime": "regime_A",
+          "method": "MP2018-Hybrid(k=2,n=64)",
+          "max_smile_err_lo_bps_v1": 39.25198110855233,
+          "max_smile_err_lo_bps_refined": 52.6668367838766,
+          "max_smile_err_hi_bps_refined": 116.90142409119433
+        },
+        {
+          "regime": "regime_A",
+          "method": "HJM2024-rDonsker(vm,n=64)",
+          "max_smile_err_lo_bps_v1": 11.176772867979023,
+          "max_smile_err_lo_bps_refined": 17.986058211704183,
+          "max_smile_err_hi_bps_refined": 54.14628014129383
+        },
+        {
+          "regime": "regime_A",
+          "method": "HJM2024-rDonsker(b*,n=64)",
+          "max_smile_err_lo_bps_v1": 13.178081257102653,
+          "max_smile_err_lo_bps_refined": 16.88579034363841,
+          "max_smile_err_hi_bps_refined": 81.12037765095614
+        },
+        {
+          "regime": "regime_A",
+          "method": "RoughCert-SPX-CE(n=128)",
+          "max_smile_err_lo_bps_v1": 0.0,
+          "max_smile_err_lo_bps_refined": 2.517538139545361,
+          "max_smile_err_hi_bps_refined": 64.06664042495235
+        },
+        {
+          "regime": "regime_A",
+          "method": "RoughCert-SPX-CE-Jensen(n=128)",
+          "max_smile_err_lo_bps_v1": 7.301052333676394,
+          "max_smile_err_lo_bps_refined": 9.851441743118361,
+          "max_smile_err_hi_bps_refined": 64.26866169406186
+        },
+        {
+          "regime": "regime_A",
+          "method": "BHT2020-BridgeRQMC(n=128)",
+          "max_smile_err_lo_bps_v1": 2.1687607292213142,
+          "max_smile_err_lo_bps_refined": 15.583616404545586,
+          "max_smile_err_hi_bps_refined": 79.81820371186332
+        },
+        {
+          "regime": "regime_A",
+          "method": "BHT2020-Richardson(64,128)",
+          "max_smile_err_lo_bps_v1": 0.9759486014573882,
+          "max_smile_err_lo_bps_refined": 0.0,
+          "max_smile_err_hi_bps_refined": 53.40072395296741
+        },
+        {
+          "regime": "regime_A",
+          "method": "MP2018-Hybrid(k=1,n=128)",
+          "max_smile_err_lo_bps_v1": 2.675759801212263,
+          "max_smile_err_lo_bps_refined": 14.523774107625675,
+          "max_smile_err_hi_bps_refined": 78.75836141494341
+        },
+        {
+          "regime": "regime_A",
+          "method": "MP2018-Hybrid(k=2,n=128)",
+          "max_smile_err_lo_bps_v1": 0.48868803449383935,
+          "max_smile_err_lo_bps_refined": 13.903543709818111,
+          "max_smile_err_hi_bps_refined": 78.13813101713585
+        },
+        {
+          "regime": "regime_A",
+          "method": "HJM2024-rDonsker(vm,n=128)",
+          "max_smile_err_lo_bps_v1": 9.121246380099091,
+          "max_smile_err_lo_bps_refined": 13.06191373139115,
+          "max_smile_err_hi_bps_refined": 38.20706970143112
+        },
+        {
+          "regime": "regime_A",
+          "method": "HJM2024-rDonsker(b*,n=128)",
+          "max_smile_err_lo_bps_v1": 29.35746565302322,
+          "max_smile_err_lo_bps_refined": 33.06517473955897,
+          "max_smile_err_hi_bps_refined": 97.29976204687671
+        },
+        {
+          "regime": "regime_A",
+          "method": "RoughCert-SPX-CE(n=256)",
+          "max_smile_err_lo_bps_v1": 0.0,
+          "max_smile_err_lo_bps_refined": 0.0,
+          "max_smile_err_hi_bps_refined": 51.78567771512904
+        },
+        {
+          "regime": "regime_A",
+          "method": "RoughCert-SPX-CE-Jensen(n=256)",
+          "max_smile_err_lo_bps_v1": 3.9075292235804526,
+          "max_smile_err_lo_bps_refined": 5.8814052396785605,
+          "max_smile_err_hi_bps_refined": 54.16096145633098
+        },
+        {
+          "regime": "regime_A",
+          "method": "BHT2020-BridgeRQMC(n=256)",
+          "max_smile_err_lo_bps_v1": 0.0,
+          "max_smile_err_lo_bps_refined": 0.0,
+          "max_smile_err_hi_bps_refined": 58.09845192679103
+        },
+        {
+          "regime": "regime_A",
+          "method": "MP2018-Hybrid(k=1,n=256)",
+          "max_smile_err_lo_bps_v1": 0.0,
+          "max_smile_err_lo_bps_refined": 0.0,
+          "max_smile_err_hi_bps_refined": 56.692634280162416
+        },
+        {
+          "regime": "regime_A",
+          "method": "MP2018-Hybrid(k=2,n=256)",
+          "max_smile_err_lo_bps_v1": 0.0,
+          "max_smile_err_lo_bps_refined": 0.0,
+          "max_smile_err_hi_bps_refined": 57.8631071502024
+        },
+        {
+          "regime": "regime_A",
+          "method": "HJM2024-rDonsker(vm,n=256)",
+          "max_smile_err_lo_bps_v1": 7.688229975605642,
+          "max_smile_err_lo_bps_refined": 11.387955846616226,
+          "max_smile_err_hi_bps_refined": 46.341157584322836
+        },
+        {
+          "regime": "regime_A",
+          "method": "HJM2024-rDonsker(b*,n=256)",
+          "max_smile_err_lo_bps_v1": 34.24603543027885,
+          "max_smile_err_lo_bps_refined": 37.9537445168146,
+          "max_smile_err_hi_bps_refined": 102.18833182413233
+        },
+        {
+          "regime": "regime_A",
+          "method": "BayerBreneis2023(M=4,n=128)",
+          "max_smile_err_lo_bps_v1": 0.0,
+          "max_smile_err_lo_bps_refined": 0.0,
+          "max_smile_err_hi_bps_refined": 58.37771178855852
+        },
+        {
+          "regime": "regime_A",
+          "method": "BayerBreneis2023(M=8,n=128)",
+          "max_smile_err_lo_bps_v1": 0.8897709492675099,
+          "max_smile_err_lo_bps_refined": 12.75741767963981,
+          "max_smile_err_hi_bps_refined": 76.99200498695754
+        },
+        {
+          "regime": "regime_A",
+          "method": "BayerBreneis2023(M=12,n=128)",
+          "max_smile_err_lo_bps_v1": 3.010502011684263,
+          "max_smile_err_lo_bps_refined": 16.425357687008535,
+          "max_smile_err_hi_bps_refined": 80.65994499432627
+        },
+        {
+          "regime": "regime_A",
+          "method": "BayerBreneis2023(M=16,n=128)",
+          "max_smile_err_lo_bps_v1": 5.352576055794728,
+          "max_smile_err_lo_bps_refined": 18.767431731119,
+          "max_smile_err_hi_bps_refined": 83.00201903843674
+        },
+        {
+          "regime": "regime_A",
+          "method": "BayerBreneis2023(M=8,n=256)",
+          "max_smile_err_lo_bps_v1": 0.06800822269309448,
+          "max_smile_err_lo_bps_refined": 0.8513575894095182,
+          "max_smile_err_hi_bps_refined": 55.80272619792353
+        },
+        {
+          "regime": "regime_A",
+          "method": "BayerBreneis2023(M=12,n=256)",
+          "max_smile_err_lo_bps_v1": 0.0,
+          "max_smile_err_lo_bps_refined": 5.1395652778729595,
+          "max_smile_err_hi_bps_refined": 64.04574555897796
+        },
+        {
+          "regime": "regime_B",
+          "method": "BergomiGuyon2012-O2",
+          "max_smile_err_lo_bps_v1": 276.1376470803933,
+          "max_smile_err_lo_bps_refined": 273.2782179224119,
+          "max_smile_err_hi_bps_refined": 344.50420198221
+        },
+        {
+          "regime": "regime_B",
+          "method": "RoughCert-SPX-CE(n=64)",
+          "max_smile_err_lo_bps_v1": 19.439828619499664,
+          "max_smile_err_lo_bps_refined": 33.126078455883444,
+          "max_smile_err_hi_bps_refined": 104.35206251568158
+        },
+        {
+          "regime": "regime_B",
+          "method": "BHT2020-BridgeRQMC(n=64)",
+          "max_smile_err_lo_bps_v1": 39.1448393828886,
+          "max_smile_err_lo_bps_refined": 52.83108921927238,
+          "max_smile_err_hi_bps_refined": 124.05707327907051
+        },
+        {
+          "regime": "regime_B",
+          "method": "MP2018-Hybrid(k=2,n=64)",
+          "max_smile_err_lo_bps_v1": 31.334699481062323,
+          "max_smile_err_lo_bps_refined": 45.0209493174461,
+          "max_smile_err_hi_bps_refined": 116.24693337724423
+        },
+        {
+          "regime": "regime_B",
+          "method": "HJM2024-rDonsker(vm,n=64)",
+          "max_smile_err_lo_bps_v1": 40.29052507029479,
+          "max_smile_err_lo_bps_refined": 44.34763859811397,
+          "max_smile_err_hi_bps_refined": 70.77022098051417
+        },
+        {
+          "regime": "regime_B",
+          "method": "RoughCert-SPX-CE(n=128)",
+          "max_smile_err_lo_bps_v1": 0.0,
+          "max_smile_err_lo_bps_refined": 4.839240051490446,
+          "max_smile_err_hi_bps_refined": 76.06522411128857
+        },
+        {
+          "regime": "regime_B",
+          "method": "BHT2020-BridgeRQMC(n=128)",
+          "max_smile_err_lo_bps_v1": 1.738428562046701,
+          "max_smile_err_lo_bps_refined": 15.42467839843048,
+          "max_smile_err_hi_bps_refined": 86.65066245822861
+        },
+        {
+          "regime": "regime_B",
+          "method": "MP2018-Hybrid(k=2,n=128)",
+          "max_smile_err_lo_bps_v1": 2.4188893887083784,
+          "max_smile_err_lo_bps_refined": 16.10513922509216,
+          "max_smile_err_hi_bps_refined": 87.33112328489028
+        },
+        {
+          "regime": "regime_B",
+          "method": "HJM2024-rDonsker(vm,n=128)",
+          "max_smile_err_lo_bps_v1": 19.181535903840253,
+          "max_smile_err_lo_bps_refined": 27.93676359625047,
+          "max_smile_err_hi_bps_refined": 61.662531757112895
+        },
+        {
+          "regime": "regime_B",
+          "method": "BayerBreneis2023(M=8,n=128)",
+          "max_smile_err_lo_bps_v1": 0.8364975415267595,
+          "max_smile_err_lo_bps_refined": 14.52274737791054,
+          "max_smile_err_hi_bps_refined": 85.74873143770867
+        },
+        {
+          "regime": "regime_B",
+          "method": "BayerBreneis2023(M=12,n=128)",
+          "max_smile_err_lo_bps_v1": 0.8871598984741547,
+          "max_smile_err_lo_bps_refined": 14.573409734857934,
+          "max_smile_err_hi_bps_refined": 85.79939379465607
+        }
+      ],
+      "ce256_regA": [
+        {
+          "regime": "regime_A",
+          "method": "RoughCert-SPX-CE(n=256)",
+          "max_smile_err_lo_bps_v1": 0.0,
+          "max_smile_err_lo_bps_refined": 0.0,
+          "max_smile_err_hi_bps_refined": 51.78567771512904
+        }
+      ],
+      "jensen256": [
+        {
+          "regime": "regime_A",
+          "method": "RoughCert-SPX-CE-Jensen(n=256)",
+          "max_smile_err_lo_bps_v1": 3.9075292235804526,
+          "max_smile_err_lo_bps_refined": 5.8814052396785605,
+          "max_smile_err_hi_bps_refined": 54.16096145633098
+        }
+      ]
+    }
+  ],
+  "elapsed_s": 95.06514799999422
+}

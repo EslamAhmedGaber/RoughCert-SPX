@@ -1,0 +1,1416 @@
+{
+ "ArbBits": {
+  "digits": 0,
+  "printed": "176",
+  "raw": 176,
+  "rule": "exact",
+  "source": "src/bs_arb.py ARB_DPS=52"
+ },
+ "BetaMinFifteen": {
+  "digits": 3,
+  "printed": "0.698",
+  "raw": 0.6971051850098914,
+  "rule": "ceil",
+  "source": "Case (ii) rate floor log2(1+(2^beta_FSW-1)/safety)"
+ },
+ "BetaMinSeven": {
+  "digits": 3,
+  "printed": "0.510",
+  "raw": 0.5098168372103429,
+  "rule": "ceil",
+  "source": "Case (ii) rate floor log2(1+(2^beta_FSW-1)/safety)"
+ },
+ "BetaMinSixth": {
+  "digits": 3,
+  "printed": "0.737",
+  "raw": 0.736965594166206,
+  "rule": "ceil",
+  "source": "Case (ii) rate floor log2(1+(2^beta_FSW-1)/safety)"
+ },
+ "BetaMinTen": {
+  "digits": 3,
+  "printed": "0.580",
+  "raw": 0.5792452492165912,
+  "rule": "ceil",
+  "source": "Case (ii) rate floor log2(1+(2^beta_FSW-1)/safety)"
+ },
+ "BetaMinZeroFive": {
+  "digits": 3,
+  "printed": "0.465",
+  "raw": 0.46408842111987775,
+  "rule": "ceil",
+  "source": "Case (ii) rate floor log2(1+(2^beta_FSW-1)/safety)"
+ },
+ "BridgeSafety": {
+  "digits": 1,
+  "printed": "1.5",
+  "raw": 1.5,
+  "rule": "nearest",
+  "source": "src/bridge_rqmc.py safety_factor default"
+ },
+ "CVIncrVRFATM": {
+  "digits": 1,
+  "printed": "32.8",
+  "raw": 32.813562096668875,
+  "rule": "nearest",
+  "source": "cv_ablation incr_vrf_atm (point estimate)"
+ },
+ "CVIncrVRFMax": {
+  "digits": 1,
+  "printed": "79.2",
+  "raw": 79.17432896241998,
+  "rule": "ceil",
+  "source": "cv_ablation incr_vrf_max"
+ },
+ "CVIncrVRFMin": {
+  "digits": 1,
+  "printed": "1.4",
+  "raw": 1.4970012506038823,
+  "rule": "floor",
+  "source": "cv_ablation incr_vrf_min"
+ },
+ "CaseOneCount": {
+  "digits": 0,
+  "printed": "19",
+  "raw": 19,
+  "rule": "exact",
+  "source": "Theorem 4 case (i) strikes over all reference envelopes"
+ },
+ "CaseThreeCount": {
+  "digits": 0,
+  "printed": "21",
+  "raw": 21,
+  "rule": "exact",
+  "source": "Theorem 4 case (iii) diagnostic strikes"
+ },
+ "CaseTotalCount": {
+  "digits": 0,
+  "printed": "120",
+  "raw": 120,
+  "rule": "exact",
+  "source": "all reference-envelope strikes"
+ },
+ "CaseTwoCount": {
+  "digits": 0,
+  "printed": "80",
+  "raw": 80,
+  "rule": "exact",
+  "source": "Theorem 4 case (ii) strikes"
+ },
+ "EFiveATMCEHZeroFive": {
+  "digits": 3,
+  "printed": "0.362",
+  "raw": 0.361822281443667,
+  "rule": "nearest",
+  "source": "e5 H=0.05 (below floor)"
+ },
+ "EFiveATMFifteenCE": {
+  "digits": 3,
+  "printed": "0.932",
+  "raw": 0.9322435964677086,
+  "rule": "nearest",
+  "source": "e5"
+ },
+ "EFiveATMFifteenJen": {
+  "digits": 3,
+  "printed": "0.589",
+  "raw": 0.5894407697586675,
+  "rule": "nearest",
+  "source": "e5"
+ },
+ "EFiveCEHFifteen": {
+  "digits": 3,
+  "printed": "0.782",
+  "raw": 0.7821322167240585,
+  "rule": "nearest",
+  "source": "e5 fitted slope (point estimate)"
+ },
+ "EFiveCEHForty": {
+  "digits": 3,
+  "printed": "1.003",
+  "raw": 1.0031629606661376,
+  "rule": "nearest",
+  "source": "e5 fitted slope (point estimate)"
+ },
+ "EFiveCEHTen": {
+  "digits": 3,
+  "printed": "0.653",
+  "raw": 0.6528148135923552,
+  "rule": "nearest",
+  "source": "e5 fitted slope (point estimate)"
+ },
+ "EFiveCEHTwoFive": {
+  "digits": 3,
+  "printed": "0.956",
+  "raw": 0.9563443958545861,
+  "rule": "nearest",
+  "source": "e5 fitted slope (point estimate)"
+ },
+ "EFiveCEHZeroFive": {
+  "digits": 3,
+  "printed": "0.543",
+  "raw": 0.5427026078996358,
+  "rule": "nearest",
+  "source": "e5 fitted slope (point estimate)"
+ },
+ "EFiveJenHFifteen": {
+  "digits": 3,
+  "printed": "0.778",
+  "raw": 0.7779116284618675,
+  "rule": "nearest",
+  "source": "e5 fitted slope (point estimate)"
+ },
+ "EFiveJenHTen": {
+  "digits": 3,
+  "printed": "0.487",
+  "raw": 0.4873648954897775,
+  "rule": "nearest",
+  "source": "e5 fitted slope (point estimate)"
+ },
+ "EFiveJenHTwoFive": {
+  "digits": 3,
+  "printed": "0.879",
+  "raw": 0.8786898489362666,
+  "rule": "nearest",
+  "source": "e5 fitted slope (point estimate)"
+ },
+ "EFiveJenHZeroFive": {
+  "digits": 3,
+  "printed": "0.282",
+  "raw": 0.28232707733447815,
+  "rule": "nearest",
+  "source": "e5 fitted slope (point estimate)"
+ },
+ "EFiveLPHFifteen": {
+  "digits": 3,
+  "printed": "0.802",
+  "raw": 0.8024405423446157,
+  "rule": "nearest",
+  "source": "e5 fitted slope (point estimate)"
+ },
+ "EFiveLPHForty": {
+  "digits": 3,
+  "printed": "0.999",
+  "raw": 0.9986610682027197,
+  "rule": "nearest",
+  "source": "e5 fitted slope (point estimate)"
+ },
+ "EFiveLPHTen": {
+  "digits": 3,
+  "printed": "0.707",
+  "raw": 0.70748631534246,
+  "rule": "nearest",
+  "source": "e5 fitted slope (point estimate)"
+ },
+ "EFiveLPHTwoFive": {
+  "digits": 3,
+  "printed": "0.960",
+  "raw": 0.9597186396676015,
+  "rule": "nearest",
+  "source": "e5 fitted slope (point estimate)"
+ },
+ "EFiveLPHZeroFive": {
+  "digits": 3,
+  "printed": "0.622",
+  "raw": 0.6219355244121809,
+  "rule": "nearest",
+  "source": "e5 fitted slope (point estimate)"
+ },
+ "EFiveMinMargin": {
+  "digits": 3,
+  "printed": "0.073",
+  "raw": 0.07356956437576401,
+  "rule": "floor",
+  "source": "C7b min(beta_hat - beta_min) over H >= 0.10"
+ },
+ "EFiveStripCEHZeroFive": {
+  "digits": 3,
+  "printed": "-0.258",
+  "raw": -0.25780694265758064,
+  "rule": "nearest",
+  "source": "e5 H=0.05 (below floor)"
+ },
+ "EFiveStripFifteenCE": {
+  "digits": 3,
+  "printed": "0.863",
+  "raw": 0.8632766273361329,
+  "rule": "nearest",
+  "source": "e5"
+ },
+ "EFiveStripFifteenJen": {
+  "digits": 3,
+  "printed": "0.663",
+  "raw": 0.6631461532255797,
+  "rule": "nearest",
+  "source": "e5"
+ },
+ "EFiveStripLPHZeroFive": {
+  "digits": 3,
+  "printed": "+0.109",
+  "raw": 0.10892336778854478,
+  "rule": "nearest",
+  "source": "e5 H=0.05 (below floor)"
+ },
+ "EFiveTenCECoarse": {
+  "digits": 2,
+  "printed": "4.00\\times 10^{-4}",
+  "raw": 0.00039955915412860697,
+  "rule": "nearest",
+  "source": "e5 increment (estimate)"
+ },
+ "EFiveTenCEFine": {
+  "digits": 2,
+  "printed": "5.16\\times 10^{-5}",
+  "raw": 5.159756602755652e-05,
+  "rule": "nearest",
+  "source": "e5 increment (estimate)"
+ },
+ "EFiveTenJenCoarse": {
+  "digits": 2,
+  "printed": "2.42\\times 10^{-4}",
+  "raw": 0.00024175757470189176,
+  "rule": "nearest",
+  "source": "e5 increment (estimate)"
+ },
+ "EFiveTenJenFine": {
+  "digits": 2,
+  "printed": "6.58\\times 10^{-5}",
+  "raw": 6.578481660654693e-05,
+  "rule": "nearest",
+  "source": "e5 increment (estimate)"
+ },
+ "EFiveTenLPCoarse": {
+  "digits": 2,
+  "printed": "4.75\\times 10^{-4}",
+  "raw": 0.0004754988139288217,
+  "rule": "nearest",
+  "source": "e5 increment (estimate)"
+ },
+ "EFiveTenStripCE": {
+  "digits": 3,
+  "printed": "0.818",
+  "raw": 0.8181672628445974,
+  "rule": "nearest",
+  "source": "e5"
+ },
+ "EFiveTenStripJen": {
+  "digits": 3,
+  "printed": "0.491",
+  "raw": 0.4910995173368501,
+  "rule": "nearest",
+  "source": "e5"
+ },
+ "EFourABBMTwelveSetup": {
+  "digits": 2,
+  "printed": "1.10",
+  "raw": 1.0983991999964928,
+  "rule": "nearest",
+  "source": "e4 timing"
+ },
+ "EFourABBMTwelveSolveTwoFiveSix": {
+  "digits": 2,
+  "printed": "5.32",
+  "raw": 5.318818100000499,
+  "rule": "nearest",
+  "source": "e4 timing"
+ },
+ "EFourABGMaxLo": {
+  "digits": 0,
+  "printed": "295",
+  "raw": 295.48284078462507,
+  "rule": "floor",
+  "source": "e4"
+ },
+ "EFourACEOneTwoEightATMHi": {
+  "digits": 1,
+  "printed": "7.7",
+  "raw": 7.692932479444192,
+  "rule": "ceil",
+  "source": "e4"
+ },
+ "EFourACETwoFiveSixATMHi": {
+  "digits": 1,
+  "printed": "7.8",
+  "raw": 7.757840258691973,
+  "rule": "ceil",
+  "source": "e4"
+ },
+ "EFourACETwoFiveSixSolve": {
+  "digits": 2,
+  "printed": "4.80",
+  "raw": 4.798025200012489,
+  "rule": "nearest",
+  "source": "e4 timing"
+ },
+ "EFourAJenTwoFiveSixATMCIDist": {
+  "digits": 1,
+  "printed": "2.3",
+  "raw": 2.360650884487836,
+  "rule": "floor",
+  "source": "distance of Jensen-J 95% CI from reference envelope (bps)"
+ },
+ "EFourAJenTwoFiveSixMaxLo": {
+  "digits": 1,
+  "printed": "3.9",
+  "raw": 3.9075292235804526,
+  "rule": "floor",
+  "source": "e4 point-estimate distance"
+ },
+ "EFourAMPTwoOneTwoEightSolve": {
+  "digits": 2,
+  "printed": "1.00",
+  "raw": 0.997858599992469,
+  "rule": "nearest",
+  "source": "e4 timing"
+ },
+ "EFourAMPTwoTwoFiveSixATMHi": {
+  "digits": 1,
+  "printed": "6.9",
+  "raw": 6.870637220363907,
+  "rule": "ceil",
+  "source": "e4"
+ },
+ "EFourAMPTwoTwoFiveSixSolve": {
+  "digits": 2,
+  "printed": "2.26",
+  "raw": 2.2626735999947414,
+  "rule": "nearest",
+  "source": "e4 timing"
+ },
+ "EFourARDBsDeficitPct": {
+  "digits": 1,
+  "printed": "14.7",
+  "raw": 14.71741645286876,
+  "rule": "nearest",
+  "source": "e4"
+ },
+ "EFourARDBsTwoFiveSixMaxLo": {
+  "digits": 1,
+  "printed": "34.2",
+  "raw": 34.24603543027885,
+  "rule": "floor",
+  "source": "e4"
+ },
+ "EFourARDBsVarRatio": {
+  "digits": 3,
+  "printed": "0.853",
+  "raw": 0.8528258354713124,
+  "rule": "nearest",
+  "source": "e4 terminal variance ratio (exact kernel sum)"
+ },
+ "EFourARDBsVarRatioSixtyFour": {
+  "digits": 3,
+  "printed": "0.805",
+  "raw": 0.8053426800108007,
+  "rule": "nearest",
+  "source": "e4"
+ },
+ "EFourARDVmTwoFiveSixMaxHi": {
+  "digits": 1,
+  "printed": "59.8",
+  "raw": 59.756013259647105,
+  "rule": "ceil",
+  "source": "e4"
+ },
+ "EFourARDVmVarRatio": {
+  "digits": 3,
+  "printed": "1.000",
+  "raw": 1.000000000000001,
+  "rule": "nearest",
+  "source": "e4 vm terminal variance ratio"
+ },
+ "EFourARefATMHi": {
+  "digits": 2,
+  "printed": "17.28",
+  "raw": 17.279495723684914,
+  "rule": "ceil",
+  "source": "e4 A ref ATM hi"
+ },
+ "EFourARefATMLo": {
+  "digits": 2,
+  "printed": "17.14",
+  "raw": 17.144800482781296,
+  "rule": "floor",
+  "source": "e4 A ref ATM lo"
+ },
+ "EFourARefATMW": {
+  "digits": 1,
+  "printed": "13.5",
+  "raw": 13.469524090361507,
+  "rule": "ceil",
+  "source": "e4 A ref ATM width"
+ },
+ "EFourARefDiag": {
+  "digits": 0,
+  "printed": "1",
+  "raw": 1,
+  "rule": "exact",
+  "source": "e4 A diag count"
+ },
+ "EFourARefSkewHi": {
+  "digits": 3,
+  "printed": "-0.549",
+  "raw": -0.549837561093795,
+  "rule": "ceil",
+  "source": "e4 A skew hi"
+ },
+ "EFourARefSkewLo": {
+  "digits": 3,
+  "printed": "-0.646",
+  "raw": -0.6452498149749903,
+  "rule": "floor",
+  "source": "e4 A skew lo"
+ },
+ "EFourBBGMaxLo": {
+  "digits": 0,
+  "printed": "276",
+  "raw": 276.1376470803933,
+  "rule": "floor",
+  "source": "e4"
+ },
+ "EFourBBGSkewLo": {
+  "digits": 3,
+  "printed": "0.085",
+  "raw": 0.08599132072503157,
+  "rule": "floor",
+  "source": "e4"
+ },
+ "EFourBRefATMHi": {
+  "digits": 2,
+  "printed": "21.16",
+  "raw": 21.159975583927004,
+  "rule": "ceil",
+  "source": "e4 B ref ATM hi"
+ },
+ "EFourBRefATMLo": {
+  "digits": 2,
+  "printed": "21.02",
+  "raw": 21.020697551467666,
+  "rule": "floor",
+  "source": "e4 B ref ATM lo"
+ },
+ "EFourBRefATMW": {
+  "digits": 1,
+  "printed": "14.0",
+  "raw": 13.927803245933902,
+  "rule": "ceil",
+  "source": "e4 B ref ATM width"
+ },
+ "EFourBRefDiag": {
+  "digits": 0,
+  "printed": "2",
+  "raw": 2,
+  "rule": "exact",
+  "source": "e4 B diag count"
+ },
+ "EFourBRefSkewHi": {
+  "digits": 3,
+  "printed": "-0.822",
+  "raw": -0.8229444484846044,
+  "rule": "ceil",
+  "source": "e4 B skew hi"
+ },
+ "EFourBRefSkewLo": {
+  "digits": 3,
+  "printed": "-0.944",
+  "raw": -0.9438947551503163,
+  "rule": "floor",
+  "source": "e4 B skew lo"
+ },
+ "EFourCRefATMHi": {
+  "digits": 2,
+  "printed": "24.33",
+  "raw": 24.321924707568673,
+  "rule": "ceil",
+  "source": "e4 C ref ATM hi"
+ },
+ "EFourCRefATMLo": {
+  "digits": 2,
+  "printed": "24.20",
+  "raw": 24.20243617499274,
+  "rule": "floor",
+  "source": "e4 C ref ATM lo"
+ },
+ "EFourCRefATMW": {
+  "digits": 1,
+  "printed": "12.0",
+  "raw": 11.948853257593427,
+  "rule": "ceil",
+  "source": "e4 C ref ATM width"
+ },
+ "EFourCRefSkewHi": {
+  "digits": 3,
+  "printed": "-0.399",
+  "raw": -0.39935297857462543,
+  "rule": "ceil",
+  "source": "e4 C skew hi"
+ },
+ "EFourCRefSkewLo": {
+  "digits": 3,
+  "printed": "-0.460",
+  "raw": -0.4597663287494233,
+  "rule": "floor",
+  "source": "e4 C skew lo"
+ },
+ "EOneHestonATMIV": {
+  "digits": 2,
+  "printed": "18.89",
+  "raw": 18.890299257932,
+  "rule": "nearest",
+  "source": "e1 heston ATM IV (exact-law point value)"
+ },
+ "EOneHestonMart": {
+  "digits": 1,
+  "printed": "0",
+  "raw": 0.0,
+  "rule": "ceil",
+  "source": "e1 heston martingale_error"
+ },
+ "EOneRSSCeDiag": {
+  "digits": 0,
+  "printed": "0",
+  "raw": 0,
+  "rule": "exact",
+  "source": "e1 CE diagnostic count"
+ },
+ "EOneRSSCeGainLow": {
+  "digits": 2,
+  "printed": "1.78",
+  "raw": 1.7879885021971775,
+  "rule": "floor",
+  "source": "ratio LP/CE at n=32 ('reduces by at least')"
+ },
+ "EOneRSSCeMaxFine": {
+  "digits": 2,
+  "printed": "6.90",
+  "raw": 6.9017251633077255,
+  "rule": "nearest",
+  "source": "e1 CE n=256"
+ },
+ "EOneRSSCeMaxLow": {
+  "digits": 2,
+  "printed": "15.99",
+  "raw": 15.99496115253729,
+  "rule": "nearest",
+  "source": "e1 CE max |IV bias| n=32 (estimate)"
+ },
+ "EOneRSSJenDiag": {
+  "digits": 0,
+  "printed": "2",
+  "raw": 2,
+  "rule": "exact",
+  "source": "e1 Jensen diagnostic count"
+ },
+ "EOneRSSJenMaxFine": {
+  "digits": 2,
+  "printed": "11.13",
+  "raw": 11.134553476200292,
+  "rule": "nearest",
+  "source": "e1 Jensen n=256"
+ },
+ "EOneRSSJenMaxLow": {
+  "digits": 2,
+  "printed": "32.00",
+  "raw": 31.99949890767051,
+  "rule": "nearest",
+  "source": "e1 Jensen n=32"
+ },
+ "EOneRSSJenOverLPFine": {
+  "digits": 2,
+  "printed": "1.76",
+  "raw": 1.7666988471960656,
+  "rule": "floor",
+  "source": "ratio Jensen/LP at n=256"
+ },
+ "EOneRSSLPMaxFine": {
+  "digits": 2,
+  "printed": "6.30",
+  "raw": 6.302462637518547,
+  "rule": "nearest",
+  "source": "e1 LP n=256"
+ },
+ "EOneRSSLPMaxLow": {
+  "digits": 2,
+  "printed": "28.60",
+  "raw": 28.598806633827188,
+  "rule": "nearest",
+  "source": "e1 LP max |IV bias| n=32 (estimate)"
+ },
+ "EOneRSSMart": {
+  "digits": 2,
+  "printed": "4.03\\times 10^{-7}",
+  "raw": 4.02187125492226e-07,
+  "rule": "ceil",
+  "source": "e1 RSS martingale_error"
+ },
+ "EOneRSSMcheck": {
+  "digits": 0,
+  "printed": "128",
+  "raw": 128,
+  "rule": "exact",
+  "source": "e1 RSS M_check"
+ },
+ "EOneRSSMop": {
+  "digits": 0,
+  "printed": "192",
+  "raw": 192,
+  "rule": "exact",
+  "source": "e1 RSS M_op"
+ },
+ "EOneRSSRefDiff": {
+  "digits": 2,
+  "printed": "3.97\\times 10^{-6}",
+  "raw": 3.967272062865845e-06,
+  "rule": "ceil",
+  "source": "e1 RSS M_check->M_op price refinement"
+ },
+ "EOneRSSRefDiffIV": {
+  "digits": 1,
+  "printed": "0.3",
+  "raw": 0.20209354630796245,
+  "rule": "ceil",
+  "source": "first-order IV equivalent: max refinement price difference / min vega (bps)"
+ },
+ "EOneSSMart": {
+  "digits": 2,
+  "printed": "4.54\\times 10^{-13}",
+  "raw": 4.53859172466764e-13,
+  "rule": "ceil",
+  "source": "e1 SS martingale_error"
+ },
+ "EOneSSRiccati": {
+  "digits": 2,
+  "printed": "3.81\\times 10^{-10}",
+  "raw": 3.802270720498768e-10,
+  "rule": "ceil",
+  "source": "e1 SS max_riccati_diff"
+ },
+ "ESixMixCoarseSkew": {
+  "digits": 3,
+  "printed": "-0.525",
+  "raw": -0.5245432632538772,
+  "rule": "nearest",
+  "source": "e6 coarse LP point estimate"
+ },
+ "ESixMixDiagAll": {
+  "digits": 0,
+  "printed": "9",
+  "raw": 9,
+  "rule": "exact",
+  "source": "e6"
+ },
+ "ESixMixDiagHighRho": {
+  "digits": 0,
+  "printed": "8",
+  "raw": 8,
+  "rule": "exact",
+  "source": "e6"
+ },
+ "ESixMixSeventySkewHi": {
+  "digits": 3,
+  "printed": "-0.397",
+  "raw": -0.3977188293991045,
+  "rule": "ceil",
+  "source": "e6 skew hi"
+ },
+ "ESixMixSeventySkewLo": {
+  "digits": 3,
+  "printed": "-0.506",
+  "raw": -0.5059749480527775,
+  "rule": "floor",
+  "source": "e6 skew lo"
+ },
+ "ESixMixSkewHi": {
+  "digits": 3,
+  "printed": "-0.462",
+  "raw": -0.46243064429661224,
+  "rule": "ceil",
+  "source": "e6 skew hi"
+ },
+ "ESixMixSkewLo": {
+  "digits": 3,
+  "printed": "-0.636",
+  "raw": -0.6355309978537084,
+  "rule": "floor",
+  "source": "e6 skew lo"
+ },
+ "ESixMixVixSlopeHi": {
+  "digits": 2,
+  "printed": "+6.78",
+  "raw": 6.7720718920346314,
+  "rule": "ceil",
+  "source": "e6 (v5.0.0 Arb)"
+ },
+ "ESixMixVixSlopeLo": {
+  "digits": 2,
+  "printed": "+6.22",
+  "raw": 6.229129800117136,
+  "rule": "floor",
+  "source": "e6 (v5.0.0 Arb)"
+ },
+ "ESixPureSeventySkewHi": {
+  "digits": 3,
+  "printed": "-0.468",
+  "raw": -0.46873041129432125,
+  "rule": "ceil",
+  "source": "e6 skew hi"
+ },
+ "ESixPureSeventySkewLo": {
+  "digits": 3,
+  "printed": "-0.556",
+  "raw": -0.5554843784265763,
+  "rule": "floor",
+  "source": "e6 skew lo"
+ },
+ "ESixPureSkewHi": {
+  "digits": 3,
+  "printed": "-0.537",
+  "raw": -0.5375789975041947,
+  "rule": "ceil",
+  "source": "e6 skew hi"
+ },
+ "ESixPureSkewLo": {
+  "digits": 3,
+  "printed": "-0.718",
+  "raw": -0.7177342060421826,
+  "rule": "floor",
+  "source": "e6 skew lo"
+ },
+ "ESixPureVixSlopeHi": {
+  "digits": 2,
+  "printed": "+1.20",
+  "raw": 1.1906367563135802,
+  "rule": "ceil",
+  "source": "e6 (v5.0.0 Arb)"
+ },
+ "ESixPureVixSlopeLo": {
+  "digits": 2,
+  "printed": "+0.53",
+  "raw": 0.5335372317259726,
+  "rule": "floor",
+  "source": "e6 (v5.0.0 Arb)"
+ },
+ "ESixStrikesTotal": {
+  "digits": 0,
+  "printed": "72",
+  "raw": 72,
+  "rule": "exact",
+  "source": "e6"
+ },
+ "ESixTotalDiag": {
+  "digits": 0,
+  "printed": "16",
+  "raw": 16,
+  "rule": "exact",
+  "source": "e6"
+ },
+ "ESixVixLiftLo": {
+  "digits": 2,
+  "printed": "5.03",
+  "raw": 5.038493043803555,
+  "rule": "floor",
+  "source": "certified lower bound on the mixed-minus-pure VIX slope difference (pp)"
+ },
+ "EThreeBLPKapEightIV": {
+  "digits": 1,
+  "printed": "15.8",
+  "raw": 15.743718893523607,
+  "rule": "ceil",
+  "source": "e3 BLP certified price gap mapped across the statistical reference ATM bracket (conditional)"
+ },
+ "EThreeBLPKapFourIV": {
+  "digits": 1,
+  "printed": "29.9",
+  "raw": 29.820027800086525,
+  "rule": "ceil",
+  "source": "e3 BLP certified price gap mapped across the statistical reference ATM bracket (conditional)"
+ },
+ "EThreeBLPKapOneIV": {
+  "digits": 1,
+  "printed": "101.0",
+  "raw": 100.95192916712764,
+  "rule": "ceil",
+  "source": "e3 BLP certified price gap mapped across the statistical reference ATM bracket (conditional)"
+ },
+ "EThreeBLPKapTwoIV": {
+  "digits": 1,
+  "printed": "55.6",
+  "raw": 55.587570606400185,
+  "rule": "ceil",
+  "source": "e3 BLP certified price gap mapped across the statistical reference ATM bracket (conditional)"
+ },
+ "EThreeMkGapOverEmp": {
+  "digits": 0,
+  "printed": "18",
+  "raw": 18.282678818843156,
+  "rule": "floor",
+  "source": "certified M=16 gap (IV equivalent) over empirical ATM error upper end"
+ },
+ "EThreeMkSevenMSixteenLTwo": {
+  "digits": 4,
+  "printed": "0.0391",
+  "raw": 0.03903759871763787,
+  "rule": "ceil",
+  "source": "e3 H=0.07"
+ },
+ "EThreeMkTenMSixteenATMHi": {
+  "digits": 1,
+  "printed": "4.6",
+  "raw": 4.589086102549378,
+  "rule": "ceil",
+  "source": "e3 Markov M=16 ATM err hi (stat.)"
+ },
+ "EThreeMkTenMSixteenFit": {
+  "digits": 2,
+  "printed": "2.80",
+  "raw": 2.8046118000056595,
+  "rule": "nearest",
+  "source": "e3 fit time"
+ },
+ "EThreeMkTenMSixteenGap": {
+  "digits": 5,
+  "printed": "0.00168",
+  "raw": 0.0016720286284788463,
+  "rule": "ceil",
+  "source": "e3 Markov price gap upper"
+ },
+ "EThreeMkTenMSixteenGapIV": {
+  "digits": 0,
+  "printed": "84",
+  "raw": 83.900787284927,
+  "rule": "ceil",
+  "source": "first-order IV equivalent of the certified M=16 ATM price gap (bps)"
+ },
+ "EThreeMkTenMSixteenLOne": {
+  "digits": 5,
+  "printed": "0.00192",
+  "raw": 0.0019189070792938246,
+  "rule": "ceil",
+  "source": "e3 Markov L1 upper"
+ },
+ "EThreeMkTenMSixteenLTwo": {
+  "digits": 4,
+  "printed": "0.0155",
+  "raw": 0.015422713115142319,
+  "rule": "ceil",
+  "source": "e3 Markov L2 upper"
+ },
+ "EThreeMkTenMTwelveGapIV": {
+  "digits": 0,
+  "printed": "165",
+  "raw": 164.88544828254726,
+  "rule": "ceil",
+  "source": "first-order IV equivalent of the certified M=12 ATM price gap (bps)"
+ },
+ "EThreeMkTenMTwoATMLo": {
+  "digits": 1,
+  "printed": "12.6",
+  "raw": 12.675455355861953,
+  "rule": "floor",
+  "source": "e3 Markov M=2 ATM err lo (stat.)"
+ },
+ "EThreeMkTenMTwoLTwo": {
+  "digits": 4,
+  "printed": "0.3254",
+  "raw": 0.3253670745713574,
+  "rule": "ceil",
+  "source": "e3 Markov L2 upper"
+ },
+ "EThreeMkThirtyMSixteenLTwo": {
+  "digits": 5,
+  "printed": "0.00012",
+  "raw": 0.00011627970579662087,
+  "rule": "ceil",
+  "source": "e3 H=0.30"
+ },
+ "EThreeRefATMHi": {
+  "digits": 2,
+  "printed": "17.27",
+  "raw": 17.262737456753623,
+  "rule": "ceil",
+  "source": "e3 ref ATM IV hi (%)"
+ },
+ "EThreeRefATMLo": {
+  "digits": 2,
+  "printed": "17.17",
+  "raw": 17.175445429709182,
+  "rule": "floor",
+  "source": "e3 ref ATM IV lo (%)"
+ },
+ "EThreeRefATMW": {
+  "digits": 1,
+  "printed": "8.8",
+  "raw": 8.72920270444416,
+  "rule": "ceil",
+  "source": "e3 ref ATM width"
+ },
+ "EThreeRefSkewHi": {
+  "digits": 3,
+  "printed": "-0.570",
+  "raw": -0.5705755122114996,
+  "rule": "ceil",
+  "source": "e3 ref skew hi"
+ },
+ "EThreeRefSkewLo": {
+  "digits": 3,
+  "printed": "-0.626",
+  "raw": -0.6256040103913697,
+  "rule": "floor",
+  "source": "e3 ref skew lo"
+ },
+ "ETwoArbOverheadMax": {
+  "digits": 1,
+  "printed": "27.9",
+  "raw": 27.817796512393915,
+  "rule": "ceil",
+  "source": "I1 Arb width overhead over exact-formula width (%)"
+ },
+ "ETwoArbOverheadMin": {
+  "digits": 1,
+  "printed": "0.1",
+  "raw": 0.14420366757822903,
+  "rule": "floor",
+  "source": "I1 Arb width overhead over exact-formula width (%)"
+ },
+ "ETwoBisectSteps": {
+  "digits": 0,
+  "printed": "18",
+  "raw": 18,
+  "rule": "exact",
+  "source": "run_e2_det_phase_map.py"
+ },
+ "ETwoBisectTol": {
+  "digits": 1,
+  "printed": "9.6\\times 10^{-6}",
+  "raw": 9.536361694335937e-06,
+  "rule": "ceil",
+  "source": "run_e2_det_phase_map.py bracket/halvings"
+ },
+ "ETwoCollapseMax": {
+  "digits": 0,
+  "printed": "68",
+  "raw": 67.91641989844958,
+  "rule": "ceil",
+  "source": "ratio of certified boundaries (outer range)"
+ },
+ "ETwoCollapseMin": {
+  "digits": 0,
+  "printed": "43",
+  "raw": 43.94517950868529,
+  "rule": "floor",
+  "source": "ratio of certified boundaries (outer range)"
+ },
+ "ETwoGridNEta": {
+  "digits": 0,
+  "printed": "9",
+  "raw": 9,
+  "rule": "exact",
+  "source": "e2 eta_eff_grid"
+ },
+ "ETwoGridNH": {
+  "digits": 0,
+  "printed": "8",
+  "raw": 8,
+  "rule": "exact",
+  "source": "e2 H_grid"
+ },
+ "ETwoLeverageMax": {
+  "digits": 2,
+  "printed": "5.77",
+  "raw": 5.7644429056053434,
+  "rule": "ceil",
+  "source": "v2 decomposition leverage factor (outer range)"
+ },
+ "ETwoLeverageMin": {
+  "digits": 2,
+  "printed": "5.75",
+  "raw": 5.753407716808492,
+  "rule": "floor",
+  "source": "v2 decomposition leverage factor (outer range)"
+ },
+ "ETwoRhoNineMax": {
+  "digits": 4,
+  "printed": "0.0059",
+  "raw": 0.00589810791015625,
+  "rule": "ceil",
+  "source": "range maximum of the rho=-0.9 25 bps boundary points"
+ },
+ "ETwoRhoNineMin": {
+  "digits": 4,
+  "printed": "0.0045",
+  "raw": 0.004515335464477539,
+  "rule": "floor",
+  "source": "e2 boundary rho=-0.9 25 bps (certified point)"
+ },
+ "ETwoRhoZeroFirstMax": {
+  "digits": 3,
+  "printed": "0.034",
+  "raw": 0.03398269309997558,
+  "rule": "ceil",
+  "source": "range maximum of the rho=0 first-order (k0) boundary points"
+ },
+ "ETwoRhoZeroFirstMin": {
+  "digits": 3,
+  "printed": "0.026",
+  "raw": 0.026000758361816402,
+  "rule": "floor",
+  "source": "v2 decomposition rho=0 first-order (k0) boundary"
+ },
+ "ETwoRhoZeroMax": {
+  "digits": 3,
+  "printed": "0.307",
+  "raw": 0.30666541938781744,
+  "rule": "ceil",
+  "source": "range maximum of the rho=0 two-moment 25 bps boundary points"
+ },
+ "ETwoRhoZeroMin": {
+  "digits": 3,
+  "printed": "0.249",
+  "raw": 0.24988592185974118,
+  "rule": "floor",
+  "source": "e2 boundary rho=0 two-moment 25 bps (certified point)"
+ },
+ "ETwoSFourBridge": {
+  "digits": 2,
+  "printed": "0.44",
+  "raw": 0.43107299329464555,
+  "rule": "ceil",
+  "source": "e2 S4 bridge width"
+ },
+ "ETwoSOneDet": {
+  "digits": 2,
+  "printed": "8.72",
+  "raw": 8.713891382979844,
+  "rule": "ceil",
+  "source": "e2 S1 width"
+ },
+ "ETwoSSevenBridge": {
+  "digits": 2,
+  "printed": "18.43",
+  "raw": 18.423043282202457,
+  "rule": "ceil",
+  "source": "e2 S7 bridge width"
+ },
+ "ETwoSSevenDet": {
+  "digits": 1,
+  "printed": "5301.8",
+  "raw": 5301.759505235735,
+  "rule": "ceil",
+  "source": "e2 S7 width"
+ },
+ "ETwoSSevenRatio": {
+  "digits": 0,
+  "printed": "287",
+  "raw": 287.77870322638216,
+  "rule": "floor",
+  "source": "width ratio (wider by at least)"
+ },
+ "ETwoSThreeDet": {
+  "digits": 2,
+  "printed": "22.54",
+  "raw": 22.531759753291748,
+  "rule": "ceil",
+  "source": "e2 S3 width"
+ },
+ "ETwoSTwoDet": {
+  "digits": 2,
+  "printed": "9.21",
+  "raw": 9.208231187469718,
+  "rule": "ceil",
+  "source": "e2 S2 width"
+ },
+ "ETwoSecondOrderMax": {
+  "digits": 1,
+  "printed": "11.8",
+  "raw": 11.794479804026528,
+  "rule": "ceil",
+  "source": "v2 decomposition second-order factor (outer range)"
+ },
+ "ETwoSecondOrderMin": {
+  "digits": 1,
+  "printed": "7.6",
+  "raw": 7.627218069823882,
+  "rule": "floor",
+  "source": "v2 decomposition second-order factor (outer range)"
+ },
+ "IndepBGMinLoRefined": {
+  "digits": 0,
+  "printed": "273",
+  "raw": 273.2782179224119,
+  "rule": "floor",
+  "source": "I7 BG2012 lower error vs refined references (bps)"
+ },
+ "IndepChecksN": {
+  "digits": 0,
+  "printed": "10",
+  "raw": 10,
+  "rule": "exact",
+  "source": "v2_independent_check"
+ },
+ "IndepETwoMaxExactWidth": {
+  "digits": 2,
+  "printed": "24.96",
+  "raw": 24.954620289070082,
+  "rule": "ceil",
+  "source": "I2"
+ },
+ "IndepHestonMaxDiff": {
+  "digits": 1,
+  "printed": "1.4\\times 10^{-9}",
+  "raw": 1.3617100780294322e-09,
+  "rule": "ceil",
+  "source": "I4a"
+ },
+ "IndepJenMaxLoRefined": {
+  "digits": 1,
+  "printed": "5.8",
+  "raw": 5.8814052396785605,
+  "rule": "floor",
+  "source": "I7 Jensen n=256 vs refined"
+ },
+ "IndepSSMaxDiff": {
+  "digits": 1,
+  "printed": "1.4\\times 10^{-9}",
+  "raw": 1.3308021351576826e-09,
+  "rule": "ceil",
+  "source": "I4b"
+ },
+ "IndepZMaxA": {
+  "digits": 2,
+  "printed": "0.84",
+  "raw": 0.8360403159576334,
+  "rule": "ceil",
+  "source": "I5a"
+ },
+ "IndepZMaxB": {
+  "digits": 2,
+  "printed": "0.32",
+  "raw": 0.31243592685720945,
+  "rule": "ceil",
+  "source": "I5b"
+ },
+ "JenDefFiveTwelve": {
+  "digits": 1,
+  "printed": "15.3",
+  "raw": 15.347314961643155,
+  "rule": "floor",
+  "source": "exact Jensen deficit n=512 (%), GL16"
+ },
+ "JenDefThirtyTwo": {
+  "digits": 1,
+  "printed": "25.1",
+  "raw": 25.15226063517362,
+  "rule": "floor",
+  "source": "exact Jensen deficit n=32 (%), GL16"
+ },
+ "JenLBFiveTwelve": {
+  "digits": 1,
+  "printed": "15.0",
+  "raw": 15.065914784889845,
+  "rule": "floor",
+  "source": "closed-form lower bound n=512 (%)"
+ },
+ "JenLBThirtyTwo": {
+  "digits": 1,
+  "printed": "24.7",
+  "raw": 24.70855990234975,
+  "rule": "floor",
+  "source": "closed-form lower bound n=32 (%)"
+ },
+ "ProofChecksN": {
+  "digits": 0,
+  "printed": "19",
+  "raw": 19,
+  "rule": "exact",
+  "source": "v2_proof_checks"
+ },
+ "RefAATMWidthVTwo": {
+  "digits": 1,
+  "printed": "9.7",
+  "raw": 9.656584564003424,
+  "rule": "ceil",
+  "source": "refined A ATM width"
+ },
+ "RefASkewHi": {
+  "digits": 3,
+  "printed": "-0.572",
+  "raw": -0.572910272211728,
+  "rule": "ceil",
+  "source": "refined skew hi"
+ },
+ "RefASkewLo": {
+  "digits": 3,
+  "printed": "-0.623",
+  "raw": -0.6226998264152367,
+  "rule": "floor",
+  "source": "refined skew lo"
+ },
+ "RefAWidthLowKVOne": {
+  "digits": 1,
+  "printed": "42.5",
+  "raw": 42.44639145286611,
+  "rule": "ceil",
+  "source": "e4 A K=0.85 width (v1)"
+ },
+ "RefAWidthLowKVTwo": {
+  "digits": 1,
+  "printed": "13.5",
+  "raw": 13.427432704890553,
+  "rule": "ceil",
+  "source": "refined A K=0.85 width"
+ },
+ "RefBSkewHi": {
+  "digits": 3,
+  "printed": "-0.840",
+  "raw": -0.8401938779012008,
+  "rule": "ceil",
+  "source": "refined skew hi"
+ },
+ "RefBSkewLo": {
+  "digits": 3,
+  "printed": "-0.935",
+  "raw": -0.9341921315438939,
+  "rule": "floor",
+  "source": "refined skew lo"
+ },
+ "RefBWidthNineFiveVOne": {
+  "digits": 1,
+  "printed": "125.4",
+  "raw": 125.33579908299342,
+  "rule": "ceil",
+  "source": "e4 B K=0.95 width (v1)"
+ },
+ "RefBWidthNineFiveVTwo": {
+  "digits": 1,
+  "printed": "20.1",
+  "raw": 20.08287533639075,
+  "rule": "ceil",
+  "source": "refined B K=0.95"
+ },
+ "RefBWidthOneOFiveVOne": {
+  "digits": 1,
+  "printed": "149.7",
+  "raw": 149.63582351101428,
+  "rule": "ceil",
+  "source": "e4 B K=1.05 width (v1)"
+ },
+ "RefBWidthOneOFiveVTwo": {
+  "digits": 1,
+  "printed": "33.8",
+  "raw": 33.72576816086242,
+  "rule": "ceil",
+  "source": "refined B K=1.05"
+ },
+ "RefEmergingRemain": {
+  "digits": 0,
+  "printed": "2",
+  "raw": 2,
+  "rule": "exact",
+  "source": "remaining flags of the emerging-increment type"
+ },
+ "RefFinestLevel": {
+  "digits": 0,
+  "printed": "1{,}024",
+  "raw": 1024,
+  "rule": "exact",
+  "source": "refinement finest level"
+ },
+ "RefFlagsVOne": {
+  "digits": 0,
+  "printed": "10",
+  "raw": 10,
+  "rule": "exact",
+  "source": "v1 diagnostic flags in the four refined cases"
+ },
+ "RefFlagsVTwo": {
+  "digits": 0,
+  "printed": "4",
+  "raw": 4,
+  "rule": "exact",
+  "source": "diagnostic flags after refinement"
+ },
+ "RefHalfBetaFSW": {
+  "digits": 2,
+  "printed": "0.40",
+  "raw": 0.4,
+  "rule": "nearest",
+  "source": "identifiability threshold beta_FSW/2"
+ },
+ "RefMixSkewHi": {
+  "digits": 3,
+  "printed": "-0.515",
+  "raw": -0.5153090253183811,
+  "rule": "ceil",
+  "source": "refined skew hi"
+ },
+ "RefMixSkewLo": {
+  "digits": 3,
+  "printed": "-0.589",
+  "raw": -0.5888979590754637,
+  "rule": "floor",
+  "source": "refined skew lo"
+ },
+ "RefNewFlags": {
+  "digits": 0,
+  "printed": "1",
+  "raw": 1,
+  "rule": "exact",
+  "source": "strikes newly flagged after refinement"
+ },
+ "RefPureSkewHi": {
+  "digits": 3,
+  "printed": "-0.543",
+  "raw": -0.5430172178398311,
+  "rule": "ceil",
+  "source": "refined skew hi"
+ },
+ "RefPureSkewLo": {
+  "digits": 3,
+  "printed": "-0.716",
+  "raw": -0.7150023014328136,
+  "rule": "floor",
+  "source": "refined skew lo"
+ },
+ "RefRemainEmpMax": {
+  "digits": 2,
+  "printed": "0.37",
+  "raw": 0.36638778530989524,
+  "rule": "ceil",
+  "source": "empirical rates at remaining flags"
+ },
+ "RefRemainEmpMin": {
+  "digits": 2,
+  "printed": "0.27",
+  "raw": 0.2739211670972757,
+  "rule": "floor",
+  "source": "empirical rates at remaining flags"
+ },
+ "RefSlowRemain": {
+  "digits": 0,
+  "printed": "2",
+  "raw": 2,
+  "rule": "exact",
+  "source": "remaining flags of the slow-contraction type"
+ },
+ "RefUpgraded": {
+  "digits": 0,
+  "printed": "7",
+  "raw": 7,
+  "rule": "exact",
+  "source": "flags upgraded to asymptotic-envelope"
+ },
+ "RhoEffFiveTwelve": {
+  "digits": 3,
+  "printed": "-0.828",
+  "raw": -0.828062044058711,
+  "rule": "nearest",
+  "source": "rho_eff at n=512 (GL16)"
+ },
+ "RhoEffThirtyTwo": {
+  "digits": 3,
+  "printed": "-0.779",
+  "raw": -0.7786312919829859,
+  "rule": "nearest",
+  "source": "rho_eff at n=32 (GL16)"
+ }
+}

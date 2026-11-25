@@ -1,0 +1,19 @@
+\begin{table}[!htb]
+\centering
+\caption{Exact Jensen deficit $1-\E[I^{\mathrm{ad}}]/\E[I^{\mathrm{CE}}]$ of the adapted conditional-expectation timer in Regime~A ($H=0.10$, $T=0.25$, $\eta=1.9$, $\rho=-0.9$).}
+\label{tab:s_jensen_deficit}
+\footnotesize
+\begin{tabular}{@{}rrrrrr@{}}
+\toprule
+$n$ & GL2 (\%) & GL8 (\%) & GL16 (\%) & Lower bound (\%) & $\rho_{\mathrm{eff}}$ \\
+\midrule
+32 & 25.279 & 25.155 & 25.152 & 24.708 & $-0.7786$ \\
+64 & 22.414 & 22.305 & -- & 21.901 & $-0.7933$ \\
+128 & 19.827 & 19.731 & -- & 19.370 & $-0.8063$ \\
+256 & 17.504 & 17.418 & -- & 17.097 & $-0.8179$ \\
+512 & 15.425 & 15.349 & 15.347 & 15.065 & $-0.8281$ \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\parbox{\linewidth}{\footnotesize\emph{Notes.} Deficits computed by Gaussian conditioning on the grid filtration with $q$-point Gauss--Legendre quadrature in each cell (GL$q$); the lower bound is the closed form of Proposition~\mref{prop:jensen_pitfall}(i), printed with floor rounding; $\rho_{\mathrm{eff}}=\rho\sqrt{1-\text{deficit}}$ with the most accurate deficit available.}
+\end{table}

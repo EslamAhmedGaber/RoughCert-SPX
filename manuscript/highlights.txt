@@ -1,0 +1,5 @@
+Two-field Ito-Mehler ledger separates kernel, time-step and sampling error
+At rho=-0.9 the certifiable 25 bps boundary contracts by a factor of 43-68
+Conditional-Jensen smoothing inside the leverage integral attenuates correlation
+Nested exact-bridge RQMC envelopes contain every tested exact reference price
+176-bit Arb audits bound the kernel gap of Markovian and hybrid SPX schemes

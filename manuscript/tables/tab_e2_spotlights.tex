@@ -1,0 +1,23 @@
+\begin{table}[t]
+\centering
+\caption{Spotlight comparison of \ArbBits-bit Arb \RCDet{} and \RCBridge{} ATM implied-volatility widths ($\xi_0=0.04$, $25\bps$ desk gate).}
+\label{tab:e2_spotlights}
+\footnotesize
+\setlength{\tabcolsep}{3.6pt}
+\begin{tabular}{@{}lrrrrrrlll@{}}
+\toprule
+Spotlight & $H$ & $T$ & $\eta$ & $\rho$ & Det width & Bridge width & Bridge & Arb & Gate \\
+regime & & (yr) & & & (bps, Arb) & (bps, stat.) & status & cont.? & choice \\
+\midrule
+S1: Mild, $\rho=0$ & 0.30 & 0.10 & 0.30 & $0.0$ & 8.72 & 0.02 & Asymp.-env. & Yes & Tier~1 (Arb) \\
+S2: Rough, $\rho=0$ & 0.10 & 0.25 & 0.20 & $0.0$ & 9.21 & 0.03 & Asymp.-env. & Yes & Tier~1 (Arb) \\
+S3: 1-day, corr. & 0.30 & $1/252$ & 0.03 & $-0.7$ & 22.54 & 0.12 & Asymp.-env. & Yes & Tier~1 (Arb) \\
+S4: Rough, mild $\eta$ & 0.10 & 0.25 & 0.10 & $-0.7$ & 413.0 & 0.44 & Asymp.-env. & Yes & Tier~3 (Bridge) \\
+S5: Rough, mod.\ $\eta$ & 0.10 & 0.25 & 0.50 & $-0.7$ & 2044.3 & 5.59 & Asymp.-env. & Yes & Tier~3 (Bridge) \\
+S6: Cal.\ $\eta$, $\rho=0$ & 0.10 & 0.25 & 1.90 & $0.0$ & 823.3 & 9.64 & Asymp.-env. & Yes & Tier~3 (Bridge) \\
+S7: Cal.\ SPX full & 0.10 & 0.25 & 1.90 & $-0.9$ & 5301.8 & 18.43 & Asymp.-env. & Yes & Tier~3 (Bridge) \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\parbox{\linewidth}{\footnotesize\emph{Notes.} Det: deterministic Arb-certified ATM IV width (Proposition~\ref{prop:twomoment} for $\rho=0$, Theorem~\ref{thm:put_lipschitz} for $\rho<0$). Bridge: asymptotic-envelope statistical(0.95) width (Theorem~\ref{thm:bridge_envelope}; levels $32$--$256$, $32{,}768$ RQMC paths). The two widths carry different guarantees. Arb cont.: the Arb bracket contains the Bridge midpoint.}
+\end{table}

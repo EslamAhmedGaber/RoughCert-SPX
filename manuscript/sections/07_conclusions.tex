@@ -1,0 +1,27 @@
+\section{Practical guidance, scope and conclusions}
+\label{sec:conclusions}
+
+This paper extended verified numerical certification from single-driver VIX derivatives \citep{AhmedEtAl2026RoughCert} to correlated SPX option pricing under rough volatility and treated full deterministic certification as a hypothesis. The theory predicts where that hypothesis must fail, the experiments locate the boundary, and the result is a workflow for volatility desks and model-validation teams.
+
+\subsection{Operational guidance}
+
+\begin{enumerate}[1.]
+  \item \emph{Deterministic certification works without leverage and in mild regimes.} At $\rho=0$, Proposition~\ref{prop:twomoment} certifies ATM implied volatility to $25\bps$ up to $\eta T^H\in[\ETwoRhoZeroMin,\ETwoRhoZeroMax]$. At $\rho=-0.9$ the Put-Lipschitz bound of Theorem~\ref{thm:put_lipschitz} reaches $25\bps$ only for $\eta T^H\in[\ETwoRhoNineMin,\ETwoRhoNineMax]$, a contraction by a factor of $\ETwoCollapseMin$--$\ETwoCollapseMax$ that combines a leverage factor of $\ETwoLeverageMin$--$\ETwoLeverageMax$ with the loss of the second-order bound, as Theorem~\ref{thm:homotopy} predicts.
+  \item \emph{Audit approximate kernels before simulating.} Theorem~\ref{thm:put_lipschitz} bounds the continuous-time kernel gap of Markovian and hybrid schemes in Arb before any path is drawn, and Lemma~\ref{lem:surrogate_mart} guarantees that the bound applies to every nonnegative kernel. With unclipped nodes, the certified \citet{BayerBreneis2023} $L^2$ and $L^1$ errors decay geometrically in $M$, and the certified hybrid IV gaps fall from $\EThreeBLPKapOneIV\bps$ ($\kappa=1$) to $\EThreeBLPKapEightIV\bps$ ($\kappa=8$). At calibrated vol-of-vol these first-order certificates are conservative (about $\EThreeMkTenMSixteenGapIV\bps$ against an empirical ATM error of at most $\EThreeMkTenMSixteenATMHi\bps$ for $M=16$), so they bound the kernel error but do not apportion the observed error.
+  \item \emph{Keep conditional-Jensen smoothing out of the leverage integral.} Replacing $\sqrt{v_s}$ by $\E[\sqrt{v_s}\mid\G_i]$ inside $J_T$ removes a fraction $\Theta(n^{-2H})$ of the correlated quadratic variation and attenuates the effective correlation (Proposition~\ref{prop:jensen_pitfall}); in Experiments~E1, E4 and E5 the ablation is less accurate at every tested grid and has lower measured rates. Exact conditional expectation in the variance channel with an energy-conserving adapted $J_T$ (\RCCE{}) reduces the coarse-grid error by a factor of $\EOneRSSCeGainLow$ in E1 and shows rates comparable to the left-point scheme in E5.
+  \item \emph{Separate sampling noise from continuum bias.} In calibrated regimes ($\eta\approx 1.9$, $\rho\approx -0.9$), \RCBridge{} gives \emph{asymptotic-envelope statistical(0.95)} enclosures across the smile from exact Schur-complement coarsening, pilot-fitted stopped-timer controls and unclamped contraction gates, and it flags strikes whose increments do not contract. Placed beside the Arb VIX brackets of \RoughCert{} \CompanionTag{}, these envelopes show that the VIX smile lift of the mixed model is a model property rather than a discretisation artefact.
+\end{enumerate}
+
+\subsection{Scope and limitations}
+
+Six limits of the guarantees should be kept in view.
+\begin{itemize}
+  \item \emph{Deterministic and statistical guarantees differ.} Only \RCDet{} brackets and the kernel $L^2$, $L^1$ and price-gap bounds are \emph{Arb-certified}. \RCBridge{} intervals are \emph{asymptotic-envelope statistical(0.95)}, conditional on the tail hypothesis of Theorem~\ref{thm:bridge_envelope} and on approximately Gaussian shift means, or \emph{diagnostic}; ATM skews built from two strikes have joint coverage of at least $0.90$, and Arb inversion of a statistical interval does not change its status.
+  \item \emph{Most envelopes rely on Case~(ii).} $\CaseTwoCount$ of the $\CaseTotalCount$ reference-envelope strikes use the assumed rate $\beta_{\mathrm{FSW}}$, which is valid for any true rate above $\beta_{\min}(H)$. Experiment~E5 supports this for $H\ge 0.10$ but not at $H=0.05$, and the very rough Regime~B ($H=0.07$) lies between the tested values.
+  \item \emph{Finite grids.} The certifiability boundaries are the last certified points of finite bisections on a finite $(H,\eta T^H)$ grid, and all weak rates are fitted on grids up to $n=512$ (or $n=\RefFinestLevel$ in the refinement study). After refinement, $\RefFlagsVTwo$ strikes of the refined envelopes remain diagnostic.
+  \item \emph{Martingale domain.} The software enforces $\rho\in[-1,0]$, which suffices for unit-forward parity. The positive-correlation strict-local-martingale result of \citet{Gassiat2019} requires nondegenerate volatility.
+  \item \emph{Continuous time versus time stepping.} The Arb kernel-gap bounds concern $|C(K)-C_{\hat{K}}(K)|$ in continuous time; the time-discretisation bias $|C_{\hat{K}}(K)-C_{\hat{K},n}(K)|$ is audited separately by \RCBridge{}.
+  \item \emph{Extensions.} Extending the two-field ledger and the exact-bridge envelope to affine rough Heston \citep{ElEuchRosenbaum2019,BayerBreneis2024}, to multi-factor path-dependent volatility \citep{AbiJaberIllandLi2025}, and to path-dependent equity exotics (cliquets, barriers), where Romano--Touzi conditioning no longer reduces to scalar Black--Scholes prices, remains open.
+\end{itemize}
+
+\FloatBarrier

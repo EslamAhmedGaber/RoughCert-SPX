@@ -1,0 +1,86 @@
+{
+  "experiment": "v2_E2_boundary_decomposition",
+  "status": "Arb-certified widths; boundaries are last certified bisection points (18 halvings of [1e-4, 2.5])",
+  "T": 0.25,
+  "xi0": 0.04,
+  "K": 1.0,
+  "rows": [
+    {
+      "H": 0.05,
+      "eta_eff_star_rho0_k0_10bps": 0.010437416076660155,
+      "eta_eff_star_rho0_k0_25bps": 0.026000758361816402,
+      "eta_eff_star_rho0_k0_50bps": 0.05170125312805175,
+      "factor_total_25bps": 67.91641989844958,
+      "factor_second_order_25bps": 11.794479804026528,
+      "factor_leverage_25bps": 5.7583226243910755
+    },
+    {
+      "H": 0.07,
+      "eta_eff_star_rho0_k0_10bps": 0.010618606948852537,
+      "eta_eff_star_rho0_k0_25bps": 0.026458503723144528,
+      "eta_eff_star_rho0_k0_50bps": 0.052616743850708,
+      "factor_total_25bps": 63.10770168799966,
+      "factor_second_order_25bps": 10.951752581986748,
+      "factor_leverage_25bps": 5.7623381477589355
+    },
+    {
+      "H": 0.1,
+      "eta_eff_star_rho0_k0_10bps": 0.010895161437988281,
+      "eta_eff_star_rho0_k0_25bps": 0.02713558540344238,
+      "eta_eff_star_rho0_k0_50bps": 0.05395183448791503,
+      "factor_total_25bps": 57.95204673158782,
+      "factor_second_order_25bps": 10.07085762230431,
+      "factor_leverage_25bps": 5.754430149348873
+    },
+    {
+      "H": 0.15,
+      "eta_eff_star_rho0_k0_10bps": 0.011324297714233399,
+      "eta_eff_star_rho0_k0_25bps": 0.02822273063659668,
+      "eta_eff_star_rho0_k0_50bps": 0.05611658859252929,
+      "factor_total_25bps": 52.78523018599647,
+      "factor_second_order_25bps": 9.158510814370555,
+      "factor_leverage_25bps": 5.763516717496423
+    },
+    {
+      "H": 0.2,
+      "eta_eff_star_rho0_k0_10bps": 0.01174389762878418,
+      "eta_eff_star_rho0_k0_25bps": 0.02927173042297363,
+      "eta_eff_star_rho0_k0_50bps": 0.058195515441894524,
+      "factor_total_25bps": 49.59281047794176,
+      "factor_second_order_25bps": 8.603226936243523,
+      "factor_leverage_25bps": 5.7644429056053434
+    },
+    {
+      "H": 0.3,
+      "eta_eff_star_rho0_k0_10bps": 0.012544952011108397,
+      "eta_eff_star_rho0_k0_25bps": 0.031245757293701177,
+      "eta_eff_star_rho0_k0_50bps": 0.062124496459960925,
+      "factor_total_25bps": 46.01250587834091,
+      "factor_second_order_25bps": 7.997435284121457,
+      "factor_leverage_25bps": 5.753407716808492
+    },
+    {
+      "H": 0.4,
+      "eta_eff_star_rho0_k0_10bps": 0.013288788223266602,
+      "eta_eff_star_rho0_k0_25bps": 0.03309581146240234,
+      "eta_eff_star_rho0_k0_50bps": 0.06580553207397459,
+      "factor_total_25bps": 44.40680482330108,
+      "factor_second_order_25bps": 7.709146441179308,
+      "factor_leverage_25bps": 5.760275169517722
+    },
+    {
+      "H": 0.45,
+      "eta_eff_star_rho0_k0_10bps": 0.013641633605957031,
+      "eta_eff_star_rho0_k0_25bps": 0.03398269309997558,
+      "eta_eff_star_rho0_k0_50bps": 0.06756975898742676,
+      "factor_total_25bps": 43.94517950868529,
+      "factor_second_order_25bps": 7.627218069823882,
+      "factor_leverage_25bps": 5.761626205831036
+    }
+  ],
+  "environment": {
+    "python": "3.12.14",
+    "threads": 1
+  },
+  "elapsed_s": 4.847743000005721
+}

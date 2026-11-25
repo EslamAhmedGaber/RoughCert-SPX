@@ -1,0 +1,45 @@
+\begin{table}[!htb]
+\centering
+\caption{Verification summary: \ProofChecksN{} first-principles checks of the stated results (C) and \IndepChecksN{} code-disjoint recomputations of archived numbers (I).}
+\label{tab:s_checks}
+\scriptsize
+\setlength{\tabcolsep}{3.0pt}
+\begin{tabular}{@{}lllrrl@{}}
+\toprule
+ID & Anchor & Quantity checked & Metric & Tolerance & Result \\
+\midrule
+C1 & Theorem~\mref{thm:ledger}(iii) & Mehler identity for $\E(\sqrt{v}-\sqrt{\hat v})^2$ & $2.57\times 10^{-16}$ & $1\times 10^{-12}$ & pass \\
+C2a & Theorem~\mref{thm:ledger}(ii) & ledger inequalities, random discrete laws & $-7.27\times 10^{-3}$ & $0$ & pass \\
+C2b & Theorem~\mref{thm:put_lipschitz} & Put Lipschitz bounds in $(u,S)$ & $-3.72\times 10^{-7}$ & $0$ & pass \\
+C3a & Proposition~\mref{prop:twomoment} & closed-form derivatives of $\varphi_1$ (SymPy) & $1.00$ & $0.5$ & pass \\
+C3b & Proposition~\mref{prop:twomoment} & $\varphi_1'''>0$ on $V\in[10^{-6},10^{3}]$ & $5.13\times 10^{-59}$ & $0$ & pass \\
+C3c & Proposition~\mref{prop:twomoment} & two-moment sandwich; sharp for two-point laws & $2.87\times 10^{-42}$ & $1\times 10^{-35}$ & pass \\
+C3d & Proposition~\mref{prop:twomoment} & $L(v)$ strictly decreasing & $1.00$ & $0.5$ & pass \\
+C3e & Theorem~\mref{thm:homotopy}(a) & first-order two-moment gap at $K=1$ & $1.87\times 10^{-5}$ & $1\times 10^{-4}$ & pass \\
+C4a & Theorem~\mref{thm:homotopy}(b) & flat-$\xi_0$ cross-covariance constant & $1.08\times 10^{-30}$ & $1\times 10^{-15}$ & pass \\
+C4b & Theorem~\mref{thm:homotopy}(b) & Gamma--Vega identity & $3.69\times 10^{-41}$ & $1\times 10^{-25}$ & pass \\
+C4c & Theorem~\mref{thm:homotopy}(b) & first-order leverage term on Heston & $2.76\times 10^{-4}$ & $0.02$ & pass \\
+C5a & Proposition~\mref{prop:jensen_pitfall}(i) & small-$\Delta t$ limit of the deficit bound & $0.03$ & $0.1$ & pass \\
+C5b & Proposition~\mref{prop:jensen_pitfall}(i) & exact deficit $\ge$ closed-form bound & $2.83\times 10^{-3}$ & $0$ & pass \\
+C6 & Lemma~\mref{lem:stopped_cv} & stopped-timer semigroup identity & $1.15\times 10^{-41}$ & $1\times 10^{-30}$ & pass \\
+C7a & Theorem~\mref{thm:bridge_envelope}(i) & delta-method SE at SNR $3$ & $0.68$ & $0.68$ & pass \\
+C7b & Theorem~\mref{thm:bridge_envelope}(ii) & E5 rates exceed $\beta_{\min}(H)$, $H\ge0.10$ & $0.07$ & $0$ & pass \\
+C8 & Section~\mref{sec:det} & BLP cell-mean node and cell $L^2$ error & $3.00\times 10^{-34}$ & $1\times 10^{-20}$ & pass \\
+C9 & Section~\mref{sec:det} & closed form of $R_H$ and its monotonicity & $1.88\times 10^{-24}$ & $1\times 10^{-15}$ & pass \\
+C10 & Section~\mref{sec:theorems} & $\E\sqrt{v_s}$ closed form; optimal residual & $4.59\times 10^{-41}$ & $1\times 10^{-30}$ & pass \\
+\midrule
+I1 & E2 spotlights & Arb brackets contain exact-formula brackets & $0$ & $0$ & pass \\
+I2 & E2 boundaries & exact width at certified points $\le 25\bps$ & $24.95$ & $25$ & pass \\
+I3 & E3 BLP hybrid & exact $E_J$ inside Arb ball; IV mapping & $0$ & $0$ & pass \\
+I3b & E3 Markov & Mehler bound and Theorem~\mref{thm:put_lipschitz} gap & $4.88\times 10^{-12}$ & $1\times 10^{-9}$ & pass \\
+I4a & E1 Heston & own CF and Lewis inversion & $1.36\times 10^{-9}$ & $5\times 10^{-8}$ & pass \\
+I4b & E1 Stein--Stein & own Riccati RK4 and Lewis inversion & $1.33\times 10^{-9}$ & $5\times 10^{-7}$ & pass \\
+I5a & E4 Regime~A & own \RCCE{} vs stored level means ($|z|$) & $0.84$ & $3.5$ & pass \\
+I5b & E6 Pure BDG6 & own \RCCE{} vs stored level means ($|z|$) & $0.31$ & $3.5$ & pass \\
+I6 & E6 VIX inputs & equality with \RoughCert{} v5.0.0 & $0$ & $0$ & pass \\
+I7 & E4 conclusions & BG2012 error vs refined references (bps) & $273.28$ & $250$ & pass \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\parbox{\linewidth}{\footnotesize\emph{Notes.} C: first-principles checks (mpmath at 40 digits, SymPy); I: code-disjoint recomputations; both scripts are listed in Table~\ref{tab:s_manifest} and import no production code. Metrics are maximum deviations or violations unless stated (a negative violation is a margin); tolerances are the pass thresholds.}
+\end{table}

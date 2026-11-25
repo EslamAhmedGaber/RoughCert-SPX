@@ -1,0 +1,206 @@
+\section{Proofs of the main results}
+\label{app:proofs}
+
+\begin{proof}[Proof of Lemma~\ref{lem:surrogate_mart}]
+$\hat{F}$ is a nonnegative local martingale, hence a supermartingale, so $\E[\hat{F}_T]\le1$. For $N\in\N$ let $\hat{I}_t=\int_0^t\hat{v}_s\dd s$ and $\tau_N=\inf\{t\in[0,T]:\hat{I}_t\ge N\}$, with $\inf\emptyset=T$. Since $\rho^2\hat{I}_{\tau_N}\le N$, Novikov's criterion gives $\E[\hat{F}_{\tau_N}]=1$, and $\mathbb{Q}_N\coloneqq\hat{F}_{\tau_N}\cdot\mathbb{Q}$ is a probability measure equivalent to $\mathbb{Q}$. By Girsanov's theorem, $\tilde{W}_t=W_t^{(1)}-\rho\int_0^{t\wedge\tau_N}\hat{\sigma}_s\dd s$ is a $\mathbb{Q}_N$-Brownian motion, and
+\[
+  \begin{aligned}
+  \hat{Y}_s&=\int_0^s\hat{K}(s-u)\dd\tilde{W}_u+\rho\int_0^{s\wedge\tau_N}\hat{K}(s-u)\,\hat{\sigma}_u\dd u \TCrel \le\tilde{Y}_s\coloneqq\int_0^s\hat{K}(s-u)\dd\tilde{W}_u,
+  \end{aligned}
+\]
+because $\rho\le0$, $\hat{K}\ge0$ and $\hat{\sigma}\ge0$. As each $\Phi_s$ is nondecreasing, $\hat{I}_T\le\tilde{I}_T\coloneqq\int_0^T\Phi_s(\tilde{Y}_s)\dd s$, and $\tilde{I}_T$ has under $\mathbb{Q}_N$ the law that $\hat{I}_T$ has under $\mathbb{Q}$. On $\{\hat{I}_T<N\}$ we have $\tau_N=T$ and $\hat{F}_T=\hat{F}_{\tau_N}$, hence
+\[
+  \begin{aligned}
+  \E[\hat{F}_T]&\ge\E\bigl[\hat{F}_{\tau_N}\mathbf{1}_{\{\tau_N=T\}}\bigr]=\mathbb{Q}_N(\tau_N=T) \TCrel \ge\mathbb{Q}_N(\hat{I}_T<N)\ge1-\mathbb{Q}_N(\tilde{I}_T\ge N) \TCrel =1-\mathbb{Q}(\hat{I}_T\ge N).
+  \end{aligned}
+\]
+The right-hand side tends to $1$ as $N\to\infty$ because $\E[\hat{I}_T]<\infty$, so $\E[\hat{F}_T]=1$. For rough and mixed rough Bergomi, $\Phi_s(y)=\xi_0(s)[\lambda\exp(\eta_1y-\tfrac12\eta_1^2a_s)+(1-\lambda)\exp(\eta_2y-\tfrac12\eta_2^2a_s)]$ with $a_s=\int_0^s\hat{K}(u)^2\dd u$ is nondecreasing because $\eta_1,\eta_2\ge0$; Markovian kernels with $w_j\ge0$ and hybrid kernels are nonnegative.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:ledger}]
+(i) Since $\sqrt{v_s}-\hat{\sigma}_s$ is adapted and lies in $L^2([0,T]\times\Omega)$, the It\^o isometry gives
+\[
+  \begin{aligned}
+  \E\!\left[(J_T-\hat{J}_T)^2\right]
+  &= \E\!\left[\left(\int_0^T(\sqrt{v_s}-\hat{\sigma}_s)\dd W_s^{(1)}\right)^2\right]
+  \TCrel = \E\!\left[\int_0^T(\sqrt{v_s}-\hat{\sigma}_s)^2\dd s\right]
+  = E_J^2.
+  \end{aligned}
+\]
+(ii) Pathwise, the reverse triangle inequality in $L^2(0,T)$ gives
+\[
+  \begin{aligned}
+  \bigl|\sqrt{I_T}-\sqrt{\hat{I}_T}\bigr|
+  &= \bigl|\norm{\sqrt{v}}_{L^2(0,T)}-\norm{\hat{\sigma}}_{L^2(0,T)}\bigr|
+  \TCrel \le \norm{\sqrt{v}-\hat{\sigma}}_{L^2(0,T)}.
+  \end{aligned}
+\]
+Squaring and taking expectations gives the first bound in \eqref{eq:minkowski_coupling}. For the second, write $|I_T-\hat{I}_T|$ as the product of $|\sqrt{I_T}-\sqrt{\hat{I}_T}|$ and $\sqrt{I_T}+\sqrt{\hat{I}_T}$ and apply the Cauchy--Schwarz and Minkowski inequalities:
+\[
+  \begin{aligned}
+  E_I
+  &\le \norm{\sqrt{I_T}-\sqrt{\hat{I}_T}}_{L^2(\mathbb{Q})} \TCbr \norm{\sqrt{I_T}+\sqrt{\hat{I}_T}}_{L^2(\mathbb{Q})}
+  \TCrel \le E_J\left(\sqrt{\E[I_T]}+\sqrt{\E[\hat{I}_T]}\right).
+  \end{aligned}
+\]
+(iii) Let $a_s=\Var(Y_s)$, $\hat{a}_s=\Var(\hat{Y}_s)$ and $c_s=\Cov(Y_s,\hat{Y}_s)$, so that $\Var(Y_s-\hat{Y}_s)=a_s+\hat{a}_s-2c_s$. Since
+\[
+  \begin{gathered}
+  \sqrt{v_s}=\sqrt{\xi_0(s)}\exp\!\left(\tfrac12\eta Y_s-\tfrac14\eta^2 a_s\right),
+  \TCsep
+  \hat{\sigma}_s=\sqrt{\xi_0(s)}\exp\!\left(\tfrac12\eta\hat{Y}_s-\tfrac14\eta^2\hat{a}_s\right),
+  \end{gathered}
+\]
+we have $\E[v_s]=\E[\hat{v}_s]=\xi_0(s)$ and, by the Gaussian moment-generating function of $\tfrac12\eta(Y_s+\hat{Y}_s)$,
+\[
+  \begin{aligned}
+  \E\!\left[\sqrt{v_s}\,\hat{\sigma}_s\right]
+  &= \xi_0(s)\exp\Bigl(-\tfrac14\eta^2(a_s+\hat{a}_s) \TCbr + \tfrac18\eta^2(a_s+\hat{a}_s+2c_s)\Bigr)
+  \TCrel = \xi_0(s)\exp\!\left(-\tfrac{\eta^2}{8}\Var(Y_s-\hat{Y}_s)\right).
+  \end{aligned}
+\]
+Hence $\E[(\sqrt{v_s}-\hat{\sigma}_s)^2]=2\xi_0(s)[1-\exp(-\tfrac{\eta^2}{8}\Var(Y_s-\hat{Y}_s))]$, and Tonelli's theorem gives \eqref{eq:mehler_ej}. For $\hat{Y}_s=\int_0^s\hat{K}(s-u)\dd W_u^{(1)}$, the It\^o isometry gives $\Var(Y_s-\hat{Y}_s)=\int_0^s(K_H(u)-\hat{K}(u))^2\dd u$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:put_lipschitz}]
+By Lemma~\ref{lem:surrogate_mart} with $\hat{K}=K_H$ and by the hypothesis $\E[\hat{F}_T]=1$, both $S_T$ and the surrogate spot $\hat{S}_T$ are true martingales with mean $1$, so Put--Call parity gives $C(K)-\hat{C}(K)=P(K)-\hat{P}(K)$ for every $K>0$. Write $P_\BS(e^u,K,\Sigma^2)=K\Phi(-d_-)-e^u\Phi(-d_+)$ for $u\in\R$ and $\Sigma>0$, with $d_\pm=(u-\log K)/\Sigma\pm\Sigma/2$. Using $e^u\phi(d_+)=K\phi(d_-)$,
+\[
+  \begin{gathered}
+  -\frac{\partial P_\BS}{\partial u} = e^u\Phi(-d_+) \ge 0,
+  \TCsep
+  \frac{\partial P_\BS}{\partial \Sigma} = K\phi(d_-) \in \left(0,\frac{K}{\sqrt{2\pi}}\right].
+  \end{gathered}
+\]
+Since $P_\BS\ge0$, $0\le e^u\Phi(-d_+)\le K\Phi(-d_-)\le K$ for all $(u,\Sigma)\in\R\times(0,\infty)$, and $P_\BS(e^u,K,0)=(K-e^u)_+$ is $K$-Lipschitz in $u$ as well. With $u=\rho J_T-\tfrac12\rho^2 I_T$, $\Sigma=\bar{\rho}\sqrt{I_T}$ and the surrogate counterparts $\hat{u}$, $\hat{\Sigma}$, the mean value theorem gives
+\[
+  \begin{aligned}
+  &\bigl|P_\BS(F_T,K,\bar{\rho}^2 I_T)-P_\BS(\hat{F}_T,K,\bar{\rho}^2\hat{I}_T)\bigr|
+  \TCrel \le K|\rho|\,|J_T-\hat{J}_T| + \frac{K\rho^2}{2}|I_T-\hat{I}_T| \TCbr + \frac{K\bar{\rho}}{\sqrt{2\pi}}\bigl|\sqrt{I_T}-\sqrt{\hat{I}_T}\bigr|.
+  \end{aligned}
+\]
+Taking expectations, bounding $\E|X|\le\norm{X}_{L^2(\mathbb{Q})}$ and using Theorem~\ref{thm:ledger}(i)--(ii) gives \eqref{eq:put_lipschitz}. The splitting \eqref{eq:three_way} is the triangle inequality.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:homotopy}]
+\emph{Identity.} Since $I_\theta>0$ a.s.\ and $\bar{\rho}>0$, the function $g(\theta)=C_\BS(F_\theta,K,\bar{\rho}^2 I_\theta)$ is continuously differentiable on $[0,1]$ with
+\[
+  \begin{aligned}
+  g'(\theta) &= \Delta_\BS(\theta)F_\theta\bigl(\rho(J_T-\hat{J}_T)-\tfrac12\rho^2(I_T-\hat{I}_T)\bigr)
+               \TCbr + \bar{\rho}^2\mathcal{V}_\BS(\theta)(I_T-\hat{I}_T).
+  \end{aligned}
+\]
+By Put--Call parity, $\mathcal{V}_\BS(\theta)=\partial_V P_\BS(F_\theta,K,\bar{\rho}^2 I_\theta)=K\phi(d_-)/(2\bar{\rho}\sqrt{I_\theta})\le K/(2\bar{\rho}\sqrt{2\pi I_\theta})$, and since $I_\theta$ is affine in $\theta$, $\int_0^1 |I_T-\hat{I}_T|\,I_\theta^{-1/2}\dd\theta = 2|\sqrt{I_T}-\sqrt{\hat{I}_T}|\in L^2(\mathbb{Q})$. The Put-delta bound $0\le(1-\Delta_\BS(\theta))F_\theta\le K$ and \eqref{eq:homotopy_integrability} dominate the remaining terms, so Fubini's theorem applies to $\E[g(1)-g(0)]=\E\int_0^1g'(\theta)\dd\theta$ and yields \eqref{eq:homotopy}; no negative moment of $I_\theta$ is needed.
+
+\emph{Integrability for deterministic surrogates.} Let $\hat{\sigma}$ be deterministic with $\hat{I}\coloneqq\hat{I}_T\in(0,\infty)$. Then $\hat{J}_T\sim\mathcal{N}(0,\hat{I})$ and $\hat{F}_T$ is lognormal with finite moments of all orders. Convexity of the exponential gives $F_\theta\le(1-\theta)\hat{F}_T+\theta F_T$, so it suffices to bound $\E[\hat{F}_TX]$ and $\E[F_TX]$ for $X\in\{|J_T|,|\hat{J}_T|,I_T,\hat{I}\}$. By Cauchy--Schwarz, $\E[\hat{F}_TX]\le(\E\hat{F}_T^2)^{1/2}(\E X^2)^{1/2}<\infty$, because $\E[J_T^2]=\E[I_T]=I_0$, $\E[\hat{J}_T^2]=\hat{I}$ and $\E[I_T^2]\le I_0^2e^{\eta^2T^{2H}}$. For the terms with $F_T$, Lemma~\ref{lem:surrogate_mart} gives $\E[F_T]=1$; under $\mathbb{Q}^F\coloneqq F_T\cdot\mathbb{Q}$ the process $W_t^F=W_t^{(1)}-\rho\int_0^t\sqrt{v_s}\dd s$ is a Brownian motion, and, as in the proof of the lemma, $Y_s\le Y_s^F\coloneqq\int_0^sK_H(s-u)\dd W_u^F$, so $v_s\le\xi_0(s)\cE(\eta Y_s^F)$ and $\E^F[I_T]\le I_0$. Hence $\E[F_TI_T]\le I_0$, $\E[F_T\hat{I}]=\hat{I}$,
+\[
+  \begin{gathered}
+  \E[F_T|J_T|]=\E^F\Bigl|\int_0^T\!\sqrt{v_s}\dd W_s^F+\rho I_T\Bigr|\le I_0^{1/2}+|\rho|I_0,
+  \TCsep
+  \E[F_T|\hat{J}_T|]\le\hat{I}^{1/2}+|\rho|\,\hat{I}^{1/2}I_0^{1/2},
+  \end{gathered}
+\]
+where the last bound uses $|\int_0^T\hat{\sigma}_s\sqrt{v_s}\dd s|\le(\hat{I}I_T)^{1/2}$. Thus \eqref{eq:homotopy_integrability} holds. If moreover $\hat{I}=I_0$, then $\hat{J}_T\sim\mathcal{N}(0,I_0)$ and the Gaussian semigroup gives $\hat{C}(K)=\E[C_\BS(\hat{F}_T,K,\bar{\rho}^2I_0)]=C_\BS(1,K,I_0)$ for every such surrogate.
+
+\emph{Part (a).} For $\rho=0$, $F_T=\hat{F}_T=1$ and $C(K)-\hat{C}(K)=\E[h(I_T)]-h(I_0)$ with $h(V)=C_\BS(1,K,V)$ and $\E[I_T]=I_0$. For $K\ne1$, the first two derivatives of $h$ vanish faster than any power of $V$ as $V\downarrow0$ and $h''(V)\to0$ as $V\to\infty$, so $\sup_{V>0}|h''(V)|<\infty$, and Taylor's theorem with Lagrange remainder gives the stated bound. For $K=1$, Proposition~\ref{prop:twomoment} with $m=I_0$ and $v=\Var(I_T)$ gives $0\le\varphi_1(m)-\E[\varphi_1(I_T)]\le\varphi_1(m)-L(v)$, and $L$ is differentiable at $v=0$ with $L(0)=\varphi_1(m)$. For flat $\xi_0$, $R_H(s,u)\le T^{2H}$ gives $\Var(I_T)=\xi_0^2\int\!\!\int(e^{\eta^2R_H}-1)\le I_0^2(e^{\eta^2T^{2H}}-1)$.
+
+\emph{Part (b).} Take $\hat{\sigma}_s=\sqrt{\xi_0(s)}$, which has $\hat{I}_T=I_0$. Expanding formally as $\eta\to 0$, $\sqrt{v_s}-\hat{\sigma}_s=\tfrac12\eta\sqrt{\xi_0(s)}Y_s + O(\eta^2)$ and $I_T-I_0=\eta\int_0^T\xi_0(s)Y_s\dd s + O(\eta^2)$, while at $\eta=0$, $F_\theta\equiv F_0=\exp(\rho\int_0^T\sqrt{\xi_0(r)}\dd W_r^{(1)}-\tfrac12\rho^2 I_0)$ and $I_\theta\equiv I_0$. Since $\sqrt{\xi_0(s)}Y_s$ is adapted, Malliavin integration by parts \citep{Nualart2006} with $D_s F_0=\rho\sqrt{\xi_0(s)}F_0$ gives
+\[
+  \begin{aligned}
+  &\E\!\left[\rho\Delta_\BS(0)F_0\int_0^T\tfrac12\eta\sqrt{\xi_0(s)}Y_s\dd W_s^{(1)}\right]
+  \TCrel = \tfrac12\rho^2\eta\int_0^T \xi_0(s)\,\E\!\left[F_0(\Delta_\BS(0)+F_0\Gamma_\BS(0))\,Y_s\right]\dd s.
+  \end{aligned}
+\]
+The $O(\eta)$ part of the second term of \eqref{eq:homotopy} is
+\[
+  \eta\int_0^T\xi_0(s)\,\E\bigl[(\bar{\rho}^2\mathcal{V}_\BS(0)-\tfrac12\rho^2\Delta_\BS(0)F_0)\,Y_s\bigr]\dd s;
+\]
+adding it cancels the terms in $\tfrac12\rho^2\Delta_\BS(0)F_0$, and the Gamma--Vega identity $\mathcal{V}_\BS=\tfrac12 F^2\Gamma_\BS$ reduces the sum to
+\[
+  \tfrac12\eta\int_0^T\xi_0(s)\,\E\bigl[F_0^2\Gamma_\BS(F_0,K,\bar{\rho}^2 I_0)\,Y_s\bigr]\dd s.
+\]
+The pair $(\log F_0,Y_s)$ is jointly Gaussian with
+\[
+  \Cov(\log F_0,Y_s)=\rho\int_0^s\sqrt{\xi_0(u)}\,K_H(s-u)\dd u,
+\]
+so Stein's lemma and the identity $\E[C_\BS(e^x F_0,K,\bar{\rho}^2 I_0)]=C_\BS(e^x,K,I_0)$ give
+\[
+  \begin{aligned}
+    &\E\!\left[F_0^2\Gamma_\BS(F_0,K,\bar{\rho}^2 I_0)\,Y_s\right]
+    \TCrel = \Cov(\log F_0,Y_s)\left.\frac{\partial}{\partial x}\!\left(e^{2x}\Gamma_\BS(e^x,K,I_0)\right)\right|_{x=0} \\
+    &\qquad = \Cov(\log F_0,Y_s)\,\frac{2\mathcal{V}_\BS(1,K,I_0)}{I_0}\left(\log K + \frac{I_0}{2}\right),
+  \end{aligned}
+\]
+using $e^{2x}\Gamma_\BS(e^x,K,I_0)=e^x\phi(d_+)/\sqrt{I_0}$ and $1-d_+/\sqrt{I_0}=(\log K)/I_0+\tfrac12$ at $x=0$. Integrating over $s$ gives \eqref{eq:homotopy_leverage}. For flat $\xi_0$, $C^{x\xi}/I_0 = \rho\eta\sqrt{\xi_0}\,\sqrt{2H}\,T^{H+1/2}/((H+\tfrac12)(H+\tfrac32))$. This calculation identifies the formal coefficient. It supplies no remainder estimate.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:twomoment}]
+Write $u=\tfrac12\sqrt{V}>0$, so $\varphi_1(V)=2\Phi(u)-1$ and $\dd u/\dd V=1/(8u)$. Using $\phi'(u)=-u\phi(u)$, three differentiations give
+\[
+  \begin{gathered}
+  \varphi_1'(V) = \frac{\phi(u)}{4u} > 0,
+  \TCsepq
+  \varphi_1''(V) = -\frac{u^{-3}+u^{-1}}{32}\,\phi(u) < 0,
+  \TCsepq
+  \varphi_1'''(V) = \frac{3u^{-5}+2u^{-3}+u^{-1}}{256}\,\phi(u) > 0.
+  \end{gathered}
+\]
+Concavity gives $\E[\varphi_1(I_T)]\le\varphi_1(m)$. For the lower bound, let $x_*=m+v/m>0$ and let $q$ be the quadratic with $q(0)=0$, $q(x_*)=\varphi_1(x_*)$ and $q'(x_*)=\varphi_1'(x_*)$:
+\[
+  q(x) = \frac{\varphi_1(x_*)}{x_*}\,x + \left(\varphi_1'(x_*)-\frac{\varphi_1(x_*)}{x_*}\right)\frac{x(x-x_*)}{x_*}.
+\]
+Let $h=\varphi_1-q$ on $[0,\infty)$. Then $h(0)=h(x_*)=h'(x_*)=0$ and $h'''=\varphi_1'''>0$, so $h''$ is strictly increasing. By Rolle's theorem there are $c_1\in(0,x_*)$ with $h'(c_1)=0$ and $c_2\in(c_1,x_*)$ with $h''(c_2)=0$. Hence $h''<0$ on $(0,c_2)$ and $h''>0$ on $(c_2,\infty)$, so $h'$ decreases on $(0,c_2)$ and increases on $(c_2,\infty)$; therefore $h'>0$ on $(0,c_1)$, $h'<0$ on $(c_1,x_*)$ and $h'>0$ on $(x_*,\infty)$, and $h\ge 0$ on $[0,\infty)$. Since $\E[I_T(I_T-x_*)]=(m^2+v)-(m+v/m)m=0$,
+\[
+  \begin{aligned}
+  \E[\varphi_1(I_T)] &\ge \E[q(I_T)] = \frac{m}{x_*}\varphi_1(x_*) \TCrel = \frac{m^2}{m^2+v}\,\varphi_1\!\left(m+\frac{v}{m}\right),
+  \end{aligned}
+\]
+with equality for the two-point law on $\{0,x_*\}$. Finally, $\varphi_1(0)=0$ and $\varphi_1''<0$ give $\frac{\dd}{\dd x}(\varphi_1(x)/x)=(x\varphi_1'(x)-\varphi_1(x))/x^2<0$, so $L(v)=m\,\varphi_1(x_*)/x_*$ is strictly decreasing in $v$.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:jensen_pitfall}]
+(i) For $s\in[t_i,t_{i+1}]$ let $\mu_s=\E[Y_s\mid\G_i]$, $D_i(s)=\Var(Y_s\mid\G_i)$ (deterministic, as the conditioning is Gaussian) and $g_s=\E[\sqrt{v_s}\mid\G_i]$. Since $Y_s\mid\G_i\sim\mathcal{N}(\mu_s,D_i(s))$, $g_s=\sqrt{\xi_0}\exp(\tfrac12\eta\mu_s-\tfrac14\eta^2s^{2H}+\tfrac18\eta^2D_i(s))$ and $\Var(\sqrt{v_s}\mid\G_i)=\E[v_s\mid\G_i](1-e^{-\eta^2D_i(s)/4})$. With $\sigma_i^{\mathrm{Jen}}=\Delta t^{-1}\int_{t_i}^{t_{i+1}}g_s\dd s$,
+\[
+  \begin{aligned}
+  &\E[I_T-I_{\mathrm{ad}}]
+  =\xi_0\sum_{i=0}^{n-1}\int_{t_i}^{t_{i+1}}\Bigl(1-e^{-\eta^2D_i(s)/4}\Bigr)\dd s
+  \TCbr +\sum_{i=0}^{n-1}\E\int_{t_i}^{t_{i+1}}\bigl(g_s-\sigma_i^{\mathrm{Jen}}\bigr)^2\dd s,
+  \end{aligned}
+\]
+where the second sum is the nonnegative time-Jensen term. Because $\G_i\subset\F_{t_i}^{W^{(1)}}$, $D_i(s)\ge\Var(Y_s\mid\F_{t_i}^{W^{(1)}})=\int_{t_i}^sK_H(s-u)^2\dd u=(s-t_i)^{2H}$; dropping the second sum gives the lower bound in \eqref{eq:jensen_deficit}, and expanding $1-e^{-x}=x+O(x^2)$ gives its asymptotic form. For the upper bound, $Y_{t_i}$ is $\G_i$-measurable, so $D_i(s)\le\Var(Y_s-Y_{t_i})\le c_H\Delta t^{2H}$, where $c_H=1+2H\int_0^\infty((1+x)^{H-1/2}-x^{H-1/2})^2\dd x<\infty$; this bounds the first sum by $\tfrac14\xi_0\eta^2Tc_H\Delta t^{2H}$. For the time-Jensen term, $\E[(\mu_s-\mu_{s'})^2]\le\Var(Y_s-Y_{s'})\le c_H|s-s'|^{2H}$, $|s^{2H}-s'^{2H}|\le|s-s'|^{2H}$ and $|D_i(s)-D_i(s')|\le c'|s-s'|^{H}$ with $c'=T^H(1+2c_H^{1/2})$; with the uniformly bounded lognormal moments of $g_s$ these give $\E[(g_s-g_{s'})^2]\le c\,\Delta t^{2H}$ on each cell, so the time-Jensen term is at most $cT\Delta t^{2H}$. Hence $\delta_n=\Theta(\Delta t^{2H})=\Theta(n^{-2H})$.
+
+(ii) $\E[I_{\mathrm{CE}}]=\E[\E[I_T\mid\G_n]]=\E[I_T]$, so $\rho_{\mathrm{eff}}^2=\rho^2\E[I_{\mathrm{ad}}]/\E[I_T]=\rho^2(1-\delta_n)$, and $|\rho_{\mathrm{eff}}|=|\rho|\sqrt{1-\delta_n}=|\rho|(1-\Theta(n^{-2H}))$ by (i).
+\end{proof}
+
+\begin{lemma}[Exact unbiasedness of the discrete stopped-timer control]
+\label{lem:stopped_cv}
+For any uniform grid $n\ge 1$, $\rho\in[-1,0]$, deterministic $Q_{\mathrm{var}}>0$ and $(\F_{t_i}^{W^{(1)}})$-adapted $\sigma_i\ge 0$, let $A_{i+1}=\rho^2\Delta t\sum_{j=0}^{i}\sigma_j^2$ and $\alpha_i=\mathbf{1}_{\{A_{i+1}\le Q_{\mathrm{var}}\}}$ for $i=0,\dots,n-1$. Let $I_\tau=\Delta t\sum_{i=0}^{n-1}\alpha_i\sigma_i^2$ and $F_\tau=\exp(\rho\sum_{i=0}^{n-1}\alpha_i\sigma_i\Delta W_i^{(1)}-\tfrac12\rho^2 I_\tau)$. Then $\rho^2 I_\tau\le Q_{\mathrm{var}}$ a.s.\ and
+\[
+  \begin{gathered}
+  \E\!\left[C_\BS\!\left(F_\tau,\,K,\,Q_{\mathrm{var}}-\rho^2 I_\tau\right)\right]
+  = C_\BS(1,K,Q_{\mathrm{var}})
+  \TCsep\text{for every }K>0.
+  \end{gathered}
+\]
+\end{lemma}
+
+\begin{proof}
+The cumulative sum $A_{i+1}$ is nondecreasing in $i$ and $\F_{t_i}^{W^{(1)}}$-measurable, so $\alpha_i$ is $\F_{t_i}^{W^{(1)}}$-measurable, nonincreasing in $i$ and independent of $\Delta W_i^{(1)}$. Let $I_k=\Delta t\sum_{i=0}^{k-1}\alpha_i\sigma_i^2$, $F_k=\exp(\rho\sum_{i=0}^{k-1}\alpha_i\sigma_i\Delta W_i^{(1)}-\tfrac12\rho^2 I_k)$ and $M_k=C_\BS(F_k,K,Q_{\mathrm{var}}-\rho^2 I_k)$ for $k=0,\dots,n$. Since $\alpha$ is nonincreasing, $\rho^2I_k\le Q_{\mathrm{var}}$ a.s.\ for every $k$. Let $\Delta q_{k-1}=\rho^2\Delta t\,\alpha_{k-1}\sigma_{k-1}^2$, so that $\Delta q_{k-1}\le Q_{\mathrm{var}}-\rho^2 I_{k-1}$ and
+\[
+  \begin{gathered}
+  F_k=F_{k-1}\exp\!\left(\sqrt{\Delta q_{k-1}}\,Z-\tfrac12\Delta q_{k-1}\right),\TCsep Z=-\Delta W_{k-1}^{(1)}/\sqrt{\Delta t},
+  \end{gathered}
+\]
+where $Z\sim\mathcal{N}(0,1)$ is independent of $\F_{t_{k-1}}^{W^{(1)}}$. For $F>0$ and $0\le\Delta q\le V$, the Gaussian semigroup identity
+\[
+  \E\bigl[C_\BS\bigl(F e^{\sqrt{\Delta q}\,Z-\Delta q/2},K,V-\Delta q\bigr)\bigr]=C_\BS(F,K,V)
+\]
+gives $\E[M_k\mid\F_{t_{k-1}}^{W^{(1)}}]=M_{k-1}$, and backward induction gives $\E[M_n]=M_0=C_\BS(1,K,Q_{\mathrm{var}})$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:bridge_envelope}]
+The control weights $(W_\ell,W_{\Delta,\ell})$ are fitted on independent pilot shifts and held fixed, and every control has zero mean by Lemma~\ref{lem:stopped_cv}, $\E[F_T^{(n_\ell)}]=1$, $\E[I_{\mathrm{left}}^{(n_\ell)}]=\Delta t\sum_i\xi_0(t_i)$ and $\E[J_{\mathrm{left}}^{(n_\ell)}]=0$. Conditional on the pilot, the $R$ shift means of $C_L$ and of $\Delta_L$ are independent, identically distributed and unbiased for $C^{(n_L)}(K)$ and $\Delta_L(K)$. The Student-$t_{R-1}$ statements below are exact if these means are Gaussian and are asymptotic under a studentized central limit theorem (for example, increasing independent shifts with fixed paths per shift and finite positive variance). The events $\mathcal{A}_1=\{|\bar{C}_L - C^{(n_L)}| \le t\,s_L\}$ and $\mathcal{A}_2=\{|\Delta_L| \le d_L^{\mathrm{hi}}\}$ each have probability at least $1-\alpha/2$, so $\mathbb{P}(\mathcal{A}_1\cap\mathcal{A}_2)\ge 1-\alpha$. On $\mathcal{A}_1\cap\mathcal{A}_2$ and the stated tail event, since $d_{\mathrm{eff}}^{\mathrm{hi}}\ge d_L^{\mathrm{hi}}$ and $x\mapsto1/(2^x-1)$ is decreasing, the tail hypothesis with $\beta\ge\beta_{\mathrm{used}}$ gives
+\[
+  |C(K)-C^{(n_L)}(K)|\le\frac{\gamma_{\mathrm{sf}}|\Delta_L|}{2^\beta-1}\le\frac{\gamma_{\mathrm{sf}}\,d_{\mathrm{eff}}^{\mathrm{hi}}}{2^{\beta_{\mathrm{used}}}-1}=B_L(K),
+\]
+so $|C(K)-\bar{C}_L(K)|\le t\,s_L + B_L(K)$, and clipping to the no-arbitrage bounds $[(1-K)_+,1]$ preserves coverage. In Case~(i), the expansion hypothesis with $c_K\ne0$ makes $\hat{\beta}_{\mathrm{emp}}$ consistent for $\beta$ as $n_L\to\infty$ and relative increment errors vanish on the asymptotically fine levels used in the fit; since $\beta_{\mathrm{used}}\le0.85\hat{\beta}_{\mathrm{emp}}$, $\mathbb{P}(\beta_{\mathrm{used}}\le\beta)\to1$. In Case~(ii), $\beta_{\mathrm{used}}=\beta_{\mathrm{FSW}}$; under geometric increments, $\beta\ge\beta_{\min}(H)$ is equivalent to $1/(2^\beta-1)\le\gamma_{\mathrm{sf}}/(2^{\beta_{\mathrm{FSW}}}-1)$, and the geometric tail without the safety factor is bounded by the reported budget. Black--Scholes prices are strictly increasing in volatility, so outward-rounded Arb inversion of $[C_{\mathrm{lo}},C_{\mathrm{hi}}]$ encloses $\IV(K)$ whenever $C(K)\in[C_{\mathrm{lo}},C_{\mathrm{hi}}]$. The interval \eqref{eq:skew_interval} contains the finite-difference skew whenever both stencil strikes are covered, which by the Bonferroni inequality has probability at least $1-2\alpha$.
+\end{proof}

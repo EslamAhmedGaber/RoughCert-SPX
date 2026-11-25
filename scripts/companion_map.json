@@ -1,0 +1,35 @@
+{
+  "_comment": "Companion v5.0.0 labels matched to the one-column PDF.",
+  "items": [
+    {
+      "what": "Pure BDG6 VIX futures bracket (E6 rows Pure BDG6)",
+      "labels": [
+        "sec:vix_options",
+        "tab:vix_smiles"
+      ],
+      "note": "Section 6 prints the pure smile-suite future at four decimals. Table 4 identifies the corresponding option panel. Full precision is in the smile-suite JSON."
+    },
+    {
+      "what": "Pure E14 3M VIX futures bracket (E6 rows Pure E14)",
+      "labels": [
+        "tab:vix_e14"
+      ],
+      "note": "Base loading, H = 0.10, three months. The futures-suite JSON gives the unrounded endpoints."
+    },
+    {
+      "what": "VIX smile IV brackets and ATM IV (Pure BDG6, Mixed Scen. 1)",
+      "labels": [
+        "tab:vix_smiles"
+      ],
+      "note": "Panels A and C print selected strikes. The complete 9- and 7-strike arrays, including the $\\pm0.3$ spread inputs, are in the tagged smile-suite JSON."
+    },
+    {
+      "what": "Mixed Scen. 1 VIX futures bracket used by the option engine",
+      "labels": [
+        "tab:vix_mixed",
+        "tab:vix_smiles"
+      ],
+      "note": "Scenario 1, three months. The smile-suite pair $[20.63328,20.63767]$ (nearest) lies inside the Table 3 enclosure $[20.63299,20.63780]$. The tighter pair is recorded in the smile-suite JSON."
+    }
+  ]
+}

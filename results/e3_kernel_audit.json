@@ -1,0 +1,1372 @@
+{
+  "experiment": "E3_kernel_audit",
+  "elapsed_s": 143.2914899000025,
+  "params": {
+    "T": 0.25,
+    "eta": 1.9,
+    "rho": -0.9,
+    "xi0": 0.04,
+    "strikes": [
+      0.85,
+      0.9801986733067553,
+      1.0,
+      1.0202013400267558,
+      1.12
+    ],
+    "dk": 0.02
+  },
+  "ref_H010_bridge": {
+    "method": "RoughCert-SPX-Bridge (ce_i_only)",
+    "H": 0.1,
+    "T": 0.25,
+    "eta": 1.9,
+    "rho": -0.9,
+    "n_shifts": 16,
+    "paths_per_shift": 8192,
+    "total_paths": 131072,
+    "base_seed": 20260300,
+    "cold_setup_s": 3.2861602999910247,
+    "solve_s": 65.81792469999345,
+    "strikes": [
+      0.85,
+      0.9801986733067553,
+      1.0,
+      1.0202013400267558,
+      1.12
+    ],
+    "martingale_check_mean_F": 0.9999651885907099,
+    "levels": [
+      64,
+      128,
+      256,
+      512
+    ],
+    "alpha": 0.05,
+    "safety_factor": 1.5,
+    "beta_fsw_theory": 0.8,
+    "level_means": [
+      [
+        0.156032686185396,
+        0.04710399017039686,
+        0.034418866518743506,
+        0.02332970267646417,
+        0.000799061995108245
+      ],
+      [
+        0.15607039067872924,
+        0.04710299021904973,
+        0.03437906776048435,
+        0.023239753252669342,
+        0.0006793475806205112
+      ],
+      [
+        0.15608409539179863,
+        0.04708600649273747,
+        0.03434526563898324,
+        0.02318267262181922,
+        0.0006109024714925728
+      ],
+      [
+        0.15610113020951705,
+        0.0470921340225796,
+        0.03433651263066802,
+        0.023155505111098654,
+        0.0005688528066349952
+      ]
+    ],
+    "level_ses": [
+      [
+        8.50037623172481e-06,
+        1.090802415515636e-05,
+        1.2514812080332053e-05,
+        1.3357287684642192e-05,
+        6.985007531690353e-06
+      ],
+      [
+        7.299076603252324e-06,
+        1.2198943647508624e-05,
+        1.2801272512291524e-05,
+        1.3592679709481177e-05,
+        6.220854619132611e-06
+      ],
+      [
+        1.196877216180573e-05,
+        1.2961549351144498e-05,
+        1.2868839451620213e-05,
+        1.2180997025126735e-05,
+        4.418516000307592e-06
+      ],
+      [
+        9.143300372583264e-06,
+        1.3019322139261579e-05,
+        1.1520626868652142e-05,
+        9.868553122936662e-06,
+        3.3687623306041503e-06
+      ]
+    ],
+    "incr_means": [
+      [
+        3.875811527809265e-05,
+        1.5041063836301973e-06,
+        -3.974088722144498e-05,
+        -9.156523210222711e-05,
+        -0.00012078268927173715
+      ],
+      [
+        1.4562228875558494e-05,
+        -1.2125024027250565e-05,
+        -2.9014663380435203e-05,
+        -5.2302800807170794e-05,
+        -6.64733109005857e-05
+      ],
+      [
+        1.2332829880713558e-05,
+        1.2848654109869535e-05,
+        1.615610447245901e-06,
+        -1.5790476087208955e-05,
+        -4.134969861553008e-05
+      ]
+    ],
+    "incr_ses": [
+      [
+        8.54765542595488e-06,
+        9.12078425312061e-06,
+        1.045750057810088e-05,
+        1.169012739487041e-05,
+        5.082937135401008e-06
+      ],
+      [
+        7.45513428196322e-06,
+        6.45328640331858e-06,
+        7.048009736897256e-06,
+        7.737372664520795e-06,
+        5.652472083725203e-06
+      ],
+      [
+        5.918481144501606e-06,
+        9.369178940909099e-06,
+        1.0918738004326394e-05,
+        1.0137922973672254e-05,
+        3.6274490077297098e-06
+      ]
+    ],
+    "finest_price_mean": [
+      0.15610113020951705,
+      0.0470921340225796,
+      0.03433651263066802,
+      0.023155505111098654,
+      0.0005688528066349952
+    ],
+    "sampling_half_price": [
+      2.2765718020449975e-05,
+      3.241654594752093e-05,
+      2.8684975011539884e-05,
+      2.4571510123442696e-05,
+      8.387812952794859e-06
+    ],
+    "bias_envelope_price": [
+      5.4788344639815314e-05,
+      7.322236054219599e-05,
+      5.829559602248775e-05,
+      8.319710850332511e-05,
+      0.00012813457870805795
+    ],
+    "continuum_price_lo": [
+      0.15602357614685677,
+      0.046986495116089884,
+      0.03424953205963399,
+      0.023047736492471885,
+      0.0004323304149741424
+    ],
+    "continuum_price_hi": [
+      0.15617868427217732,
+      0.047197772929069313,
+      0.03442349320170204,
+      0.023263273729725423,
+      0.0007053751982958481
+    ],
+    "iv_mid": [
+      0.2605783307768575,
+      0.1840550154608872,
+      0.17219091340725373,
+      0.16013144607002153,
+      0.11535159676594803
+    ],
+    "iv_sampling_lo": [
+      0.2603469771509577,
+      0.18391098652284615,
+      0.1720676956761755,
+      0.16002364778380487,
+      0.11511612343137519
+    ],
+    "iv_sampling_hi": [
+      0.26080936611320993,
+      0.18419903931448964,
+      0.17231413130172638,
+      0.1602392399446396,
+      0.11558522907770036
+    ],
+    "iv_continuum_lo": [
+      0.2596557591785717,
+      0.18350669831037258,
+      0.17175445429709182,
+      0.15957909851262736,
+      0.110504119028675
+    ],
+    "iv_continuum_hi": [
+      0.2614958615641738,
+      0.18460325892828214,
+      0.17262737456753624,
+      0.1606836778219126,
+      0.11951790680808654
+    ],
+    "iv_sampling_width_bps": [
+      4.623889622522026,
+      2.8805279164348385,
+      2.4643562555087817,
+      2.155921608347211,
+      4.691056463251714
+    ],
+    "iv_continuum_width_bps": [
+      18.40102385602116,
+      10.965606179095532,
+      8.72920270444416,
+      11.045793092852307,
+      90.13787779411531
+    ],
+    "emp_rate_per_strike": [
+      null,
+      null,
+      null,
+      null,
+      0.7868654794840229
+    ],
+    "beta_used_per_strike": [
+      0.8,
+      0.8,
+      0.8,
+      0.8,
+      0.6688356575614194
+    ],
+    "sign_flip_per_strike": [
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "status_per_strike": [
+      "asymptotic-envelope statistical(0.95)",
+      "asymptotic-envelope statistical(0.95)",
+      "asymptotic-envelope statistical(0.95)",
+      "asymptotic-envelope statistical(0.95)",
+      "asymptotic-envelope statistical(0.95)"
+    ]
+  },
+  "ref_H010_skew_interval": [
+    -0.6256040103913697,
+    -0.5705755122114996
+  ],
+  "markov_audit": [
+    {
+      "H": 0.07,
+      "M_factors": 2,
+      "bb_fit_s": 0.048973500001011416,
+      "kernel_L2_lo": 0.4434943009660338,
+      "kernel_L2_hi": 0.44349430096603404,
+      "kernel_L1_lo": 0.06547283476230793,
+      "kernel_L1_hi": 0.06547283476231078,
+      "E_J_lo": 0.04051525006070732,
+      "E_J_hi": 0.040555463521741345,
+      "arb_price_gap_upper_atm": 0.0468372983315827,
+      "nodes_min": 8.030506337517393,
+      "nodes_max": 3015.516087474303
+    },
+    {
+      "H": 0.07,
+      "M_factors": 4,
+      "bb_fit_s": 0.23913940000056755,
+      "kernel_L2_lo": 0.2731660219988705,
+      "kernel_L2_hi": 0.27316602199887074,
+      "kernel_L1_lo": 0.03822649846824059,
+      "kernel_L1_hi": 0.03822649846825697,
+      "E_J_lo": 0.025338627485325553,
+      "E_J_hi": 0.025361790001625202,
+      "arb_price_gap_upper_atm": 0.02929020214233888,
+      "nodes_min": 5.877428916376086,
+      "nodes_max": 14299306.67918395
+    },
+    {
+      "H": 0.07,
+      "M_factors": 6,
+      "bb_fit_s": 0.5922665999969468,
+      "kernel_L2_lo": 0.18178315807758966,
+      "kernel_L2_hi": 0.18178315807758977,
+      "kernel_L1_lo": 0.024365882530653627,
+      "kernel_L1_hi": 0.024365882530698366,
+      "E_J_lo": 0.01696040260139852,
+      "E_J_hi": 0.01697477669222281,
+      "arb_price_gap_upper_atm": 0.019604083174130902,
+      "nodes_min": 4.782166898846638,
+      "nodes_max": 13205573070.677809
+    },
+    {
+      "H": 0.07,
+      "M_factors": 8,
+      "bb_fit_s": 0.5583893000002718,
+      "kernel_L2_lo": 0.1267990310434424,
+      "kernel_L2_hi": 0.1267990310434425,
+      "kernel_L1_lo": 0.01631629097993011,
+      "kernel_L1_hi": 0.01631629098000891,
+      "E_J_lo": 0.011864779997267757,
+      "E_J_hi": 0.01187413731531706,
+      "arb_price_gap_upper_atm": 0.01371338072782999,
+      "nodes_min": 4.101599956809194,
+      "nodes_max": 4865286006220.307
+    },
+    {
+      "H": 0.07,
+      "M_factors": 12,
+      "bb_fit_s": 1.1748269999952754,
+      "kernel_L2_lo": 0.06756776337209897,
+      "kernel_L2_hi": 0.06756776337209902,
+      "kernel_L1_lo": 0.008074337106872971,
+      "kernel_L1_hi": 0.008074337107125804,
+      "E_J_lo": 0.006341301661450414,
+      "E_J_hi": 0.006345734844217079,
+      "arb_price_gap_upper_atm": 0.0073286568620326694,
+      "nodes_min": 3.293652750200499,
+      "nodes_max": 1.2212105622803765e+17
+    },
+    {
+      "H": 0.07,
+      "M_factors": 16,
+      "bb_fit_s": 2.288597499995376,
+      "kernel_L2_lo": 0.039037598717637845,
+      "kernel_L2_hi": 0.03903759871763787,
+      "kernel_L1_lo": 0.004391002594702208,
+      "kernel_L1_hi": 0.004391002595336921,
+      "E_J_lo": 0.003669728113891323,
+      "E_J_hi": 0.0036720518728543547,
+      "arb_price_gap_upper_atm": 0.004240834011560882,
+      "nodes_min": 2.8261379954682884,
+      "nodes_max": 7.228327414426206e+20
+    },
+    {
+      "H": 0.1,
+      "M_factors": 2,
+      "bb_fit_s": 0.12858160000178032,
+      "kernel_L2_lo": 0.32536707457135716,
+      "kernel_L2_hi": 0.3253670745713574,
+      "kernel_L1_lo": 0.0555591554190033,
+      "kernel_L1_hi": 0.05555915541900591,
+      "E_J_lo": 0.029846504592569538,
+      "E_J_hi": 0.029885799507610507,
+      "arb_price_gap_upper_atm": 0.03451495768667504,
+      "nodes_min": 6.4990207392110175,
+      "nodes_max": 1439.9651565805646,
+      "mk_ivs": [
+        0.2609408596305096,
+        0.18259078120717245,
+        0.17048690876150563,
+        0.15812189499116475,
+        0.10999237844230492
+      ],
+      "mk_atm_skew": -0.6117221554001927,
+      "iv_err_intervals_bps": [
+        [
+          0.0,
+          12.85100451937915
+        ],
+        [
+          9.159171032001312,
+          20.124777211096845
+        ],
+        [
+          12.675455355861953,
+          21.404658060306115
+        ],
+        [
+          14.572035214626133,
+          25.61782830747844
+        ],
+        [
+          5.11740586370088,
+          95.2552836578162
+        ]
+      ],
+      "max_iv_err_lo_bps": 14.572035214626133,
+      "max_iv_err_hi_bps": 95.2552836578162,
+      "atm_iv_err_interval_bps": [
+        12.675455355861953,
+        21.404658060306115
+      ],
+      "skew_err_interval": [
+        0.0,
+        0.0411466431886931
+      ],
+      "mk_setup_s": 0.12858160000178032,
+      "mk_solve_s": 1.838770000002114
+    },
+    {
+      "H": 0.1,
+      "M_factors": 4,
+      "bb_fit_s": 0.19461620000947732,
+      "kernel_L2_lo": 0.17463503403952724,
+      "kernel_L2_hi": 0.17463503403952735,
+      "kernel_L1_lo": 0.028044560392987812,
+      "kernel_L1_hi": 0.028044560393002904,
+      "E_J_lo": 0.016195771662751206,
+      "E_J_hi": 0.016214835079154007,
+      "arb_price_gap_upper_atm": 0.018726430474485172,
+      "nodes_min": 4.61133207513068,
+      "nodes_max": 2378038.7670179857,
+      "mk_ivs": [
+        0.26035862942468396,
+        0.18417770399134684,
+        0.17233060469275566,
+        0.1602369976775355,
+        0.11525108276659299
+      ],
+      "mk_atm_skew": -0.5985176578452835,
+      "iv_err_intervals_bps": [
+        [
+          0.0,
+          11.37232139489852
+        ],
+        [
+          0.0,
+          6.710056809742515
+        ],
+        [
+          0.0,
+          5.761503956638325
+        ],
+        [
+          0.0,
+          6.578991649081322
+        ],
+        [
+          0.0,
+          47.46963737917984
+        ]
+      ],
+      "max_iv_err_lo_bps": 0.0,
+      "max_iv_err_hi_bps": 47.46963737917984,
+      "atm_iv_err_interval_bps": [
+        0.0,
+        5.761503956638325
+      ],
+      "skew_err_interval": [
+        0.0,
+        0.027942145633783944
+      ],
+      "mk_setup_s": 0.19461620000947732,
+      "mk_solve_s": 2.4957293000043137
+    },
+    {
+      "H": 0.1,
+      "M_factors": 6,
+      "bb_fit_s": 0.35253709999960847,
+      "kernel_L2_lo": 0.1043439367894373,
+      "kernel_L2_hi": 0.10434393678943736,
+      "kernel_L1_lo": 0.015837348778721203,
+      "kernel_L1_hi": 0.015837348778764963,
+      "E_J_lo": 0.009717485809233036,
+      "E_J_hi": 0.009727785378345292,
+      "arb_price_gap_upper_atm": 0.011234569804065972,
+      "nodes_min": 3.703303994831972,
+      "nodes_max": 877105199.944517,
+      "mk_ivs": [
+        0.259952974479792,
+        0.18368075006099457,
+        0.17191192802540392,
+        0.15995234142630832,
+        0.11675040379137391
+      ],
+      "mk_atm_skew": -0.5932102158671564,
+      "iv_err_intervals_bps": [
+        [
+          0.0,
+          15.428870843818277
+        ],
+        [
+          0.0,
+          9.225088672875636
+        ],
+        [
+          0.0,
+          7.154465421323197
+        ],
+        [
+          0.0,
+          7.313363956042707
+        ],
+        [
+          0.0,
+          62.46284762698909
+        ]
+      ],
+      "max_iv_err_lo_bps": 0.0,
+      "max_iv_err_hi_bps": 62.46284762698909,
+      "atm_iv_err_interval_bps": [
+        0.0,
+        7.154465421323197
+      ],
+      "skew_err_interval": [
+        0.0,
+        0.032393794524213315
+      ],
+      "mk_setup_s": 0.35253709999960847,
+      "mk_solve_s": 3.178366599997389
+    },
+    {
+      "H": 0.1,
+      "M_factors": 8,
+      "bb_fit_s": 0.5147394000086933,
+      "kernel_L2_lo": 0.06642394601763156,
+      "kernel_L2_hi": 0.06642394601763162,
+      "kernel_L1_lo": 0.0095675342684247,
+      "kernel_L1_hi": 0.009567534268514024,
+      "E_J_lo": 0.006201184005476533,
+      "E_J_hi": 0.006207172868016643,
+      "arb_price_gap_upper_atm": 0.007168632341209706,
+      "nodes_min": 3.162596697294832,
+      "nodes_max": 141682711610.66757,
+      "mk_ivs": [
+        0.26037226253686346,
+        0.1843605024918611,
+        0.1726118499469684,
+        0.1606833405772949,
+        0.11738187270474382
+      ],
+      "mk_atm_skew": -0.591929047864155,
+      "iv_err_intervals_bps": [
+        [
+          0.0,
+          11.235990273103514
+        ],
+        [
+          0.0,
+          8.538041814885045
+        ],
+        [
+          0.0,
+          8.5739564987658
+        ],
+        [
+          0.0,
+          11.042420646675266
+        ],
+        [
+          0.0,
+          68.77753676068812
+        ]
+      ],
+      "max_iv_err_lo_bps": 0.0,
+      "max_iv_err_hi_bps": 68.77753676068812,
+      "atm_iv_err_interval_bps": [
+        0.0,
+        8.5739564987658
+      ],
+      "skew_err_interval": [
+        0.0,
+        0.03367496252721469
+      ],
+      "mk_setup_s": 0.5147394000086933,
+      "mk_solve_s": 3.774310599997989
+    },
+    {
+      "H": 0.1,
+      "M_factors": 12,
+      "bb_fit_s": 1.0300965000060387,
+      "kernel_L2_lo": 0.03036036183895379,
+      "kernel_L2_hi": 0.030360361838953805,
+      "kernel_L1_lo": 0.004017530460638508,
+      "kernel_L1_hi": 0.004017530461037305,
+      "E_J_lo": 0.002842855905328178,
+      "E_J_hi": 0.002845231025276008,
+      "arb_price_gap_upper_atm": 0.003285942824490232,
+      "nodes_min": 2.543372595379997,
+      "nodes_max": 826489270160378.4,
+      "mk_ivs": [
+        0.2606812665553306,
+        0.1840705791655554,
+        0.17225664005096478,
+        0.16029579227602023,
+        0.11721111606625127
+      ],
+      "mk_atm_skew": -0.594369672238379,
+      "iv_err_intervals_bps": [
+        [
+          0.0,
+          10.25507376758883
+        ],
+        [
+          0.0,
+          5.638808551828022
+        ],
+        [
+          0.0,
+          5.021857538729524
+        ],
+        [
+          0.0,
+          7.166937633928672
+        ],
+        [
+          0.0,
+          67.06997037576268
+        ]
+      ],
+      "max_iv_err_lo_bps": 0.0,
+      "max_iv_err_hi_bps": 67.06997037576268,
+      "atm_iv_err_interval_bps": [
+        0.0,
+        5.021857538729524
+      ],
+      "skew_err_interval": [
+        0.0,
+        0.031234338152990704
+      ],
+      "mk_setup_s": 1.0300965000060387,
+      "mk_solve_s": 4.868306200005463
+    },
+    {
+      "H": 0.1,
+      "M_factors": 16,
+      "bb_fit_s": 2.8046118000056595,
+      "kernel_L2_lo": 0.015422713115142312,
+      "kernel_L2_hi": 0.015422713115142319,
+      "kernel_L1_lo": 0.0019189070781663803,
+      "kernel_L1_hi": 0.0019189070792938246,
+      "E_J_lo": 0.0014466909506154475,
+      "E_J_hi": 0.0014477755648840689,
+      "arb_price_gap_upper_atm": 0.0016720286284788463,
+      "nodes_min": 2.189122608715672,
+      "nodes_max": 1.3483962951871603e+18,
+      "mk_ivs": [
+        0.26012408684259886,
+        0.1839686652954055,
+        0.1721684659572813,
+        0.16017659870108056,
+        0.11702015436036882
+      ],
+      "mk_atm_skew": -0.5948016648581238,
+      "iv_err_intervals_bps": [
+        [
+          0.0,
+          13.717747215749586
+        ],
+        [
+          0.0,
+          6.345936328766289
+        ],
+        [
+          0.0,
+          4.589086102549378
+        ],
+        [
+          0.0,
+          5.9750018845319826
+        ],
+        [
+          0.0,
+          65.16035331693814
+        ]
+      ],
+      "max_iv_err_lo_bps": 0.0,
+      "max_iv_err_hi_bps": 65.16035331693814,
+      "atm_iv_err_interval_bps": [
+        0.0,
+        4.589086102549378
+      ],
+      "skew_err_interval": [
+        0.0,
+        0.0308023455332459
+      ],
+      "mk_setup_s": 2.8046118000056595,
+      "mk_solve_s": 5.904391400006716
+    },
+    {
+      "H": 0.3,
+      "M_factors": 2,
+      "bb_fit_s": 0.06387149999500252,
+      "kernel_L2_lo": 0.04383342507251988,
+      "kernel_L2_hi": 0.04383342507251991,
+      "kernel_L1_lo": 0.011286247460406547,
+      "kernel_L1_hi": 0.011286247460408337,
+      "E_J_lo": 0.003935969449230468,
+      "E_J_hi": 0.003947943710954862,
+      "arb_price_gap_upper_atm": 0.004559460090706953,
+      "nodes_min": 1.9538348464695565,
+      "nodes_max": 164.09081717318435
+    },
+    {
+      "H": 0.3,
+      "M_factors": 4,
+      "bb_fit_s": 0.0995522000011988,
+      "kernel_L2_lo": 0.012074692007562126,
+      "kernel_L2_hi": 0.012074692007562133,
+      "kernel_L1_lo": 0.0027370784377761174,
+      "kernel_L1_hi": 0.0027370784377912234,
+      "E_J_lo": 0.0010984864566125903,
+      "E_J_hi": 0.0011010547477781078,
+      "arb_price_gap_upper_atm": 0.0012716025221522795,
+      "nodes_min": 1.2960058012678832,
+      "nodes_max": 19652.584873499713
+    },
+    {
+      "H": 0.3,
+      "M_factors": 6,
+      "bb_fit_s": 0.15236760000698268,
+      "kernel_L2_lo": 0.004337655960586667,
+      "kernel_L2_hi": 0.00433765596058667,
+      "kernel_L1_lo": 0.0009048549438992644,
+      "kernel_L1_hi": 0.0009048549439748254,
+      "E_J_lo": 0.0003974261549046786,
+      "E_J_hi": 0.00039820991469241573,
+      "arb_price_gap_upper_atm": 0.00045989060297794163,
+      "nodes_min": 1.0348634151683005,
+      "nodes_max": 810307.8179273783
+    },
+    {
+      "H": 0.3,
+      "M_factors": 8,
+      "bb_fit_s": 0.39301980000163894,
+      "kernel_L2_lo": 0.001808470757327936,
+      "kernel_L2_hi": 0.0018084707573279369,
+      "kernel_L1_lo": 0.0003552579237635717,
+      "kernel_L1_hi": 0.00035525792404177066,
+      "E_J_lo": 0.0001664039293700625,
+      "E_J_hi": 0.00016669462183926958,
+      "arb_price_gap_upper_atm": 0.0001925147700306535,
+      "nodes_min": 0.8845947742323931,
+      "nodes_max": 18702790.77805849
+    },
+    {
+      "H": 0.3,
+      "M_factors": 12,
+      "bb_fit_s": 2.188272600003984,
+      "kernel_L2_lo": 0.0004102727525326276,
+      "kernel_L2_hi": 0.00041027275253262784,
+      "kernel_L1_lo": 7.389773631128586e-05,
+      "kernel_L1_hi": 7.389773850721105e-05,
+      "E_J_lo": 3.79501672682636e-05,
+      "E_J_hi": 3.800607078119357e-05,
+      "arb_price_gap_upper_atm": 4.389301763594272e-05,
+      "nodes_min": 0.7103355574574318,
+      "nodes_max": 3646223530.455396
+    },
+    {
+      "H": 0.3,
+      "M_factors": 16,
+      "bb_fit_s": 14.691615300005651,
+      "kernel_L2_lo": 0.00011627970579662082,
+      "kernel_L2_hi": 0.00011627970579662087,
+      "kernel_L1_lo": 1.9311971980258455e-05,
+      "kernel_L1_hi": 1.9311984117214635e-05,
+      "E_J_lo": 1.0806358503145926e-05,
+      "E_J_hi": 1.0819868094813504e-05,
+      "arb_price_gap_upper_atm": 1.249581057294601e-05,
+      "nodes_min": 0.6064800580381066,
+      "nodes_max": 336212068105.58105
+    }
+  ],
+  "blp_hybrid_audit": [
+    {
+      "H": 0.07,
+      "n": 64,
+      "kappa": 1,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.0020470579256652846,
+      "E_J_hi": 0.002063714666292072,
+      "arb_price_gap_upper_atm": 0.002383373560692736,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    },
+    {
+      "H": 0.07,
+      "n": 64,
+      "kappa": 2,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.0010922154069703534,
+      "E_J_hi": 0.0011013898983947006,
+      "arb_price_gap_upper_atm": 0.0012719895859226284,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    },
+    {
+      "H": 0.07,
+      "n": 64,
+      "kappa": 3,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.0007419053981720933,
+      "E_J_hi": 0.0007483420877179017,
+      "arb_price_gap_upper_atm": 0.0008642564669115575,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    },
+    {
+      "H": 0.07,
+      "n": 64,
+      "kappa": 4,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.0005594592003035357,
+      "E_J_hi": 0.0005644729490086322,
+      "arb_price_gap_upper_atm": 0.0006519069347967669,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    },
+    {
+      "H": 0.07,
+      "n": 64,
+      "kappa": 6,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.0003709575830725952,
+      "E_J_hi": 0.0003745047238226108,
+      "arb_price_gap_upper_atm": 0.00043251359875360565,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    },
+    {
+      "H": 0.07,
+      "n": 64,
+      "kappa": 8,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.0002737651457209721,
+      "E_J_hi": 0.00027655837266138416,
+      "arb_price_gap_upper_atm": 0.00031939585649001616,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    },
+    {
+      "H": 0.07,
+      "n": 128,
+      "kappa": 1,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.001972413421754026,
+      "E_J_hi": 0.001980276676476934,
+      "arb_price_gap_upper_atm": 0.002287011451044689,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    },
+    {
+      "H": 0.07,
+      "n": 128,
+      "kappa": 2,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.0010612293899612264,
+      "E_J_hi": 0.00106552835131879,
+      "arb_price_gap_upper_atm": 0.0012305732677775968,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    },
+    {
+      "H": 0.07,
+      "n": 128,
+      "kappa": 3,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.000727170257050602,
+      "E_J_hi": 0.0007301643527171111,
+      "arb_price_gap_upper_atm": 0.0008432630933008967,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    },
+    {
+      "H": 0.07,
+      "n": 128,
+      "kappa": 4,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.0005532833692996062,
+      "E_J_hi": 0.0005555990355787801,
+      "arb_price_gap_upper_atm": 0.000641658497343681,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    },
+    {
+      "H": 0.07,
+      "n": 128,
+      "kappa": 6,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.00037374252679001063,
+      "E_J_hi": 0.0003753586902348617,
+      "arb_price_gap_upper_atm": 0.00043349984020216994,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    },
+    {
+      "H": 0.07,
+      "n": 128,
+      "kappa": 8,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.0002812464490489218,
+      "E_J_hi": 0.00028250289551579055,
+      "arb_price_gap_upper_atm": 0.00032626115566154615,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    },
+    {
+      "H": 0.07,
+      "n": 256,
+      "kappa": 1,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.0018896241472248216,
+      "E_J_hi": 0.0018933526371256453,
+      "arb_price_gap_upper_atm": 0.002186623320553957,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    },
+    {
+      "H": 0.07,
+      "n": 256,
+      "kappa": 2,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.0010208678431808944,
+      "E_J_hi": 0.0010228984210698404,
+      "arb_price_gap_upper_atm": 0.001181340178375035,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    },
+    {
+      "H": 0.07,
+      "n": 256,
+      "kappa": 3,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.0007024832875686113,
+      "E_J_hi": 0.0007038920794002481,
+      "arb_price_gap_upper_atm": 0.0008129213786092034,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    },
+    {
+      "H": 0.07,
+      "n": 256,
+      "kappa": 4,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.0005368058182284583,
+      "E_J_hi": 0.0005378912574087737,
+      "arb_price_gap_upper_atm": 0.0006212078744904543,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    },
+    {
+      "H": 0.07,
+      "n": 256,
+      "kappa": 6,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.0003658050018202629,
+      "E_J_hi": 0.0003665569597615105,
+      "arb_price_gap_upper_atm": 0.00042333476649149287,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    },
+    {
+      "H": 0.07,
+      "n": 256,
+      "kappa": 8,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.0002777511394924658,
+      "E_J_hi": 0.0002783315549095279,
+      "arb_price_gap_upper_atm": 0.0003214436956308923,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    },
+    {
+      "H": 0.1,
+      "n": 64,
+      "kappa": 1,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.0019624155684141434,
+      "E_J_hi": 0.0019784006544796293,
+      "arb_price_gap_upper_atm": 0.0022848448428279514,
+      "arb_iv_marginal_gap_upper_bps_atm": 114.65910344721553,
+      "arb_iv_propagated_total_width_bps_atm": 238.03218597211517
+    },
+    {
+      "H": 0.1,
+      "n": 64,
+      "kappa": 2,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.001066781989720766,
+      "E_J_hi": 0.0010757598720374521,
+      "arb_price_gap_upper_atm": 0.001242389598979892,
+      "arb_iv_marginal_gap_upper_bps_atm": 62.34432958740099,
+      "arb_iv_propagated_total_width_bps_atm": 133.4130935719921
+    },
+    {
+      "H": 0.1,
+      "n": 64,
+      "kappa": 3,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.0007328509454964658,
+      "E_J_hi": 0.0007392254838123338,
+      "arb_price_gap_upper_atm": 0.0008537277474821579,
+      "arb_iv_marginal_gap_upper_bps_atm": 42.84043645986252,
+      "arb_iv_propagated_total_width_bps_atm": 94.40769814720973
+    },
+    {
+      "H": 0.1,
+      "n": 64,
+      "kappa": 4,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.0005570805906245366,
+      "E_J_hi": 0.0005620887241093444,
+      "arb_price_gap_upper_atm": 0.0006491534055967965,
+      "arb_iv_marginal_gap_upper_bps_atm": 32.5746223577425,
+      "arb_iv_propagated_total_width_bps_atm": 73.87699950602456
+    },
+    {
+      "H": 0.1,
+      "n": 64,
+      "kappa": 6,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.000373539019619784,
+      "E_J_hi": 0.00037712520361310464,
+      "arb_price_gap_upper_atm": 0.000435539977524994,
+      "arb_iv_marginal_gap_upper_bps_atm": 21.85533846709581,
+      "arb_iv_propagated_total_width_bps_atm": 52.43916029310986
+    },
+    {
+      "H": 0.1,
+      "n": 64,
+      "kappa": 8,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.0002778301445687247,
+      "E_J_hi": 0.0002806780144055666,
+      "arb_price_gap_upper_atm": 0.00032415360976349944,
+      "arb_iv_marginal_gap_upper_bps_atm": 16.265935847849523,
+      "arb_iv_propagated_total_width_bps_atm": 41.260636862686106
+    },
+    {
+      "H": 0.1,
+      "n": 128,
+      "kappa": 1,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.0018524819879530692,
+      "E_J_hi": 0.001859871425040183,
+      "arb_price_gap_upper_atm": 0.0021479560392060125,
+      "arb_iv_marginal_gap_upper_bps_atm": 107.78927178832026,
+      "arb_iv_propagated_total_width_bps_atm": 224.2942315000282
+    },
+    {
+      "H": 0.1,
+      "n": 128,
+      "kappa": 2,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.0010157313136005537,
+      "E_J_hi": 0.0010198504132858948,
+      "arb_price_gap_upper_atm": 0.0011778200497152356,
+      "arb_iv_marginal_gap_upper_bps_atm": 59.104060504758806,
+      "arb_iv_propagated_total_width_bps_atm": 126.9330093091972
+    },
+    {
+      "H": 0.1,
+      "n": 128,
+      "kappa": 3,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.0007040473528832079,
+      "E_J_hi": 0.0007069506464176813,
+      "arb_price_gap_upper_atm": 0.0008164537020907748,
+      "arb_iv_marginal_gap_upper_bps_atm": 40.96996636259065,
+      "arb_iv_propagated_total_width_bps_atm": 90.66694421996007
+    },
+    {
+      "H": 0.1,
+      "n": 128,
+      "kappa": 4,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.0005401123962656127,
+      "E_J_hi": 0.0005423772608992297,
+      "arb_price_gap_upper_atm": 0.0006263887370855216,
+      "arb_iv_marginal_gap_upper_bps_atm": 31.43226805373822,
+      "arb_iv_propagated_total_width_bps_atm": 71.59238031414023
+    },
+    {
+      "H": 0.1,
+      "n": 128,
+      "kappa": 6,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.0003690876578730239,
+      "E_J_hi": 0.00037068782421556545,
+      "arb_price_gap_upper_atm": 0.0004281054808207341,
+      "arb_iv_marginal_gap_upper_bps_atm": 21.482272073114206,
+      "arb_iv_propagated_total_width_bps_atm": 51.69304840866473
+    },
+    {
+      "H": 0.1,
+      "n": 128,
+      "kappa": 8,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.00028001020018564293,
+      "E_J_hi": 0.0002812650641317306,
+      "arb_price_gap_upper_atm": 0.0003248315904983674,
+      "arb_iv_marginal_gap_upper_bps_atm": 16.299957042711366,
+      "arb_iv_propagated_total_width_bps_atm": 41.32867774050586
+    },
+    {
+      "H": 0.1,
+      "n": 256,
+      "kappa": 1,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.0017384705188305811,
+      "E_J_hi": 0.001741901820423664,
+      "arb_price_gap_upper_atm": 0.0020117135434544677,
+      "arb_iv_marginal_gap_upper_bps_atm": 100.95192916712764,
+      "arb_iv_propagated_total_width_bps_atm": 210.62114619561893
+    },
+    {
+      "H": 0.1,
+      "n": 256,
+      "kappa": 2,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.0009572694607413721,
+      "E_J_hi": 0.0009591746529622471,
+      "arb_price_gap_upper_atm": 0.0011077459230378062,
+      "arb_iv_marginal_gap_upper_bps_atm": 55.587570606400185,
+      "arb_iv_propagated_total_width_bps_atm": 119.90049654316243
+    },
+    {
+      "H": 0.1,
+      "n": 256,
+      "kappa": 3,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.00066642625915847,
+      "E_J_hi": 0.0006677638693872725,
+      "arb_price_gap_upper_atm": 0.0007711970928128269,
+      "arb_iv_marginal_gap_upper_bps_atm": 38.69892386356627,
+      "arb_iv_propagated_total_width_bps_atm": 86.12507525873198
+    },
+    {
+      "H": 0.1,
+      "n": 256,
+      "kappa": 4,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.0005135183391757889,
+      "E_J_hi": 0.0005145578170413503,
+      "arb_price_gap_upper_atm": 0.0005942602030137363,
+      "arb_iv_marginal_gap_upper_bps_atm": 29.820027800086525,
+      "arb_iv_propagated_total_width_bps_atm": 68.36802122369895
+    },
+    {
+      "H": 0.1,
+      "n": 256,
+      "kappa": 6,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.000354082724697946,
+      "E_J_hi": 0.00035481169470585894,
+      "arb_price_gap_upper_atm": 0.00040977021968040034,
+      "arb_iv_marginal_gap_upper_bps_atm": 20.562200985903278,
+      "arb_iv_propagated_total_width_bps_atm": 49.85295650699939
+    },
+    {
+      "H": 0.1,
+      "n": 256,
+      "kappa": 8,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.00027109933898827865,
+      "E_J_hi": 0.0002716669396249928,
+      "arb_price_gap_upper_atm": 0.0003137467653717422,
+      "arb_iv_marginal_gap_upper_bps_atm": 15.743718893523607,
+      "arb_iv_propagated_total_width_bps_atm": 40.21622584879175
+    },
+    {
+      "H": 0.3,
+      "n": 64,
+      "kappa": 1,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.000640497296444664,
+      "E_J_hi": 0.0006457717208832039,
+      "arb_price_gap_upper_atm": 0.0007457984724986947,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    },
+    {
+      "H": 0.3,
+      "n": 64,
+      "kappa": 2,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.0003939606444873788,
+      "E_J_hi": 0.0003973360066993338,
+      "arb_price_gap_upper_atm": 0.00045888133109345974,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    },
+    {
+      "H": 0.3,
+      "n": 64,
+      "kappa": 3,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.0002914738929575832,
+      "E_J_hi": 0.0002940685931207555,
+      "arb_price_gap_upper_atm": 0.00033961832094282757,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    },
+    {
+      "H": 0.3,
+      "n": 64,
+      "kappa": 4,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.0002335084607238968,
+      "E_J_hi": 0.0002356657116706629,
+      "arb_price_gap_upper_atm": 0.00027216913051724307,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    },
+    {
+      "H": 0.3,
+      "n": 64,
+      "kappa": 6,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.00016844078527356027,
+      "E_J_hi": 0.00017011247723530692,
+      "arb_price_gap_upper_atm": 0.00019646203383132858,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    },
+    {
+      "H": 0.3,
+      "n": 64,
+      "kappa": 8,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.00013181009694562812,
+      "E_J_hi": 0.00013321219830686465,
+      "arb_price_gap_upper_atm": 0.00015384608957545688,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    },
+    {
+      "H": 0.3,
+      "n": 128,
+      "kappa": 1,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.0005279549104670875,
+      "E_J_hi": 0.000530074313246587,
+      "arb_price_gap_upper_atm": 0.0006121801254830073,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    },
+    {
+      "H": 0.3,
+      "n": 128,
+      "kappa": 2,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.00032827350150910195,
+      "E_J_hi": 0.00032961940496534236,
+      "arb_price_gap_upper_atm": 0.0003806757725292588,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    },
+    {
+      "H": 0.3,
+      "n": 128,
+      "kappa": 3,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.00024551448677811994,
+      "E_J_hi": 0.00024654195294715475,
+      "arb_price_gap_upper_atm": 0.0002847300461854036,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    },
+    {
+      "H": 0.3,
+      "n": 128,
+      "kappa": 4,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.00019882467427123624,
+      "E_J_hi": 0.00019967352000094257,
+      "arb_price_gap_upper_atm": 0.0002306019316063308,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    },
+    {
+      "H": 0.3,
+      "n": 128,
+      "kappa": 6,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.0001465744769575394,
+      "E_J_hi": 0.00014722486025675613,
+      "arb_price_gap_upper_atm": 0.00017002924151118278,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    },
+    {
+      "H": 0.3,
+      "n": 128,
+      "kappa": 8,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.00011727072126177515,
+      "E_J_hi": 0.00011781080752371056,
+      "arb_price_gap_upper_atm": 0.00013605910177317168,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    },
+    {
+      "H": 0.3,
+      "n": 256,
+      "kappa": 1,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.0004320608750276732,
+      "E_J_hi": 0.00043291669271638977,
+      "arb_price_gap_upper_atm": 0.0004999732842074864,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    },
+    {
+      "H": 0.3,
+      "n": 256,
+      "kappa": 2,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.00027014985562345817,
+      "E_J_hi": 0.0002706909426706262,
+      "arb_price_gap_upper_atm": 0.00031261959145860045,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    },
+    {
+      "H": 0.3,
+      "n": 256,
+      "kappa": 3,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.000203164438062231,
+      "E_J_hi": 0.00020357581797725294,
+      "arb_price_gap_upper_atm": 0.00023510867566846891,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    },
+    {
+      "H": 0.3,
+      "n": 256,
+      "kappa": 4,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.00016543181163797266,
+      "E_J_hi": 0.00016577037740717065,
+      "arb_price_gap_upper_atm": 0.00019144736484192826,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    },
+    {
+      "H": 0.3,
+      "n": 256,
+      "kappa": 6,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 0.0001232871211414021,
+      "E_J_hi": 0.0001235447132330592,
+      "arb_price_gap_upper_atm": 0.00014268116028108286,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    },
+    {
+      "H": 0.3,
+      "n": 256,
+      "kappa": 8,
+      "kernel_scope": "continuous-time BLP kernel gap only (excludes discrete time-stepping)",
+      "E_J_lo": 9.970904409328793e-05,
+      "E_J_hi": 9.992159107241608e-05,
+      "arb_price_gap_upper_atm": 0.00011539893677556875,
+      "arb_iv_marginal_gap_upper_bps_atm": null,
+      "arb_iv_propagated_total_width_bps_atm": null
+    }
+  ]
+}
